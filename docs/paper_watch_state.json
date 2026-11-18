@@ -1,0 +1,5 @@
+{
+ "_about": "Paper watch state. last_run: date of the last run. seen: DOI -> {project, decision: added|dropped|watch, why}.",
+ "last_run": "2026-11-15",
+ "seen": {}
+}

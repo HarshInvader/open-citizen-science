@@ -238,4 +238,20 @@ def hero_galileo(projects):
         f'nationale de France; public domain, via <a class="src" href="{commons(GALILEO_FILE)}">Wikimedia Commons</a>.', "hs-galileo")
 
 
-HEROES = {"a": (hero_relay, RELAY_JS), "b": (hero_orrery, ORRERY_JS), "c": (hero_sufi, SUFI_JS), "d": (hero_durer, SUFI_JS), "e": (hero_galileo, SUFI_JS)}
+BULL_FILE = "Book of the Fixed Stars Auv0204 taurus.jpg"
+
+
+def hero_bull(projects):
+    d = json.loads((HERE / "art" / "bull_stars.json").read_text()); w, h = d["size"]
+    stars = sorted(d["stars"], key=lambda s: -s[1])  # light from the hooves up to the horns
+    pts = [(x * w, y * h, "") for x, y, _ in stars]
+    return hero_plate(["bull_light.webp", "bull_dark.webp"], w, h,
+        "The Bull from al-Sufi's Book of Fixed Stars, its stars marked in red", pts,
+        "The Bull, from the same book as the bear. The big red dot on its face is Aldebaran; al-Sufi measured where it sat "
+        "and how bright it was himself, and the bull is only the drawing that helps you find it. Bulls are also the most "
+        "common animal on Indus seals, a script nobody has read yet. Same rule for both: keep the data apart from the story.",
+        f'&#8216;Abd al-Rahman al-Sufi, <i>Book of the Fixed Stars</i>: the Bull. Bodleian Library, MS Marsh 144, p. 196 (1009&#8211;10). '
+        f'Photo &#169; Bodleian Library, University of Oxford, CC BY 4.0, via <a class="src" href="{commons(BULL_FILE)}">Wikimedia Commons</a>.', "hs-bull")
+
+
+HEROES = {"a": (hero_relay, RELAY_JS), "b": (hero_orrery, ORRERY_JS), "c": (hero_sufi, SUFI_JS), "d": (hero_durer, SUFI_JS), "e": (hero_galileo, SUFI_JS), "f": (hero_bull, SUFI_JS)}

@@ -109,3 +109,7 @@
 .hs-galileo .star { width: 11px; height: 11px; margin: -5.5px 0 0 -5.5px; background: #FFE2C9;
   box-shadow: 0 0 0 2px var(--warm), 0 0 18px 6px color-mix(in srgb, #E3936B 75%, transparent); transition-delay: calc(var(--i) * 350ms + 1400ms); }
 @media (min-width: 980px) { .hs-galileo { grid-template-columns: 6fr 5fr; } }
+/* F: al-Sufi's Bull. A tall page, so it is held to a column width */
+.hs-bull .hs-plate { max-width: 500px; margin-inline: auto; }
+.hs-bull .hs-plate img { transition-delay: .2s; }
+.hs-bull .star { transition-delay: calc(var(--i) * 70ms + 900ms); }

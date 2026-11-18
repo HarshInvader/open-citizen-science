@@ -216,7 +216,7 @@ def main():
     shutil.copytree(HERE / "fonts", DIST / "fonts")
     shutil.copytree(HERE / "art", DIST / "art", ignore=shutil.ignore_patterns("*.json"))
     (DIST / "index.html").write_text(page("c"))  # al-Sufi's stars, until a better one
-    for k in ("a", "b", "d", "e"):  # the other hero options, as preview pages
+    for k in ("a", "b", "d", "e", "f"):  # the other hero options, as preview pages
         (DIST / f"hero-{k}.html").write_text(page(k))
     print("wrote", DIST)
 
