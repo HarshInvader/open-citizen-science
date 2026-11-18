@@ -1,0 +1,75 @@
+/* Hero options. A: the relay (live). B: the orrery dot print. C: al-Sufi's stars. */
+:root { --warm: #B5562E; --dot: #1B1A17; --plate-mode: light; --dim: brightness(.62) saturate(.25) contrast(.9); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --warm: #E3936B; --dot: #ECEAE3; --plate-mode: dark; --dim: brightness(.3) saturate(.2); } }
+:root[data-theme="dark"] { --warm: #E3936B; --dot: #ECEAE3; --plate-mode: dark; --dim: brightness(.3) saturate(.2); }
+
+.hero h1 { font-size: clamp(40px, 5.6vw, 72px); max-width: 12ch; }
+.open-now { margin: 14px 0 0; font-size: 15.5px; color: var(--muted); }
+.open-now a { font-weight: 700; text-decoration: none; color: var(--c); }
+.open-now a:hover { text-decoration: underline; }
+
+/* ---------- A: the relay ---------- */
+.hero-relay { padding-top: clamp(28px, 5vw, 72px); padding-bottom: 8px; }
+.hero-relay .hero-text { display: grid; gap: 4px 56px; align-items: end; }
+@media (min-width: 900px) { .hero-relay .hero-text { grid-template-columns: 1fr 1fr; } }
+.hero-relay .lede { margin-top: 18px; }
+.wall { position: relative; max-width: 1400px; margin: clamp(36px, 5vw, 64px) auto 0; padding: 0 16px; }
+@media (min-width: 760px) { .wall { padding: 0 44px; } }
+.relay { list-style: none; margin: 0; padding: 0; display: grid; gap: 28px 16px; grid-template-columns: 1fr 1fr; align-items: end; }
+@media (min-width: 900px) {
+  /* columns sized by each picture's shape so they share a height; the orrery hangs larger, the end of the line */
+  .relay { grid-template-columns: 1.748fr .967fr .654fr 1.83fr; grid-template-rows: auto auto; gap: 0 26px; }
+  .relay .work, .relay figure { display: grid; grid-row: span 2; grid-template-rows: subgrid; align-items: end; }
+  .relay figcaption { align-self: start; }
+}
+.work figure { margin: 0; }
+.frame { position: relative; aspect-ratio: 4 / 3; border-radius: 3px; overflow: visible; }
+@media (min-width: 900px) { .frame { aspect-ratio: var(--ar); } }
+.frame img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: var(--fx) var(--fy); border-radius: 3px;
+  filter: var(--dim); transition: filter 1.2s ease; box-shadow: 0 1px 2px rgb(0 0 0 / .25), 0 18px 40px -18px rgb(0 0 0 / .55); }
+.work.lit .frame img { filter: none; }
+/* the pool of light from above, once lit */
+.work.lit .frame img { box-shadow: 0 1px 2px rgb(0 0 0 / .25), 0 18px 40px -18px rgb(0 0 0 / .55), 0 0 70px -20px color-mix(in srgb, var(--warm) 55%, transparent); }
+.glint { position: absolute; width: 22px; height: 22px; margin: -11px 0 0 -11px; border-radius: 50%; border: 2px solid #FFF3EA; opacity: 0;
+  transform: scale(.4); transition: opacity .6s ease .3s, transform .8s cubic-bezier(.2, .9, .3, 1.4) .3s;
+  box-shadow: 0 0 0 2px #E3936B, 0 0 0 4px rgb(20 12 6 / .55), 0 0 26px 8px color-mix(in srgb, #E3936B 70%, transparent), inset 0 0 8px 2px color-mix(in srgb, #E3936B 60%, transparent); }
+.work.lit .glint { opacity: 1; transform: scale(1); }
+.work figcaption { margin-top: 12px; font-size: 13.5px; line-height: 1.45; color: var(--muted); opacity: .35; transition: opacity 1s ease .2s; text-wrap: pretty; }
+.work figcaption b { display: block; color: var(--ink); font-size: 14px; }
+.work.lit figcaption { opacity: 1; }
+.thread { position: absolute; left: 0; top: 0; pointer-events: none; overflow: visible; }
+.thread path { fill: none; stroke: #E3936B; stroke-width: 1.6; stroke-linecap: round; }
+.thread path.case { stroke: rgb(20 12 6 / .45); stroke-width: 4.5; }
+.thread .spark { fill: var(--warm); opacity: 0; filter: drop-shadow(0 0 6px var(--warm)); }
+.credit { margin-top: 18px; font-size: 12px; color: var(--muted); text-align: right; }
+@media (max-width: 899px) { .thread { display: none; } }
+@media (prefers-reduced-motion: reduce) { .frame img, .glint, .work figcaption { transition: none; } }
+
+/* ---------- B: the orrery, reprinted ---------- */
+.hero-orrery { display: grid; gap: 28px 48px; align-items: end; padding-top: clamp(28px, 5vw, 72px); }
+@media (min-width: 980px) { .hero-orrery { grid-template-columns: 5fr 7fr; } }
+.ho-fig { margin: 0; }
+.ho-plate { position: relative; aspect-ratio: 340 / 252; }
+.ho-plate canvas, .ho-plate img { position: absolute; inset: 0; width: 100%; height: 100%; }
+.ho-plate canvas { image-rendering: pixelated; }
+.ho-plate img { object-fit: cover; filter: grayscale(1) contrast(1.2); mask-image: radial-gradient(closest-side, #000 70%, transparent); }
+.ho-fig.live img { display: none; }
+.ho-fig figcaption { margin-top: 10px; font-size: 13px; color: var(--muted); opacity: 0; transition: opacity 1s ease; }
+.ho-fig.done figcaption, .ho-fig:not(.live) figcaption { opacity: 1; }
+
+/* ---------- C: checked against the sky ---------- */
+.hero-sufi { display: grid; gap: 28px 48px; align-items: center; padding-top: clamp(28px, 5vw, 72px); }
+@media (min-width: 980px) { .hero-sufi { grid-template-columns: 5fr 6fr; } }
+.hs-fig { margin: 0; }
+.hs-plate { position: relative; }
+.hs-plate img { display: block; width: 100%; height: auto; opacity: 0; transition: opacity 1.6s ease 2.2s; }
+.hs-plate .for-dark { position: absolute; inset: 0; display: none; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .hs-plate .for-dark { display: block; } :root:not([data-theme="light"]) .hs-plate .for-light { visibility: hidden; } }
+:root[data-theme="dark"] .hs-plate .for-dark { display: block; } :root[data-theme="dark"] .hs-plate .for-light { visibility: hidden; }
+.hs-fig.stars-on .hs-plate img { opacity: 1; }
+.star { position: absolute; width: 9px; height: 9px; margin: -4.5px 0 0 -4.5px; border-radius: 50%; background: var(--warm); opacity: 0; transform: scale(.2);
+  box-shadow: 0 0 10px 3px color-mix(in srgb, var(--warm) 55%, transparent); transition: opacity .5s ease, transform .6s cubic-bezier(.2, .9, .3, 1.4);
+  transition-delay: calc(var(--i) * 55ms + 300ms); }
+.hs-fig.stars-on .star { opacity: 1; transform: scale(1); }
+.hs-fig figcaption { margin-top: 10px; font-size: 13px; color: var(--muted); }
+@media (prefers-reduced-motion: reduce) { .hs-plate img, .star { transition: none; } }

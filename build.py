@@ -6,6 +6,8 @@ Writes dist/index.html and copies each project's built site into dist/<slug>/.
 Open Indus already has its own address, so the parent page links to it instead of copying it.
 """
 import html, json, shutil, sqlite3, subprocess, sys, time
+sys.path.insert(0, str(__import__('pathlib').Path(__file__).resolve().parent))
+from hero import HEROES
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -112,7 +114,8 @@ def card(p):
 </article>"""
 
 
-def page():
+def page(hero="a"):
+    hero_html, hero_js = HEROES[hero]
     cards = "\n".join(card(p) for p in PROJECTS)
     rules = "".join(f"<li><div><strong>{e(a)}</strong> {e(b)}</div></li>" for a, b in RULES)
     return f"""<!doctype html>
@@ -121,15 +124,12 @@ def page():
 <title>Open Citizen Science</title>
 <meta name="description" content="Big open questions in science, tested in the open by a human lead, a team of AI agents and anyone who wants to help.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='12' fill='none' stroke='%231B1A17' stroke-width='3'/%3E%3Ccircle cx='16' cy='16' r='3.5' fill='%231B1A17'/%3E%3C/svg%3E">
-<link rel="preload" href="fonts/OpenIndusText-Regular.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="home.css"></head>
+<link rel="preload" href="fonts/OpenIndusText-Regular.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="home.css"><link rel="stylesheet" href="hero.css"></head>
 <body>
 <header class="wrap top"><a class="logo" href="index.html"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="12"/><circle cx="16" cy="16" r="3.5" class="dot"/></svg>Open Citizen Science</a>
 <button class="menu" type="button" aria-expanded="false" aria-controls="mainnav">Menu</button><nav aria-label="Main" id="mainnav"><a href="#projects">Projects</a><a href="#why">Why agents</a><a href="#news">News</a><a href="#method">Method</a><a href="#help">Contribute</a></nav></header>
 <main id="main">
-<section class="wrap hero">
-  <h1>Big open questions in science, tested in the open.</h1>
-  <p class="lede">How did life begin? What makes some brain activity come with experience? What did the Indus cities write? Each project sets a checkable goal, states its odds plainly, and publishes every result, the failures too. More questions will join.</p>
-</section>
+{hero_html(PROJECTS)}
 <section class="wrap" id="projects" aria-label="Projects"><div class="projs">
 {cards}
 </div></section>
@@ -144,11 +144,11 @@ def page():
 </svg></figure><h3>Fields change when failures pile up</h3><p><a class="book" href="https://usecaddie.app/s/the-structure-of-scientific-revolutions-50th">Kuhn&#8217;s <i>The Structure of Scientific Revolutions</i></a> shows a field shifts only when results it cannot explain become too many to ignore. Agents test ideas by the thousand, and sealed tests keep every failure on the record.</p></li><li class="why-card"><figure><svg viewBox="0 0 240 150" role="img" aria-label="A chemist, a statistician and a sceptic all feeding into one task">
 <path d="M104 34 C140 34 140 75 172 75" class="f-line"/><path d="M104 75 C140 75 140 75 172 75" class="f-line"/><path d="M104 116 C140 116 140 75 172 75" class="f-line"/><circle cx="98" cy="34" r="6" class="f-solid"/><text x="86" y="38" class="f-lab" text-anchor="end">Chemist</text><circle cx="98" cy="75" r="6" class="f-solid"/><text x="86" y="79" class="f-lab" text-anchor="end">Statistician</text><circle cx="98" cy="116" r="6" class="f-solid"/><text x="86" y="120" class="f-lab" text-anchor="end">Sceptic</text><rect x="172" y="57" width="36" height="36" rx="6" class="f-acc"/>
 <text x="190" y="114" class="f-lab acc" text-anchor="middle">One task</text>
-</svg></figure><h3>Discoveries come from mixing experts</h3><p>Bell Labs put physicists, chemists and engineers in the same corridors, and the transistor came out of it. An agent team brings any expert to a task on demand.</p></li><li class="why-card"><figure><svg viewBox="0 0 240 150" role="img" aria-label="People and agents seated in a ring around a full moon">
+</svg></figure><h3>Discoveries come from mixing experts</h3><p>In <a class="book" href="https://usecaddie.app/s/the-idea-factory-bell-labs-and-the-great-age"><i>The Idea Factory</i></a>, Bell Labs puts physicists, chemists and engineers in the same corridors, and the transistor comes out of it. An agent team brings any expert to a task on demand.</p></li><li class="why-card"><figure><svg viewBox="0 0 240 150" role="img" aria-label="People and agents seated in a ring around a full moon">
 <circle cx="120" cy="75" r="24" class="f-moon"/><circle cx="120.0" cy="23.0" r="6" class="f-line"/><rect x="141.0" y="25.0" width="10" height="10" rx="2" class="f-solid"/><circle cx="165.0" cy="49.0" r="6" class="f-line"/><rect x="167.0" y="70.0" width="10" height="10" rx="2" class="f-solid"/><circle cx="165.0" cy="101.0" r="6" class="f-line"/><rect x="141.0" y="115.0" width="10" height="10" rx="2" class="f-solid"/><circle cx="120.0" cy="127.0" r="6" class="f-line"/><rect x="89.0" y="115.0" width="10" height="10" rx="2" class="f-solid"/><circle cx="75.0" cy="101.0" r="6" class="f-line"/><rect x="63.0" y="70.0" width="10" height="10" rx="2" class="f-solid"/><circle cx="75.0" cy="49.0" r="6" class="f-line"/><rect x="89.0" y="25.0" width="10" height="10" rx="2" class="f-solid"/>
 <circle cx="18" cy="140" r="5" class="f-line"/><text x="28" y="144.5" class="f-lab">People</text><rect x="168" y="135" width="10" height="10" rx="2" class="f-solid"/><text x="184" y="144.5" class="f-lab">Agents</text>
-</svg></figure><h3>A small circle can be enough</h3><p>The Lunar Society was a dozen friends, among them Watt, Wedgwood and Erasmus Darwin, who met each full moon. We are that circle again, with agents, and anyone can join.</p></li></ol>
-  <p class="why-note">Agents can also fool themselves faster than people can, so every project follows <a href="#method">the same rules</a>.</p>
+</svg></figure><h3>A small circle can be enough</h3><p><a class="book" href="https://usecaddie.app/s/the-lunar-men-the-inventors-of-the-modern"><i>The Lunar Men</i></a> were a dozen friends, among them Watt, Wedgwood and Erasmus Darwin, who met each full moon. We are that circle again, with agents, and anyone can join.</p></li></ol>
+  <p class="why-note">Agents can also fool themselves faster than people can, so every project follows <a href="#method">the same rules</a>. The three books are also a short course on running a discovery group: <a class="book" href="https://usecaddie.app/growth/course#part-discovery">Scientific discovery</a>.</p>
 </section>
 {news_section()}
 <section class="wrap split" id="method">
@@ -171,6 +171,7 @@ def page():
   </div>
 </section>
 </main>
+<script>{hero_js}</script>
 <script>(function(){{var b=document.querySelector(".menu"),n=document.getElementById("mainnav");b.addEventListener("click",function(){{var o=n.classList.toggle("open");b.setAttribute("aria-expanded",o)}});n.addEventListener("click",function(e){{if(e.target.tagName==="A"){{n.classList.remove("open");b.setAttribute("aria-expanded","false")}}}})}})();</script>
 <footer class="wrap foot"><span>Open Citizen Science</span><span>Open code, open data, open results: <a href="https://github.com/HarshInvader/open-citizen-science">GitHub</a>. Updated {time.strftime('%d %b %Y').lstrip('0')}.</span></footer>
 </body></html>"""
@@ -186,8 +187,12 @@ def main():
         subprocess.run([sys.executable, "-I", "site/build.py"], cwd=p["repo"], check=True)
         shutil.copytree(p["repo"] / "site" / "dist", DIST / p["slug"])
     shutil.copy(HERE / "home.css", DIST / "home.css")
+    shutil.copy(HERE / "hero.css", DIST / "hero.css")
     shutil.copytree(HERE / "fonts", DIST / "fonts")
-    (DIST / "index.html").write_text(page())
+    shutil.copytree(HERE / "art", DIST / "art", ignore=shutil.ignore_patterns("*.json"))
+    (DIST / "index.html").write_text(page("a"))
+    for k in ("b", "c"):  # the other hero options, as preview pages
+        (DIST / f"hero-{k}.html").write_text(page(k))
     print("wrote", DIST)
 
 
