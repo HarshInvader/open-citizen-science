@@ -66,6 +66,20 @@ def thumb_for(p, base, nid):
     return ""
 
 
+MONTHS = "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec".split()
+
+
+def human_date(d):
+    """2026-07-22 -> 22 Jul 2026; 2026-10 -> Oct 2026; anything else as given."""
+    p = d.split("-")
+    try:
+        if len(p) == 3: return f"{int(p[2])} {MONTHS[int(p[1]) - 1]} {p[0]}"
+        if len(p) == 2: return f"{MONTHS[int(p[1]) - 1]} {p[0]}"
+    except (ValueError, IndexError):
+        pass
+    return e(d)
+
+
 def latest_news(n=8):
     rows = []
     for p in PROJECTS:
@@ -110,7 +124,7 @@ def news_section():
     def pic(r):
         return (f'<span class="nthumb"><img src="{e(r["thumb"])}" alt="" loading="lazy" width="600" height="400"></span>' if r["thumb"]
                 else f'<span class="nthumb blank"><svg viewBox="0 0 32 32" aria-hidden="true">{r["p"]["mark"]}</svg></span>')
-    items = "".join(f'''<li class="p-{r["p"]["slug"]}"><a href="{e(r["url"])}">{pic(r)}<span class="nmeta"><span class="ntag">{e(r["p"]["name"])}</span>{e(r["date"])}</span>
+    items = "".join(f'''<li class="p-{r["p"]["slug"]}"><a href="{e(r["url"])}">{pic(r)}<span class="nmeta"><span class="ntag">{e(r["p"]["name"])}</span><time datetime="{e(r["date"])}">{human_date(r["date"])}</time></span>
 <span>{body(r)}</span></a></li>''' for r in latest_news()[:6])
     links = " · ".join(f'<a href="{e((p["url"].rsplit("/", 1)[0] if not p["external"] else p["url"]) + "/news.html")}">{e(p["name"])}</a>' for p in PROJECTS)
     return f'''<section class="wrap news" id="news"><div class="news-head"><h2>Latest from the projects</h2><p>All news: {links}</p></div><ul class="nlist">{items}</ul>{SIGNUP}</section>'''
