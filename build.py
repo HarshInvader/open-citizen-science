@@ -58,6 +58,14 @@ def board_stats(repo):
     return tasks, landed, sealed
 
 
+def thumb_for(p, base, nid):
+    """The item's own drawing, if the project made one (each project writes assets/news/<id>.webp)."""
+    site = p["repo"] / "site"
+    if (site / "assets" / "news" / f"{nid}.webp").exists() or (site / "dist" / "assets" / "news" / f"{nid}.webp").exists():
+        return f"{base}/assets/news/{nid}.webp"
+    return ""
+
+
 def latest_news(n=8):
     rows = []
     for p in PROJECTS:
@@ -69,7 +77,7 @@ def latest_news(n=8):
                 continue
             base = p["url"].rsplit("/", 1)[0] if not p["external"] else p["url"]
             rows.append(dict(p=p, date=str(it.get("date", "")), head=it.get("head", ""), gist=it.get("gist", ""),
-                             url=f"{base}/news-{it['id']}.html"))
+                             url=f"{base}/news-{it['id']}.html", thumb=thumb_for(p, base, it["id"])))
     rows.sort(key=lambda r: r["date"], reverse=True)
     out = []  # the newest few from each project, then by date
     for p in PROJECTS:
@@ -99,7 +107,10 @@ def news_section():
         if paperish(r["head"]) and r["gist"]:
             return f'<span class="nhead">{e(r["gist"])}</span><span class="ngist">Paper: {e(r["head"])}</span>'
         return f'<span class="nhead">{e(r["head"])}</span><span class="ngist">{e(r["gist"])}</span>'
-    items = "".join(f'''<li class="p-{r["p"]["slug"]}"><a href="{e(r["url"])}"><span class="nmeta"><span class="ntag">{e(r["p"]["name"])}</span>{e(r["date"])}</span>
+    def pic(r):
+        return (f'<span class="nthumb"><img src="{e(r["thumb"])}" alt="" loading="lazy" width="600" height="400"></span>' if r["thumb"]
+                else f'<span class="nthumb blank"><svg viewBox="0 0 32 32" aria-hidden="true">{r["p"]["mark"]}</svg></span>')
+    items = "".join(f'''<li class="p-{r["p"]["slug"]}"><a href="{e(r["url"])}">{pic(r)}<span class="nmeta"><span class="ntag">{e(r["p"]["name"])}</span>{e(r["date"])}</span>
 <span>{body(r)}</span></a></li>''' for r in latest_news()[:6])
     links = " · ".join(f'<a href="{e((p["url"].rsplit("/", 1)[0] if not p["external"] else p["url"]) + "/news.html")}">{e(p["name"])}</a>' for p in PROJECTS)
     return f'''<section class="wrap news" id="news"><div class="news-head"><h2>Latest from the projects</h2><p>All news: {links}</p></div><ul class="nlist">{items}</ul>{SIGNUP}</section>'''

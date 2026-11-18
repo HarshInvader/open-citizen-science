@@ -29,7 +29,7 @@ At most 3 items per project per run. If in doubt, leave it out and note it in th
 
 ## 3. Verify before writing
 
-Open the DOI landing page (or the arXiv/bioRxiv page) and check authors, venue, date, and every number you will quote. Set `verified: true` only after that. If the full text is closed, write only what the abstract says and say so in `tech`.
+Read the full text whenever it is free (find it with OpenAlex `best_oa_location`, Europe PMC full text, arXiv/bioRxiv); the abstract alone is a last resort for closed papers. Open the DOI landing page and check authors, venue, date, and every number you will quote. Set `verified: true` only after that. If the full text is closed, write only what the abstract says and say so in `tech`.
 
 ## 4. Write the item
 
