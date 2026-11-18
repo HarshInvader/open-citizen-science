@@ -127,8 +127,8 @@ h2 { font-weight: 700; font-size: clamp(24px, 2.6vw, 30px); line-height: 1.15; l
 .f-lab.acc { fill: var(--acc); font-weight: 700; }
 
 /* book links: highlighted, lead to Caddie's notes on the book */
-a.book { color: var(--ink); text-decoration: none; background: linear-gradient(transparent 58%, color-mix(in srgb, var(--acc) 28%, transparent) 58%); padding: 0 1px; }
-a.book:hover { background: color-mix(in srgb, var(--acc) 28%, transparent); }
+a.book { color: var(--ink); text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--acc) 70%, transparent); text-decoration-thickness: 1.5px; text-underline-offset: 4px; transition: text-decoration-color .15s; }
+a.book:hover { color: var(--acc); text-decoration-color: var(--acc); }
 /* header menu: inline on wide screens, a button and a dropdown on phones */
 .top { position: relative; }
 .menu { display: none; font: inherit; font-size: 15px; color: var(--ink); background: none; border: 1px solid var(--line-strong); border-radius: 999px; padding: 6px 14px; cursor: pointer; }
