@@ -77,6 +77,21 @@ def latest_news(n=8):
     return sorted(out, key=lambda r: r["date"], reverse=True)
 
 
+SIGNUP = ('<form class="nsignup" action="/api/subscribe" method="post"><div class="nsu-text"><p class="nsu-h">Get the important new papers by email</p>'
+          '<p class="nsu-p">Every couple of weeks: the papers that matter for these questions, in plain words, and what each project did with them. Unsubscribe in one click.</p>'
+          '<fieldset class="nsu-pick"><legend class="vh">Which projects</legend>'
+          + "".join(f'<label><input type="checkbox" name="projects" value="{s}" checked> {n}</label>' for s, n in (("mind", "Open Mind"), ("origins", "Open Origins"), ("indus", "Open Indus")))
+          + '</fieldset></div><div class="nsu-row"><label class="vh" for="nsu-email">Email address</label><input id="nsu-email" type="email" name="email" required autocomplete="email" placeholder="you@example.com">'
+          '<input type="hidden" name="source" value="home"><input class="nsu-hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">'
+          '<button type="submit">Subscribe</button></div><p class="nsu-msg" role="status" aria-live="polite"></p></form>')
+SIGNUP_JS = r"""(function(){var s=document.querySelector('.nsignup');if(!s)return;s.addEventListener('submit',function(ev){ev.preventDefault();
+var m=s.querySelector('.nsu-msg'),b=s.querySelector('button'),p=[].map.call(s.querySelectorAll('input[name=projects]:checked'),function(x){return x.value});
+if(!p.length){m.textContent='Pick at least one project.';return}b.disabled=true;m.textContent='Saving…';
+fetch(s.action,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:s.email.value,projects:p,source:'home',website:s.website.value})})
+.then(function(r){return r.json()}).then(function(r){if(r.ok){m.textContent='Thanks. You’re on the list.';s.classList.add('done')}else{m.textContent=r.error||'Something went wrong. Please try again.';b.disabled=false}})
+.catch(function(){m.textContent='Could not reach the server. Please try again.';b.disabled=false})})})();"""
+
+
 def news_section():
     def paperish(h):  # a raw paper title reads badly as a headline: lead with the plain summary instead
         return len(h) > 75 or " et al" in h or "(" in h
@@ -87,7 +102,7 @@ def news_section():
     items = "".join(f'''<li class="p-{r["p"]["slug"]}"><a href="{e(r["url"])}"><span class="nmeta"><span class="ntag">{e(r["p"]["name"])}</span>{e(r["date"])}</span>
 <span>{body(r)}</span></a></li>''' for r in latest_news()[:6])
     links = " · ".join(f'<a href="{e((p["url"].rsplit("/", 1)[0] if not p["external"] else p["url"]) + "/news.html")}">{e(p["name"])}</a>' for p in PROJECTS)
-    return f'''<section class="wrap news" id="news"><div class="news-head"><h2>Latest from the projects</h2><p>All news: {links}</p></div><ul class="nlist">{items}</ul></section>'''
+    return f'''<section class="wrap news" id="news"><div class="news-head"><h2>Latest from the projects</h2><p>All news: {links}</p></div><ul class="nlist">{items}</ul>{SIGNUP}</section>'''
 
 
 def meter(p):
@@ -181,9 +196,9 @@ def page(hero="a"):
   </div>
 </section>
 </main>
-<script>{hero_js}</script>
+<script>{hero_js}{SIGNUP_JS}</script>
 <script>(function(){{var b=document.querySelector(".menu"),n=document.getElementById("mainnav");b.addEventListener("click",function(){{var o=n.classList.toggle("open");b.setAttribute("aria-expanded",o)}});n.addEventListener("click",function(e){{if(e.target.tagName==="A"){{n.classList.remove("open");b.setAttribute("aria-expanded","false")}}}})}})();</script>
-<footer class="wrap foot"><span>Open Citizen Science</span><span>Open code, open data, open results: <a href="https://github.com/HarshInvader/open-citizen-science">GitHub</a>. Updated {time.strftime('%d %b %Y').lstrip('0')}.</span></footer>
+<footer class="wrap foot"><span>Open Citizen Science</span><span>Open code, open data, open results: <a href="https://github.com/HarshInvader/open-citizen-science">GitHub</a>. Updated {time.strftime('%d %b %Y').lstrip('0')}.</span><span class="fcredit">Star drawing: al-Sufi, <i>Book of the Fixed Stars</i>, Bodleian Library MS Marsh 144, public domain, via <a href="https://commons.wikimedia.org/wiki/File:Al_Sufi_-_Book_of_Fixed_Stars_-_Ursa_Major_(The_Great_Bear)_-_Bodleian_Library_-_Marsh_144(illustrationonly).jpg">Wikimedia Commons</a>.</span></footer>
 </body></html>"""
 
 

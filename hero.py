@@ -178,8 +178,8 @@ def hero_sufi(projects):
     dots = "".join(f'<span class="star" style="left:{x * 100:.2f}%;top:{y * 100:.2f}%;--i:{i}"></span>' for i, (x, y, _) in enumerate(stars))
     return f'''<section class="wrap hero hero-sufi" aria-labelledby="hero-h">
   <div class="hs-text">{h1}{lede}</div>
-  <figure class="hs-fig" tabindex="0"><div class="hs-plate"><img class="for-light" src="art/sufi_light.webp" width="900" height="888" alt="The Great Bear from al-Sufi's Book of Fixed Stars, its stars marked in red"><img class="for-dark" src="art/sufi_dark.webp" width="900" height="888" alt="">{dots}{gyaan("In 964 al-Sufi took the star catalogue everyone trusted and checked every star against the night sky, fixing what was wrong. We check today&#8217;s biggest ideas the same way.")}</div>
-  <figcaption>&#8216;Abd al-Rahman al-Sufi, <i>Book of the Fixed Stars</i>. The Great Bear, its stars in red. Copy of about 1009, Bodleian Library, Oxford (MS Marsh 144); public domain, via <a class="src" href="https://commons.wikimedia.org/wiki/File:Al_Sufi_-_Book_of_Fixed_Stars_-_Ursa_Major_(The_Great_Bear)_-_Bodleian_Library_-_Marsh_144(illustrationonly).jpg">Wikimedia Commons</a>.</figcaption></figure>
+  <figure class="hs-fig" tabindex="0"><div class="hs-plate"><img class="for-light" src="art/sufi_light.webp" width="900" height="888" alt="The Great Bear from al-Sufi's Book of Fixed Stars, its stars marked in red"><img class="for-dark" src="art/sufi_dark.webp" width="900" height="888" alt="">{dots}{gyaan("Around 964 al-Sufi checked the star catalogue everyone had trusted for 800 years against the night sky, star by star, and wrote down where it was wrong. In his book the stars are the red dots; the bear is the story drawn around them. We work the same way: keep the data apart from the story, and test the story against the data.")}</div>
+  <figcaption class="vh">&#8216;Abd al-Rahman al-Sufi, <i>Book of the Fixed Stars</i>: the Great Bear. Bodleian Library, MS Marsh 144, public domain.</figcaption></figure>
 </section>'''
 
 

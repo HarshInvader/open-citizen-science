@@ -157,3 +157,25 @@ a.book:hover { color: var(--acc); text-decoration-color: var(--acc); }
   .top nav a.btn { text-align: center; padding: 11px 16px; font-size: 16px; }
   .top nav a.btn-1:hover { background: var(--ink); }
 }
+
+/* newsletter signup */
+/* news: topic filter and newsletter signup */
+.nsignup { display: grid; gap: 14px 32px; align-items: center; margin: 22px 0 6px; padding: 20px 22px; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); }
+@media (min-width: 860px) { .nsignup { grid-template-columns: 1fr auto; } }
+.nsu-h { margin: 0; font-weight: 700; font-size: 17px; }
+.nsu-p { margin: 4px 0 0; font-size: 14.5px; color: var(--muted); max-width: 56ch; }
+.nsu-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.nsu-row input[type=email] { font: inherit; font-size: 15px; min-width: 0; flex: 1 1 220px; padding: 9px 14px; border-radius: 999px; border: 1px solid var(--line-strong); background: var(--paper); color: var(--ink); }
+.nsu-row button { font: inherit; font-size: 15px; font-weight: 600; padding: 9px 18px; border-radius: 999px; border: 0; background: var(--ink); color: var(--paper); cursor: pointer; }
+.nsu-row button:disabled { opacity: .6; cursor: default; }
+.nsu-hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.nsu-msg { grid-column: 1 / -1; margin: 0; font-size: 14px; color: var(--muted); min-height: 0; }
+.nsu-msg:empty { display: none; }
+.nsignup.done .nsu-row { display: none; }
+.vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+@media (min-width: 860px) { .nsu-row { flex-wrap: nowrap; } .nsu-row input[type=email] { width: 260px; flex: none; } }
+.news .nsignup { margin-top: 28px; }
+.nsu-pick { border: 0; padding: 0; margin: 10px 0 0; display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 14.5px; }
+.nsu-pick label { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; }
+.nsu-pick input { accent-color: var(--ink); width: 16px; height: 16px; margin: 0; }
+.fcredit { flex-basis: 100%; font-size: 12.5px; }

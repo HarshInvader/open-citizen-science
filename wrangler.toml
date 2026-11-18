@@ -1,0 +1,9 @@
+name = "opencitizenscience"
+pages_build_output_dir = "dist"
+compatibility_date = "2026-10-01"
+
+# newsletter signups (no emails are sent from here; see docs/NEWSLETTER.md)
+[[d1_databases]]
+binding = "NEWS_DB"
+database_name = "ocs-newsletter"
+database_id = "ad8c15f1-adce-4ce4-b679-8eeb3c58b115"
