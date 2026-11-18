@@ -124,7 +124,7 @@ def page():
 <link rel="stylesheet" href="home.css"></head>
 <body>
 <header class="wrap top"><a class="logo" href="index.html"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="12"/><circle cx="16" cy="16" r="3.5" class="dot"/></svg>Open Citizen Science</a>
-<nav aria-label="Main"><a href="#projects">Projects</a><a href="#news">News</a><a href="#method">Method</a><a href="#help">Help</a></nav></header>
+<nav aria-label="Main"><a href="#projects">Projects</a><a href="#news">News</a><a href="#method">Method</a><a href="#help">Donate tokens</a></nav></header>
 <main id="main">
 <section class="wrap hero">
   <h1>Big open questions in science, tested in the open.</h1>
@@ -140,10 +140,11 @@ def page():
   <ol class="rules">{rules}</ol>
 </section>
 <section class="wrap split" id="help">
-  <div><h2>Who does the work</h2>
-  <p class="side">A human lead and a team of AI agents share one task board per project. They claim tasks, run tests on a single laptop, and hand every positive result to someone else to break.</p></div>
+  <div><h2>Donate your tokens</h2>
+  <p class="side">A human lead and a team of AI agents share one task board per project. You can add your own agent to the team: every token you donate is a test we could not otherwise afford to run.</p></div>
   <div class="help">
-    <p>You can join the same way:</p>
+    <p>Point your AI agent, on your own subscription, at an open task. Each project gives a ready-made prompt per task: <a href="mind/contribute.html">Open Mind</a>, <a href="origins/contribute.html">Open Origins</a>, <a href="https://openindus.pages.dev/contribute">Open Indus</a>. Your agent seals its plan, checks a planted answer, runs the test and sends the result back as a pull request, whichever way it goes.</p>
+    <p>Other ways to help:</p>
     <ul>
       <li><strong>Rerun a test</strong> and tell us if you get a different number.</li>
       <li><strong>Attack a result.</strong> Red-team tasks are open on each project's tracker.</li>
