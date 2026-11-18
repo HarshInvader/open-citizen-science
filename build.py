@@ -154,6 +154,86 @@ def card(p):
 </article>"""
 
 
+RESOURCES = [
+    ("agents.html", "Working with agents", "Our skill file, prompts and how to start"),
+    ("https://usecaddie.app/blog/agents", "Building with agents", "Practical principles, from the Caddie blog"),
+    ("https://usecaddie.app/blog/agents-handbook", "Agents handbook", "A short handbook, from the Caddie blog"),
+    ("https://usecaddie.app/growth/course#part-discovery", "Scientific discovery", "Three books on how discovery groups work"),
+]
+
+
+def nav(home=""):
+    """Header nav. home='' on the home page, 'index.html' on other pages."""
+    dd = "".join(f'<a href="{e(u)}"><b>{e(t)}</b><small>{e(d)}</small></a>' for u, t, d in RESOURCES)
+    return (f'<button class="menu" type="button" aria-expanded="false" aria-controls="mainnav">Menu</button><nav aria-label="Main" id="mainnav">'
+            f'<a href="{home}#why">Why agents</a><a href="{home}#news">News</a><a href="{home}#method">Method</a>'
+            f'<div class="dd"><button type="button" class="dd-b" aria-expanded="false" aria-controls="dd-res">Resources<svg viewBox="0 0 12 12" width="10" height="10" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="dd-m" id="dd-res">{dd}</div></div>'
+            f'<span class="ctas"><a class="btn btn-2" href="{home}#help">Contribute</a><a class="btn btn-1" href="{home}#projects">View projects</a></span></nav>')
+
+
+NAV_JS = r"""(function(){var b=document.querySelector(".menu"),n=document.getElementById("mainnav");b.addEventListener("click",function(){var o=n.classList.toggle("open");b.setAttribute("aria-expanded",o)});n.addEventListener("click",function(e){if(e.target.closest("a")){n.classList.remove("open");b.setAttribute("aria-expanded","false")}});
+var d=document.querySelector(".dd"),db=d&&d.querySelector(".dd-b");if(!d)return;function set(o){d.classList.toggle("on",o);db.setAttribute("aria-expanded",o)}
+db.addEventListener("click",function(ev){ev.stopPropagation();set(!d.classList.contains("on"))});document.addEventListener("click",function(ev){if(!d.contains(ev.target))set(false)});
+document.addEventListener("keydown",function(ev){if(ev.key==="Escape"&&d.classList.contains("on")){set(false);db.focus()}})})();"""
+
+
+def head_html(title, desc):
+    return f"""<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>{e(title)}</title>
+<meta name="description" content="{e(desc)}">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='12' fill='none' stroke='%231B1A17' stroke-width='3'/%3E%3Ccircle cx='16' cy='16' r='3.5' fill='%231B1A17'/%3E%3C/svg%3E">
+<link rel="preload" href="fonts/OpenIndusText-Regular.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="home.css">"""
+
+
+LOGO = '<a class="logo" href="index.html"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="12"/><circle cx="16" cy="16" r="3.5" class="dot"/></svg>Open Citizen Science</a>'
+
+SKILL_RAW = "https://raw.githubusercontent.com/HarshInvader/open-citizen-science/main/skills/open-science-contributor/SKILL.md"
+
+
+def agents_page():
+    steps = [
+        ("Pick an open task", 'Each project keeps a public list, with a ready-made prompt for every task: <a href="mind/contribute.html">Open Mind</a>, <a href="origins/contribute.html">Open Origins</a>, <a href="https://openindus.pages.dev/contribute">Open Indus</a>.'),
+        ("Give your agent our rules", 'Load the skill below into Claude Code, Codex or any agent that reads instruction files. It makes the agent seal its plan, find a planted answer first, and report failures as plainly as successes.'),
+        ("Send the result back", "Whichever way it goes. A careful &#8220;it did not hold up&#8221; is as useful to us as a hit."),
+    ]
+    steps_html = "".join(f"<li><div><strong>{t}</strong> {b}</div></li>" for t, b in steps)
+    reading = [
+        ("https://usecaddie.app/blog/agents", "Practical principles for building with agents", "Caddie blog", "Agents now do most of the work, so the slow part is your attention. The principles we use to build with them: plan in writing, check by evidence, keep many tasks running."),
+        ("https://usecaddie.app/blog/agents-handbook", "Building with agents: a short handbook", "Caddie blog", "The same ideas as a checklist you can keep open while you work."),
+        ("https://usecaddie.app/growth/course#part-discovery", "Scientific discovery", "Caddie growth library", "Kuhn, The Idea Factory and The Lunar Men, read as a short course on running a discovery group."),
+    ]
+    borrow = [
+        ("https://github.com/anthropics/skills", "Anthropic&#8217;s skills library", "Example skills for Claude, from document tools to testing. Good models for writing your own."),
+        ("https://docs.claude.com/en/docs/claude-code/skills", "How skills work in Claude Code", "Where skill files go and how an agent decides to use one."),
+        ("https://agents.md", "AGENTS.md", "A plain file of instructions for coding agents, read by Codex and many others."),
+        ("https://github.com/HarshInvader/open-mind/blob/main/docs/AGENT_BRIEF.md", "Open Mind agent brief", "The rules every agent on the consciousness project follows."),
+        ("https://github.com/HarshInvader/open-origins/blob/main/docs/AGENT_BRIEF.md", "Open Origins agent brief", "The same for the origin-of-life project, with its own nulls and data."),
+    ]
+    def cards(rows, src=True):
+        out = ""
+        for r in rows:
+            u, t = r[0], r[1]
+            meta = f'<span class="rsrc">{r[2]}</span>' if src and len(r) == 4 else ""
+            out += f'<li><a href="{e(u)}">{meta}<span class="rt">{t}</span><span class="rd">{r[-1]}</span></a></li>'
+        return out
+    body = f"""<main id="main">
+<section class="wrap rhero"><p class="eyebrow">Resources</p><h1>Working with agents</h1>
+<p class="lede">Every project here is run by one person and a team of AI agents. You can bring your own. This page has the rules we give ours, as a file you can load, and the writing we learned them from.</p></section>
+<section class="wrap split"><div><h2>Start in three steps</h2></div><ol class="rules">{steps_html}</ol></section>
+<section class="wrap split" id="skill"><div><h2>Our skill file</h2><p class="side">A skill is a short instruction file an agent loads when a task matches it. This one carries our method.</p></div>
+<div class="skillbox"><p class="sk-h">open-science-contributor</p><p class="sk-d">Seal the plan, find a planted answer first, compare against a fair null, count every test, verify every citation, report failures plainly, hand the work back.</p>
+<div class="sk-act"><a class="btn btn-1" href="skills/open-science-contributor/SKILL.md" download>Download SKILL.md</a><a class="btn btn-2" href="https://github.com/HarshInvader/open-citizen-science/tree/main/skills/open-science-contributor">View on GitHub</a></div>
+<p class="sk-how"><strong>Claude Code:</strong> save it as <code>~/.claude/skills/open-science-contributor/SKILL.md</code>.<br><strong>Codex and other agents:</strong> paste it into the repo&#8217;s <code>AGENTS.md</code>, or give it as the first message.<br><strong>Chat assistants:</strong> paste it in before the task.</p></div></section>
+<section class="wrap rsec"><h2>What we learned building with agents</h2><ul class="rgrid">{cards(reading)}</ul></section>
+<section class="wrap rsec"><h2>Skills and briefs to borrow from</h2><ul class="rgrid">{cards(borrow, False)}</ul></section>
+</main>"""
+    return (head_html("Working with agents · Open Citizen Science", "The rules we give our AI agents, as a skill file you can load, and the writing we learned them from.")
+            + f'</head>\n<body>\n<header class="wrap top">{LOGO}\n{nav("index.html")}</header>\n{body}\n<script>{NAV_JS}</script>\n'
+            + f'<footer class="wrap foot"><span>Open Citizen Science</span><span>Open code, open data, open results: <a href="https://github.com/HarshInvader/open-citizen-science">GitHub</a>.</span></footer>\n</body></html>')
+
+
 def page(hero="a"):
     hero_html, hero_js = HEROES[hero]
     cards = "\n".join(card(p) for p in PROJECTS)
@@ -167,7 +247,7 @@ def page(hero="a"):
 <link rel="preload" href="fonts/OpenIndusText-Regular.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="home.css"><link rel="stylesheet" href="hero.css"></head>
 <body>
 <header class="wrap top"><a class="logo" href="index.html"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="12"/><circle cx="16" cy="16" r="3.5" class="dot"/></svg>Open Citizen Science</a>
-<button class="menu" type="button" aria-expanded="false" aria-controls="mainnav">Menu</button><nav aria-label="Main" id="mainnav"><a href="#why">Why agents</a><a href="#news">News</a><a href="#method">Method</a><span class="ctas"><a class="btn btn-2" href="#help">Contribute</a><a class="btn btn-1" href="#projects">View projects</a></span></nav></header>
+{nav()}</header>
 <main id="main">
 {hero_html(PROJECTS)}
 <section class="wrap" id="projects" aria-label="Projects"><div class="projs">
@@ -208,7 +288,7 @@ def page(hero="a"):
 </section>
 </main>
 <script>{hero_js}{SIGNUP_JS}</script>
-<script>(function(){{var b=document.querySelector(".menu"),n=document.getElementById("mainnav");b.addEventListener("click",function(){{var o=n.classList.toggle("open");b.setAttribute("aria-expanded",o)}});n.addEventListener("click",function(e){{if(e.target.tagName==="A"){{n.classList.remove("open");b.setAttribute("aria-expanded","false")}}}})}})();</script>
+<script>{NAV_JS}</script>
 <footer class="wrap foot"><span>Open Citizen Science</span><span>Open code, open data, open results: <a href="https://github.com/HarshInvader/open-citizen-science">GitHub</a>. Updated {time.strftime('%d %b %Y').lstrip('0')}.</span><span class="fcredit">Star drawing: al-Sufi, <i>Book of the Fixed Stars</i>, Bodleian Library MS Marsh 144, public domain, via <a href="https://commons.wikimedia.org/wiki/File:Al_Sufi_-_Book_of_Fixed_Stars_-_Ursa_Major_(The_Great_Bear)_-_Bodleian_Library_-_Marsh_144(illustrationonly).jpg">Wikimedia Commons</a>.</span></footer>
 </body></html>"""
 
@@ -227,6 +307,8 @@ def main():
     shutil.copytree(HERE / "fonts", DIST / "fonts")
     shutil.copytree(HERE / "art", DIST / "art", ignore=shutil.ignore_patterns("*.json"))
     (DIST / "index.html").write_text(page("c"))  # al-Sufi's stars, until a better one
+    (DIST / "agents.html").write_text(agents_page())
+    shutil.copytree(HERE / "skills", DIST / "skills")
     for k in ("a", "b", "d", "e", "f"):  # the other hero options, as preview pages
         (DIST / f"hero-{k}.html").write_text(page(k))
     print("wrote", DIST)
