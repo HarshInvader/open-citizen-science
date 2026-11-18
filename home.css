@@ -41,9 +41,9 @@ a { color: inherit; text-underline-offset: 0.18em; text-decoration-thickness: 1p
 .top nav a:hover { color: var(--ink); }
 
 /* hero */
-.hero { padding-top: clamp(56px, 10vw, 136px); padding-bottom: clamp(48px, 7vw, 88px); }
+.hero { padding-top: clamp(32px, 7vw, 96px); padding-bottom: clamp(32px, 5vw, 64px); }
 h1 { font-weight: 700; font-size: clamp(40px, 6.8vw, 86px); line-height: 1.02; letter-spacing: -0.025em; margin: 0; max-width: 15ch; text-wrap: balance; }
-.lede { font-size: clamp(19px, 2.1vw, 23px); color: var(--muted); max-width: 46ch; margin: 28px 0 0; text-wrap: pretty; }
+.lede { font-size: clamp(18px, 2vw, 22px); color: var(--muted); max-width: 46ch; margin: 20px 0 0; text-wrap: pretty; }
 
 /* project cards */
 .projs { display: grid; gap: 16px; grid-template-columns: 1fr; }
@@ -74,7 +74,7 @@ h1 { font-weight: 700; font-size: clamp(40px, 6.8vw, 86px); line-height: 1.02; l
 .go:hover { opacity: 0.85; }
 
 /* news */
-.news { padding-top: clamp(64px, 9vw, 120px); }
+.news { padding-top: clamp(56px, 7vw, 96px); }
 .news-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; }
 h2 { font-weight: 700; font-size: clamp(24px, 2.6vw, 30px); line-height: 1.15; letter-spacing: -0.015em; margin: 0; text-wrap: balance; }
 .news-head p { margin: 0; color: var(--muted); font-size: 15px; }
@@ -89,7 +89,7 @@ h2 { font-weight: 700; font-size: clamp(24px, 2.6vw, 30px); line-height: 1.15; l
 @media (max-width: 640px) { .nlist a { grid-template-columns: 1fr; } }
 
 /* method + help */
-.split { display: grid; gap: 24px 64px; padding-top: clamp(64px, 9vw, 120px); }
+.split { display: grid; gap: 20px 64px; padding-top: clamp(56px, 7vw, 96px); }
 @media (min-width: 900px) { .split { grid-template-columns: 5fr 7fr; } }
 .side { color: var(--muted); font-size: 17px; margin: 14px 0 0; max-width: 40ch; }
 .rules { margin: 0; padding: 0; list-style: none; counter-reset: r; }
@@ -101,12 +101,12 @@ h2 { font-weight: 700; font-size: clamp(24px, 2.6vw, 30px); line-height: 1.15; l
 .help ul { margin: 0; padding-left: 20px; }
 .help li { margin-bottom: 8px; }
 
-.foot { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-top: clamp(72px, 10vw, 128px); padding-top: 22px; padding-bottom: 36px; border-top: 1px solid var(--line); font-size: 13.5px; color: var(--muted); }
+.foot { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-top: clamp(56px, 8vw, 96px); padding-top: 22px; padding-bottom: 36px; border-top: 1px solid var(--line); font-size: 13.5px; color: var(--muted); }
 
 .rules li p { margin: 6px 0 0; color: var(--muted); }
 
 /* why agents: three drawn ideas */
-.why { padding-top: clamp(64px, 9vw, 120px); --acc: #B5562E; }
+.why { padding-top: clamp(56px, 7vw, 96px); --acc: #B5562E; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .why { --acc: #E3936B; } }
 :root[data-theme="dark"] .why { --acc: #E3936B; }
 .why .side { max-width: 60ch; }
@@ -125,3 +125,19 @@ h2 { font-weight: 700; font-size: clamp(24px, 2.6vw, 30px); line-height: 1.15; l
 .f-moon { fill: var(--acc); fill-opacity: 0.16; stroke: var(--acc); stroke-width: 1.6; }
 .f-lab { font-size: 12.5px; fill: var(--muted); font-family: inherit; }
 .f-lab.acc { fill: var(--acc); font-weight: 700; }
+
+/* book links: highlighted, lead to Caddie's notes on the book */
+a.book { color: var(--ink); text-decoration: none; background: linear-gradient(transparent 58%, color-mix(in srgb, var(--acc) 28%, transparent) 58%); padding: 0 1px; }
+a.book:hover { background: color-mix(in srgb, var(--acc) 28%, transparent); }
+/* header menu: inline on wide screens, a button and a dropdown on phones */
+.top { position: relative; }
+.menu { display: none; font: inherit; font-size: 15px; color: var(--ink); background: none; border: 1px solid var(--line-strong); border-radius: 999px; padding: 6px 14px; cursor: pointer; }
+@media (max-width: 720px) {
+  .top { flex-wrap: nowrap; }
+  .menu { display: inline-block; }
+  .top nav { display: none; position: absolute; top: 100%; right: 16px; left: 16px; z-index: 5; flex-direction: column; gap: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 6px; box-shadow: 0 12px 32px rgb(0 0 0 / 0.18); }
+  .top nav.open { display: flex; }
+  .top nav a { padding: 11px 12px; border-radius: 9px; color: var(--ink); font-size: 16px; }
+  .top nav a:hover { background: var(--paper); }
+  .why-card { padding: 18px 18px 22px; }
+}
