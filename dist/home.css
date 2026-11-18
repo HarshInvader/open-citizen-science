@@ -24,7 +24,7 @@
 html { -webkit-text-size-adjust: 100%; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; scroll-padding-top: 24px; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 body { margin: 0; background: var(--paper); color: var(--ink); font: 18px/1.6 "Open Indus Text", -apple-system, system-ui, sans-serif; overflow-x: hidden; }
-.wrap { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+.wrap { max-width: 1320px; margin: 0 auto; padding: 0 16px; }
 @media (min-width: 760px) { .wrap { padding: 0 44px; } }
 .vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 a { color: inherit; text-underline-offset: 0.18em; text-decoration-thickness: 1px; }
