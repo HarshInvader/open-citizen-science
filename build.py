@@ -153,7 +153,7 @@ def page():
   </div>
 </section>
 </main>
-<footer class="wrap foot"><span>Open Citizen Science</span><span>Open code, open data, open results. Updated {time.strftime('%Y-%m-%d')}.</span></footer>
+<footer class="wrap foot"><span>Open Citizen Science</span><span>Open code, open data, open results: <a href="https://github.com/HarshInvader/open-citizen-science">GitHub</a>. Updated {time.strftime('%d %b %Y').lstrip('0')}.</span></footer>
 </body></html>"""
 
 
