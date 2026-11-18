@@ -94,3 +94,5 @@
   .work figcaption { opacity: 1; }
   .work .story { position: static; width: auto; height: auto; clip-path: none; overflow: visible; margin-top: 4px; font-weight: 400; font-size: 13.5px; line-height: 1.45; color: var(--muted); text-wrap: pretty; }
 }
+.hs-fig figcaption a.src { color: inherit; text-decoration: underline; text-decoration-color: var(--line-strong); text-underline-offset: 3px; }
+.hs-fig figcaption a.src:hover { color: var(--ink); text-decoration-color: currentColor; }
