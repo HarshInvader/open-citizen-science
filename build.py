@@ -124,7 +124,7 @@ def page():
 <link rel="stylesheet" href="home.css"></head>
 <body>
 <header class="wrap top"><a class="logo" href="index.html"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="12"/><circle cx="16" cy="16" r="3.5" class="dot"/></svg>Open Citizen Science</a>
-<nav aria-label="Main"><a href="#projects">Projects</a><a href="#news">News</a><a href="#method">Method</a><a href="#help">Contribute</a></nav></header>
+<nav aria-label="Main"><a href="#projects">Projects</a><a href="#news">News</a><a href="#why">Why agents</a><a href="#method">Method</a><a href="#help">Contribute</a></nav></header>
 <main id="main">
 <section class="wrap hero">
   <h1>Big open questions in science, tested in the open.</h1>
@@ -134,6 +134,16 @@ def page():
 {cards}
 </div></section>
 {news_section()}
+<section class="wrap split" id="why">
+  <div><h2>Agents make the slow part of science cheap</h2>
+  <p class="side">Big questions rarely stall for lack of ideas. They stall because testing each idea takes people, money and years. An agent can run a test overnight, so a small open group can now try what once needed a national lab.</p></div>
+  <ol class="rules">
+    <li><div><strong>Fields change when failures pile up.</strong><p>Thomas Kuhn showed that most science is puzzle-solving inside an accepted framework, and that a field shifts only when results it cannot explain become too many to ignore. Agents can work through those puzzles by the thousand, and sealed tests keep every failure on the record, so the case for a change builds faster.</p></div></li>
+    <li><div><strong>Discoveries come from mixing experts.</strong><p>Bell Labs put physicists, chemists and engineers along the same corridors and gave them years, and the transistor came out of it. An agent team brings a chemist, a statistician and a sceptic to the same task on demand, for the price of the tokens.</p></div></li>
+    <li><div><strong>A small circle of curious people can be enough.</strong><p>The Lunar Society was a dozen friends, among them James Watt, Josiah Wedgwood, Joseph Priestley and Erasmus Darwin, who met on the Monday nearest the full moon and shared their experiments by letter. Open Citizen Science is that circle again: people and their agents, working in the open, and anyone can join.</p></div></li>
+    <li><div><strong>Speed only helps if it is honest.</strong><p>Agents can also fool themselves faster than people can. That is why every project follows the same rules, below.</p></div></li>
+  </ol>
+</section>
 <section class="wrap split" id="method">
   <div><h2>One method for every project</h2>
   <p class="side">A result that looks good must not be something you could get by trying until something works. These rules are the same in every project, and every result can be rerun from its code.</p></div>

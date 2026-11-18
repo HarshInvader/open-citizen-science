@@ -100,3 +100,5 @@ h2 { font-size: clamp(24px, 2.6vw, 30px); line-height: 1.15; letter-spacing: -0.
 .help li { margin-bottom: 8px; }
 
 .foot { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-top: clamp(72px, 10vw, 128px); padding-top: 22px; padding-bottom: 36px; border-top: 1px solid var(--line); font-size: 13.5px; color: var(--muted); }
+
+.rules li p { margin: 6px 0 0; color: var(--muted); }
