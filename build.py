@@ -141,7 +141,7 @@ def page(hero="a"):
 <link rel="preload" href="fonts/OpenIndusText-Regular.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="home.css"><link rel="stylesheet" href="hero.css"></head>
 <body>
 <header class="wrap top"><a class="logo" href="index.html"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="12"/><circle cx="16" cy="16" r="3.5" class="dot"/></svg>Open Citizen Science</a>
-<button class="menu" type="button" aria-expanded="false" aria-controls="mainnav">Menu</button><nav aria-label="Main" id="mainnav"><a href="#projects">Projects</a><a href="#why">Why agents</a><a href="#news">News</a><a href="#method">Method</a><a href="#help">Contribute</a></nav></header>
+<button class="menu" type="button" aria-expanded="false" aria-controls="mainnav">Menu</button><nav aria-label="Main" id="mainnav"><a href="#why">Why agents</a><a href="#news">News</a><a href="#method">Method</a><span class="ctas"><a class="btn btn-2" href="#help">Contribute</a><a class="btn btn-1" href="#projects">View projects</a></span></nav></header>
 <main id="main">
 {hero_html(PROJECTS)}
 <section class="wrap" id="projects" aria-label="Projects"><div class="projs">

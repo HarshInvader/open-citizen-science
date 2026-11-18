@@ -143,3 +143,17 @@ a.book:hover { color: var(--acc); text-decoration-color: var(--acc); }
   .top nav a:hover { background: var(--paper); }
   .why-card { padding: 18px 18px 22px; }
 }
+/* header actions: view projects (primary), contribute (secondary) */
+.top nav { align-items: center; }
+.ctas { display: flex; gap: 8px; margin-left: 10px; }
+.top nav a.btn { font-size: 14.5px; font-weight: 600; padding: 8px 16px; border-radius: 999px; line-height: 1.2; transition: background-color .15s, border-color .15s, opacity .15s; }
+.top nav a.btn-1 { color: var(--paper); background: var(--ink); border: 1px solid var(--ink); }
+.top nav a.btn-1:hover { opacity: .85; color: var(--paper); }
+.top nav a.btn-2 { color: var(--ink); border: 1px solid var(--line-strong); }
+.top nav a.btn-2:hover { border-color: var(--ink); color: var(--ink); }
+@media (max-width: 720px) {
+  .top nav { align-items: stretch; }
+  .ctas { flex-direction: column-reverse; margin: 6px 0 0; padding: 10px 0 6px; border-top: 1px solid var(--line); }
+  .top nav a.btn { text-align: center; padding: 11px 16px; font-size: 16px; }
+  .top nav a.btn-1:hover { background: var(--ink); }
+}
