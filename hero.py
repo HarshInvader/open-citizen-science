@@ -13,6 +13,20 @@ e = html.escape
 HERE = Path(__file__).resolve().parent
 
 
+TITLE = "Big open questions in science, tested in the open."
+LEDE = ("How did life begin? Which brain activity goes with conscious experience? What did the Indus cities write? Each project "
+        "sets a checkable goal, states its odds plainly, and publishes every result, the failures too. More questions will join.")
+
+
+def head():
+    return f'<h1 id="hero-h">{e(TITLE)}</h1>', f'<p class="lede">{e(LEDE)}</p>'
+
+
+def gyaan(text):
+    """The story behind a picture: shown on hover, or on tap/focus on phones."""
+    return f'<span class="gyaan">{text}</span>'
+
+
 def open_now(projects):
     names = {"indus": "the Indus script", "mind": "consciousness", "origins": "the origin of life"}
     links = [f'<a class="p-{p["slug"]}" href="{e(p["url"])}">{e(names.get(p["slug"], p["name"]))}</a>' for p in projects]
@@ -21,33 +35,33 @@ def open_now(projects):
 
 # (file, width, height, hotspot x, y as fractions, place and time, caption, alt)
 RELAY = [
-    ("bakhshali.webp", 900, 515, 0.697, 0.877, "India, 3rd to 10th century",
-     "A dot that stands for nothing, in the Bakhshali manuscript. It became our zero.",
+    ("bakhshali.webp", 900, 515, 0.697, 0.877, "India",
+     "A dot for &#8216;nothing&#8217; in the Bakhshali manuscript (carbon-dated 3rd to 10th century, still debated). In 628 Brahmagupta made zero a number with its own rules.",
      "A birch-bark page of the Bakhshali manuscript, written in ink"),
-    ("library.webp", 640, 662, 0.623, 0.669, "Baghdad, 9th century",
-     "Scholars took up the Indian numerals, and al-Khwarizmi wrote the book that named algebra.",
+    ("library.webp", 640, 662, 0.623, 0.669, "Baghdad",
+     "Around 825 al-Khwarizmi wrote on reckoning with the Indian numerals; the Latin title of that book gave us the word &#8216;algorithm&#8217;. (Library scene painted by al-Wasiti, 1237.)",
      "Scholars seated before shelves of books, a library scene painted by al-Wasiti in 1237"),
-    ("liber.webp", 560, 856, 0.885, 0.36, "Pisa, 1202",
-     "Fibonacci works his rabbit puzzle in the new numerals and carries them into Europe.",
+    ("liber.webp", 560, 856, 0.885, 0.36, "Pisa",
+     "In 1202 Fibonacci, who learned the numerals from Arab merchants in B&#233;ja&#239;a, carried &#8216;the nine Indian figures&#8217; into Europe. His rabbit sequence was known to Indian poets centuries earlier.",
      "A page of Fibonacci's Liber Abaci with a column of numerals in the margin"),
-    ("orrery.webp", 1100, 814, 0.515, 0.63, "Derby, 1766",
-     "Ordinary people round a lamp and a model of the sky. The circle is open again.",
+    ("orrery.webp", 1100, 814, 0.515, 0.63, "Derby",
+     "In 1766 Wright of Derby painted a lecture on a model of the solar system, given to a mixed room of curious people. Science was leaving the academy; his friends were the Lunar Society.",
      "Joseph Wright of Derby's painting of a lecture on the orrery, faces lit by a hidden lamp"),
 ]
 
 
 def hero_relay(projects):
+    h1, lede = head()
     works = []
     for i, (f, w, h, x, y, when, cap, alt) in enumerate(RELAY):
         pri = "" if i else ' fetchpriority="high"'
         works.append(
-            f'<li class="work" style="--ar:{w / h:.4f};--fx:{x * 100:.1f}%;--fy:{y * 100:.1f}%" data-x="{x}" data-y="{y}">'
-            f'<figure><div class="frame"><img src="art/{f}" width="{w}" height="{h}" alt="{e(alt)}" decoding="async"{pri}><span class="glint" aria-hidden="true"></span></div>'
-            f'<figcaption><b>{e(when)}</b> {e(cap)}</figcaption></figure></li>')
+            f'<li class="work" tabindex="0" style="--ar:{w / h:.4f};--fx:{x * 100:.1f}%;--fy:{y * 100:.1f}%" data-x="{x}" data-y="{y}">'
+            f'<figure><div class="frame"><img src="art/{f}" width="{w}" height="{h}" alt="{e(alt)}" decoding="async"{pri}><span class="glint" aria-hidden="true"></span>{gyaan(cap).replace('class="gyaan"', 'class="gyaan" aria-hidden="true"')}</div>'
+            f'<figcaption>{e(when)}<span class="story">{cap}</span></figcaption></figure></li>')
     return f'''<section class="hero hero-relay" aria-labelledby="hero-h">
-  <div class="wrap hero-text"><h1 id="hero-h">Hard questions, an open circle.</h1>
-  <div><p class="lede">Zero travelled from India to Baghdad to Pisa because people shared what they knew. We work the same way on today&#8217;s hardest questions, with AI agents, in the open.</p>
-  {open_now(projects)}</div></div>
+  <div class="wrap hero-text">{h1}<div>{lede}</div></div>
+  <p class="wrap relay-intro">Zero passed from hand to hand, India to Baghdad to Pisa, and became everyone&#8217;s. Science moves fastest when it is shared; these projects share every step. <span class="hint">Hover over a picture for its story.</span></p>
   <div class="wall"><ol class="relay" aria-label="How zero travelled, in four works">{"".join(works)}</ol>
   <svg class="thread" aria-hidden="true"></svg></div>
   <p class="wrap credit">Manuscripts and painting: public domain, via Wikimedia Commons.</p>
@@ -111,12 +125,11 @@ RELAY_JS = r"""
 
 
 def hero_orrery(projects):
+    h1, lede = head()
     return f'''<section class="wrap hero hero-orrery" aria-labelledby="hero-h">
-  <div class="ho-text"><h1 id="hero-h">Hard questions, an open circle.</h1>
-  <p class="lede">In the 1760s a dozen friends met each full moon to work on the hardest questions of their day. We do the same, with AI agents. Bring yours.</p>
-  {open_now(projects)}</div>
-  <figure class="ho-fig"><div class="ho-plate"><canvas width="340" height="252" aria-hidden="true"></canvas>
-  <img src="art/orrery.webp" width="1100" height="814" alt="Joseph Wright of Derby's painting of a lecture on the orrery, printed in dots"></div>
+  <div class="ho-text">{h1}{lede}</div>
+  <figure class="ho-fig" tabindex="0"><div class="ho-plate"><canvas width="340" height="252" aria-hidden="true"></canvas>
+  <img src="art/orrery.webp" width="1100" height="814" alt="Joseph Wright of Derby's painting of a lecture on the orrery, printed in dots">{gyaan("In the 1760s a dozen friends, the Lunar Society, met each full moon to work on the hardest questions of their day. We do the same, with AI agents.")}</div>
   <figcaption>Joseph Wright of Derby, 1766. Ordinary people round a model of the sky.</figcaption></figure>
 </section>'''
 
@@ -161,12 +174,11 @@ ORRERY_JS = r"""
 def hero_sufi(projects):
     stars = [s for s in json.loads((HERE / "art" / "sufi_stars.json").read_text()) if s[2] >= 50]
     stars.sort(key=lambda s: s[0])
+    h1, lede = head()
     dots = "".join(f'<span class="star" style="left:{x * 100:.2f}%;top:{y * 100:.2f}%;--i:{i}"></span>' for i, (x, y, _) in enumerate(stars))
     return f'''<section class="wrap hero hero-sufi" aria-labelledby="hero-h">
-  <div class="hs-text"><h1 id="hero-h">Hard questions, checked against the sky.</h1>
-  <p class="lede">In 964 al-Sufi took the star catalogue everyone trusted and checked every star against the night sky, fixing what was wrong. We check today&#8217;s biggest ideas the same way, with AI agents, in the open.</p>
-  {open_now(projects)}</div>
-  <figure class="hs-fig"><div class="hs-plate"><img class="for-light" src="art/sufi_light.webp" width="900" height="888" alt="The Great Bear from al-Sufi's Book of Fixed Stars, its stars marked in red"><img class="for-dark" src="art/sufi_dark.webp" width="900" height="888" alt="">{dots}</div>
+  <div class="hs-text">{h1}{lede}</div>
+  <figure class="hs-fig" tabindex="0"><div class="hs-plate"><img class="for-light" src="art/sufi_light.webp" width="900" height="888" alt="The Great Bear from al-Sufi's Book of Fixed Stars, its stars marked in red"><img class="for-dark" src="art/sufi_dark.webp" width="900" height="888" alt="">{dots}{gyaan("In 964 al-Sufi took the star catalogue everyone trusted and checked every star against the night sky, fixing what was wrong. We check today&#8217;s biggest ideas the same way.")}</div>
   <figcaption>&#8216;Abd al-Rahman al-Sufi, <i>Book of the Fixed Stars</i>. The Great Bear, its stars in red.</figcaption></figure>
 </section>'''
 

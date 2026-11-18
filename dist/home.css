@@ -65,7 +65,8 @@ h1 { font-weight: 700; font-size: clamp(40px, 6.8vw, 86px); line-height: 1.02; l
 .seg { height: 6px; border-radius: 3px; background: var(--seg-empty); position: relative; overflow: hidden; }
 .seg.s2 { background: var(--c); }
 .seg.s1 { background: linear-gradient(90deg, var(--c) 50%, var(--seg-empty) 50%); }
-.ends { display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); margin-top: 6px; }
+.mhead { margin: 0 0 7px; font-size: 12px; font-weight: 700; color: var(--muted); }
+.mline { margin: 8px 0 0; font-size: 13.5px; color: var(--muted); line-height: 1.45; }
 
 .proj-foot { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--line); }
 .odds { margin: 0; font-size: 14.5px; font-weight: 600; }
@@ -122,6 +123,7 @@ h2 { font-weight: 700; font-size: clamp(24px, 2.6vw, 30px); line-height: 1.15; l
 .f-solid { fill: var(--ink); }
 .f-acc { fill: none; stroke: var(--acc); stroke-width: 1.8; }
 .f-ground { stroke: var(--line-strong); stroke-width: 1.4; }
+.f-you { fill: none; stroke: var(--acc); stroke-width: 1.6; stroke-dasharray: 3 3; }
 .f-moon { fill: var(--acc); fill-opacity: 0.16; stroke: var(--acc); stroke-width: 1.6; }
 .f-lab { font-size: 12.5px; fill: var(--muted); font-family: inherit; }
 .f-lab.acc { fill: var(--acc); font-weight: 700; }
