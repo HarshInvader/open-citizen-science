@@ -187,4 +187,55 @@ SUFI_JS = r"""
 (function () { var f = document.querySelector('.hs-fig'); if (f) requestAnimationFrame(function () { f.classList.add('stars-on'); }); })();
 """
 
-HEROES = {"a": (hero_relay, RELAY_JS), "b": (hero_orrery, ORRERY_JS), "c": (hero_sufi, SUFI_JS)}
+def commons(file):
+    return "https://commons.wikimedia.org/wiki/File:" + file.replace(" ", "_")
+
+
+def hero_plate(imgs, w, h, alt, pts, story, caption, kind=""):
+    """Same look as al-Sufi: the drawing lifted off its page, warm points that light in turn, the story on hover."""
+    h1, lede = head()
+    if len(imgs) == 2:
+        pics = (f'<img class="for-light" src="art/{imgs[0]}" width="{w}" height="{h}" alt="{e(alt)}">'
+                f'<img class="for-dark" src="art/{imgs[1]}" width="{w}" height="{h}" alt="">')
+    else:
+        pics = f'<img src="art/{imgs[0]}" width="{w}" height="{h}" alt="{e(alt)}">'
+    dots = "".join(f'<span class="star {c}" style="left:{x / w * 100:.2f}%;top:{y / h * 100:.2f}%;--i:{i}"></span>'
+                   for i, (x, y, c) in enumerate(pts))
+    return f'''<section class="wrap hero hero-sufi {kind}" aria-labelledby="hero-h">
+  <div class="hs-text">{h1}{lede}</div>
+  <figure class="hs-fig" tabindex="0"><div class="hs-plate">{pics}{dots}{gyaan(story)}</div>
+  <figcaption>{caption}</figcaption></figure>
+</section>'''
+
+
+DURER_FILE = "Imagines coeli septentrionales cum duodecim imaginibus zodiaci RMG A8201.jpg"
+
+
+def hero_durer(projects):
+    # the four astronomers' globes, oldest first; al-Sufi last and brightest
+    pts = [(155, 60, "ring"), (129, 851, "ring"), (709, 86, "ring"), (766, 848, "ring key")]
+    return hero_plate(["durer_light.webp", "durer_dark.webp"], 900, 895,
+        "Albrecht Dürer's 1515 map of the northern sky, with an astronomer in each corner", pts,
+        "In 1515 Dürer drew the sky with four astronomers in its corners: Aratus and Ptolemy (Greek), Manilius (Roman) "
+        "and, bottom right, &#8216;Azophi Arabus&#8217;, the Persian astronomer al-Sufi, who in 964 checked the old star "
+        "catalogue against the real sky. Good checking is everyone&#8217;s inheritance.",
+        f'Albrecht D&#252;rer, <i>The northern sky</i>, woodcut, 1515. Bottom right: al-Sufi. Royal Museums Greenwich; '
+        f'public domain, via <a class="src" href="{commons(DURER_FILE)}">Wikimedia Commons</a>.', "hs-durer")
+
+
+GALILEO_FILE = "Illustrations de Sidereus nuncius - (Non identifié) ; Galilei Galileo, aut. de texte - btv1b2600224d (04 of 10).jpg"
+
+
+def hero_galileo(projects):
+    # lit specks inside the shadow: mountain tops catching sunrise
+    pts = [(407, 145, ""), (395, 227, ""), (385, 352, ""), (380, 532, ""), (387, 580, "")]
+    return hero_plate(["galileo.webp"], 720, 720,
+        "Galileo's 1610 drawing of the half-lit moon, with bright specks inside its shadow", pts,
+        "Everyone was taught the moon was a perfect smooth sphere. In 1610 Galileo looked through his telescope, saw points "
+        "of light inside the shadow, and worked out they were mountain tops catching the sunrise. The evidence was in the "
+        "dots; he just looked, and published.",
+        f'Galileo Galilei, <i>Sidereus Nuncius</i>, 1610. The lit points in the shadow are mountain peaks. Biblioth&#232;que '
+        f'nationale de France; public domain, via <a class="src" href="{commons(GALILEO_FILE)}">Wikimedia Commons</a>.', "hs-galileo")
+
+
+HEROES = {"a": (hero_relay, RELAY_JS), "b": (hero_orrery, ORRERY_JS), "c": (hero_sufi, SUFI_JS), "d": (hero_durer, SUFI_JS), "e": (hero_galileo, SUFI_JS)}
