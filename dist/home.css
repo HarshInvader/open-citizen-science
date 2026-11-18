@@ -1,4 +1,6 @@
-/* Open Citizen Science: the parent page. Quiet paper, serif reading text, one accent per project. */
+/* Open Citizen Science: the parent page. Quiet paper, one body face (Open Indus Text, from Instrument Sans), one accent per project. */
+@font-face { font-family: "Open Indus Text"; src: url("fonts/OpenIndusText-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Open Indus Text"; src: url("fonts/OpenIndusText-Bold.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
 :root {
   --paper: #F5F3EE; --surface: #FCFBF8; --ink: #1B1A17; --muted: #5C5A53; --line: #E2DFD6; --line-strong: #C9C5B9;
   --indus: #2A4D84; --mind: #4B3A9C; --origins: #1D6670;
@@ -21,13 +23,13 @@
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; scroll-padding-top: 24px; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-body { margin: 0; background: var(--paper); color: var(--ink); font: 18px/1.6 "Iowan Old Style", Charter, "Palatino Linotype", Georgia, serif; overflow-x: hidden; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 18px/1.6 "Open Indus Text", -apple-system, system-ui, sans-serif; overflow-x: hidden; }
 .wrap { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
 @media (min-width: 760px) { .wrap { padding: 0 44px; } }
 .vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 a { color: inherit; text-underline-offset: 0.18em; text-decoration-thickness: 1px; }
 :focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 3px; }
-.sans, .top, h2, h3, .pname, .pstat, .odds, .go, .meter, .foot, .kicker, .nmeta, .ntag { font-family: -apple-system, "Inter", "Segoe UI", system-ui, sans-serif; }
+
 
 /* header */
 .top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 22px; padding-bottom: 22px; flex-wrap: wrap; }
@@ -40,7 +42,7 @@ a { color: inherit; text-underline-offset: 0.18em; text-decoration-thickness: 1p
 
 /* hero */
 .hero { padding-top: clamp(56px, 10vw, 136px); padding-bottom: clamp(48px, 7vw, 88px); }
-h1 { font-weight: 400; font-size: clamp(40px, 6.8vw, 86px); line-height: 1.02; letter-spacing: -0.025em; margin: 0; max-width: 15ch; text-wrap: balance; }
+h1 { font-weight: 700; font-size: clamp(40px, 6.8vw, 86px); line-height: 1.02; letter-spacing: -0.025em; margin: 0; max-width: 15ch; text-wrap: balance; }
 .lede { font-size: clamp(19px, 2.1vw, 23px); color: var(--muted); max-width: 46ch; margin: 28px 0 0; text-wrap: pretty; }
 
 /* project cards */
@@ -54,7 +56,7 @@ h1 { font-weight: 400; font-size: clamp(40px, 6.8vw, 86px); line-height: 1.02; l
 .mark { width: 34px; height: 34px; flex: none; fill: none; stroke: var(--c); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
 .pname { margin: 0; font-weight: 700; font-size: 15px; color: var(--c); }
 .pstat { margin: 1px 0 0; font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
-.proj h3 { font-family: inherit; font-weight: 400; font-size: clamp(25px, 2.4vw, 30px); line-height: 1.15; letter-spacing: -0.015em; margin: 26px 0 0; text-wrap: balance; }
+.proj h3 { font-family: inherit; font-weight: 700; font-size: clamp(25px, 2.4vw, 30px); line-height: 1.15; letter-spacing: -0.015em; margin: 26px 0 0; text-wrap: balance; }
 .pgoal { margin: 12px 0 0; font-size: 16px; font-weight: 600; }
 .pblurb { margin: 10px 0 0; font-size: 16.5px; color: var(--muted); text-wrap: pretty; flex: 1; }
 
@@ -74,7 +76,7 @@ h1 { font-weight: 400; font-size: clamp(40px, 6.8vw, 86px); line-height: 1.02; l
 /* news */
 .news { padding-top: clamp(64px, 9vw, 120px); }
 .news-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; }
-h2 { font-size: clamp(24px, 2.6vw, 30px); line-height: 1.15; letter-spacing: -0.015em; margin: 0; text-wrap: balance; }
+h2 { font-weight: 700; font-size: clamp(24px, 2.6vw, 30px); line-height: 1.15; letter-spacing: -0.015em; margin: 0; text-wrap: balance; }
 .news-head p { margin: 0; color: var(--muted); font-size: 15px; }
 .nlist { list-style: none; margin: 22px 0 0; padding: 0; border-top: 1px solid var(--line); }
 .nlist li { border-bottom: 1px solid var(--line); }
@@ -93,7 +95,7 @@ h2 { font-size: clamp(24px, 2.6vw, 30px); line-height: 1.15; letter-spacing: -0.
 .rules { margin: 0; padding: 0; list-style: none; counter-reset: r; }
 .rules li { counter-increment: r; display: grid; grid-template-columns: 36px 1fr; padding: 16px 0; border-top: 1px solid var(--line); }
 .rules li:last-child { border-bottom: 1px solid var(--line); }
-.rules li::before { content: counter(r, decimal-leading-zero); font: 600 13px -apple-system, system-ui, sans-serif; color: var(--muted); padding-top: 5px; }
+.rules li::before { content: counter(r, decimal-leading-zero); font-size: 13px; font-weight: 700; color: var(--muted); padding-top: 5px; }
 .rules strong { display: block; }
 .help p { margin: 0 0 8px; }
 .help ul { margin: 0; padding-left: 20px; }
@@ -102,3 +104,24 @@ h2 { font-size: clamp(24px, 2.6vw, 30px); line-height: 1.15; letter-spacing: -0.
 .foot { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-top: clamp(72px, 10vw, 128px); padding-top: 22px; padding-bottom: 36px; border-top: 1px solid var(--line); font-size: 13.5px; color: var(--muted); }
 
 .rules li p { margin: 6px 0 0; color: var(--muted); }
+
+/* why agents: three drawn ideas */
+.why { padding-top: clamp(64px, 9vw, 120px); --acc: #B5562E; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .why { --acc: #E3936B; } }
+:root[data-theme="dark"] .why { --acc: #E3936B; }
+.why .side { max-width: 60ch; }
+.why-grid { list-style: none; margin: 32px 0 0; padding: 0; display: grid; gap: 16px; grid-template-columns: 1fr; }
+@media (min-width: 900px) { .why-grid { grid-template-columns: repeat(3, 1fr); } }
+.why-card { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 20px 22px 24px; }
+.why-card figure { margin: 0 0 8px; }
+.why-card svg { display: block; width: 100%; max-width: 300px; height: auto; margin: 0 auto; }
+.why-card h3 { margin: 10px 0 0; font-size: 19px; line-height: 1.25; }
+.why-card p { margin: 8px 0 0; font-size: 16px; color: var(--muted); text-wrap: pretty; }
+.why-note { margin: 20px 0 0; font-size: 15.5px; color: var(--muted); }
+.f-line { fill: none; stroke: var(--ink); stroke-width: 1.6; stroke-linecap: round; }
+.f-solid { fill: var(--ink); }
+.f-acc { fill: none; stroke: var(--acc); stroke-width: 1.8; }
+.f-ground { stroke: var(--line-strong); stroke-width: 1.4; }
+.f-moon { fill: var(--acc); fill-opacity: 0.16; stroke: var(--acc); stroke-width: 1.6; }
+.f-lab { font-size: 12.5px; fill: var(--muted); font-family: inherit; }
+.f-lab.acc { fill: var(--acc); font-weight: 700; }
