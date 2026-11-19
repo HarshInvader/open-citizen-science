@@ -13,6 +13,7 @@ HUB = os.path.dirname(os.path.dirname(HERE))
 PERSONAL = os.path.dirname(HUB)
 OUT = os.path.join(HUB, ".local", "paperwatch")
 UA = {"User-Agent": "open-research-site/1.0"}
+FAILED = []
 SRC = json.load(open(os.path.join(HERE, "sources.json")))["projects"]
 
 
@@ -26,6 +27,7 @@ def get(url, tries=3):
             err = e
             time.sleep(2 * (k + 1))
     print("  ! failed:", url[:120], err, file=sys.stderr)
+    FAILED.append(url)
     return None
 
 
@@ -105,7 +107,7 @@ def arxiv(cats, terms, since):
 
 
 def zenodo(term, since):
-    u = "https://zenodo.org/api/records?sort=mostrecent&size=50&q=" + urllib.parse.quote(f'"{term}"')
+    u = "https://zenodo.org/api/records?sort=mostrecent&size=25&q=" + urllib.parse.quote(f'"{term}"')
     b = get(u)
     out = []
     if not b:
@@ -153,6 +155,7 @@ def main():
     projects = [a[a.index("--project") + 1]] if "--project" in a else list(SRC)
     for name in projects:
         p = SRC[name]
+        FAILED.clear()
         st = state.setdefault(name, {"last": None, "seen": []})
         if "--since" in a:
             since = a[a.index("--since") + 1]
@@ -198,8 +201,11 @@ def main():
             for i, c in enumerate(rows, 1):
                 f.write(f"{i}. [{c['score']}] {c['title']} | {c['authors'][:90]} | {c['venue']} | {c['date']} | {c['url']} | via {c['via']} ({c['hit'][:80]})\n")
         print(f"[{name}] {len(cands)} hits, {len(rows)} new candidates -> {d}/{name}.md", flush=True)
+        if FAILED:  # some queries failed: keep the old start date so the next sweep covers this window again
+            print(f"[{name}] {len(FAILED)} queries failed; last-sweep date not advanced", flush=True)
         if "--dry" not in a:
-            st["last"] = today
+            if not FAILED:
+                st["last"] = today
             st["seen"] = sorted(set(st["seen"]) | set(uniq))
     if "--dry" not in a:
         json.dump(state, open(sp, "w"), indent=1)
