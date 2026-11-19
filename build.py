@@ -46,6 +46,31 @@ RULES = [
 ]
 
 
+# The plain answers a first-time visitor asks for: what is this, who is it for, why these questions, what counts as success.
+ABOUT = [
+    ("What this is",
+     "A public lab notebook for three problems that have resisted solution for decades. AI agents do most of the analysis on data "
+     "that already exists. Every plan is written down before the test runs, and every result is published here, the failures too."),
+    ("Who it is for",
+     "Researchers in these fields who want to check, challenge or reuse the work. People with an AI assistant who want to help on a "
+     "real research problem. Anyone curious how far open, agent-run science can go."),
+    ("How we picked the questions",
+     "Each one is famous and unsolved, has open data we can test without new experiments, and could get an answer that is clearly "
+     "right or clearly wrong. We publish our odds of success for each and update them as results come in."),
+    ("What we want to achieve",
+     "A real, checkable result on at least one of the three by 2027, published openly so others can verify it, and a way of doing "
+     "research in the open that others can copy. If we fail, the data, code and failures stay public for the next team."),
+]
+
+
+def about_section():
+    cards = "".join(f'<li><h3>{e(h)}</h3><p>{e(t)}</p></li>' for h, t in ABOUT)
+    return (f'<section class="wrap about" id="about" aria-labelledby="about-h"><h2 id="about-h" class="vh">About this site</h2>'
+            f'<ul class="about-grid">{cards}</ul>'
+            f'<p class="about-cta"><a class="btn btn-1" href="#projects">See the three projects</a>'
+            f'<a class="btn btn-2" href="#help">How to help</a></p></section>')
+
+
 def board_stats(repo):
     db = repo / "board" / "board.db"
     if not db.exists():
@@ -180,7 +205,7 @@ def nav(home=""):
     """Header nav. home='' on the home page, 'index.html' on other pages."""
     dd = "".join(f'<a href="{e(u)}"><b>{e(t)}</b><small>{e(d)}</small></a>' for u, t, d in RESOURCES)
     return (f'<button class="menu" type="button" aria-expanded="false" aria-controls="mainnav">Menu</button><nav aria-label="Main" id="mainnav">'
-            f'<a href="{home}#why">Why agents</a><a href="{home}#news">News</a><a href="{home}#method">Method</a>'
+            f'<a href="{home}#about">About</a><a href="{home}#why">Why agents</a><a href="{home}#news">News</a><a href="{home}#method">Method</a>'
             f'<div class="dd"><button type="button" class="dd-b" aria-expanded="false" aria-controls="dd-res">Resources<svg viewBox="0 0 12 12" width="10" height="10" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="dd-m" id="dd-res">{dd}</div></div>'
             f'<span class="ctas"><a class="btn btn-2" href="{home}#help">Contribute</a><a class="btn btn-1" href="{home}#projects">View projects</a></span></nav>')
 
@@ -264,6 +289,7 @@ def page(hero="a"):
 {nav()}</header>
 <main id="main">
 {hero_html(PROJECTS)}
+{about_section()}
 <section class="wrap" id="projects" aria-label="Projects"><div class="projs">
 {cards}
 </div></section>

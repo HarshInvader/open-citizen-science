@@ -14,8 +14,9 @@ HERE = Path(__file__).resolve().parent
 
 
 TITLE = "Big open questions in science, tested in the open."
-LEDE = ("How did life begin? Which brain activity goes with conscious experience? What did the Indus cities write? Each project "
-        "sets a checkable goal, states its odds plainly, and publishes every result, the failures too. More questions will join.")
+LEDE = ("An open research effort to crack three famous unsolved problems by 2027: how life began, which brain activity goes with "
+        "conscious experience, and what the Indus script says. One person and a team of AI agents do the work in public, "
+        "so anyone can check it, reuse it or join in.")
 
 
 def head():
