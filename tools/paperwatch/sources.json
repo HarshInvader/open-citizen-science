@@ -56,15 +56,15 @@
       "keywords": [
         "Indus script", "Harappan script", "Indus Valley civilization", "Harappan seal", "Harappa",
         "Mohenjo-daro", "Rakhigarhi", "Dholavira", "undeciphered script", "script decipherment",
-        "Proto-Elamite", "Linear Elamite", "Linear A", "Rongorongo", "Cypro-Minoan", "computational decipherment",
+        "Proto-Elamite", "Linear Elamite", "Minoan Linear A", "Rongorongo", "Cypro-Minoan", "computational decipherment",
         "ancient script machine learning", "Proto-Dravidian", "Meluhha"
       ],
       "arxiv": {"cats": ["cs.CL", "cs.CV", "cs.DL"],
-                "terms": ["Indus script", "decipherment", "undeciphered", "ancient script", "Linear A", "Proto-Elamite"]},
+                "terms": ["Indus script", "decipherment", "undeciphered", "ancient script", "Minoan Linear A", "Proto-Elamite"]},
       "zenodo": ["Indus script", "Harappan", "decipherment"],
       "people": ["Parpola A", "Mahadevan I", "Rao RPN", "Sproat R", "Fuls A", "Kenoyer JM", "Possehl GL",
                  "Desset F", "Dahl JL", "Wells B", "Vidale ML", "Shinde V", "Petrie CA", "Mukhopadhyay BA",
-                 "Snyder B", "Luo J", "Barzilay R", "Corazza M", "Ferrara S", "Born LT", "Kelley DH",
+                 "Snyder B", "Barzilay R", "Corazza M", "Ferrara S", "Born LT", "Kelley DH",
                  "Narasimhan VM", "Reich D"],
       "venues": ["Antiquity", "Journal of Archaeological Science", "Asian Archaeology", "Arabian Archaeology and Epigraphy",
                  "Zeitschrift fur Assyriologie", "Near Eastern Archaeology", "Iran", "South Asian Studies",

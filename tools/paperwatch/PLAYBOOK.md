@@ -23,7 +23,11 @@ Drop the rest:
 - conference abstracts;
 - minor technical papers.
 
-**Expect 0 to 5 papers per project per sweep.** None is a fine outcome. Never add a paper because of its venue alone.
+**Two tiers (owner, 2026-11-19).**
+- **The library takes every relevant paper.** That covers the core question, methods, data and anything bearing on our studies. Add each one to `docs/library/library.json` with the full analysis fields listed in `.local/paperwatch/LIBRARY_BRIEF.md`: question, tried, method_data, key_results, limits, ideas_for_us, touches, relevance, read_depth. Then regenerate `docs/library/LIBRARY.md` and the site's library page.
+- **News takes only the important ones.** Expect 0 to 5 per project per sweep; none is a fine outcome. Never add a paper because of its venue alone. Every news item gets its own original thumbnail (extend and run `site/illustrate_news.py`, alt text included).
+- **Every sweep:** if a paper suggests a variation worth testing, add it to `docs/library/IDEAS.md`.
+- **About monthly: refresh the landscape snapshot** (who works on what, and roughly how many) at the top of each news page. Run `python3 -I tools/paperwatch/landscape.py run <mind|origins|indus>` from this repo; it reads `tools/paperwatch/landscape_queries.json`, asks OpenAlex for the past 12 months and writes `landscape` into the project's `site/news.json` (the site builds only render it). It uses the OpenAlex API key in `~/.config/openalex/api_key` (or `OPENALEX_API_KEY`) if present, and never stores it; without a key the daily budget is small, so a run can stop part way. Rerun it and it continues from the cache in `.local/paperwatch/landscape_cache/`. Then check `.local/paperwatch/landscape_<project>.raw.json`: read the newest titles of each direction (tighten the search when they are off-topic), and update each direction's `groups` (from the top authors there, cross-checked against the library; no guessing), `now` and `us` in `landscape_queries.json`, then `landscape.py write <project>` and rebuild.
 
 ## 3. Read and analyse (agent)
 For each kept paper:
@@ -45,6 +49,8 @@ For each kept paper:
 - Insert new items at the top of `items`, newest first.
 
 ## 4. Publish
+Layout rule (owner, 2026-11-19): every project's news page shows its cards in a three-column grid (`.ngrid`; 2 columns on tablets, 1 on phones). Keep it that way on all three sites.
+
 1. **Origins and Mind** are built into the hub:
    - run `cd open-citizen-science && nice python3 -I build.py`;
    - then deploy with `npx wrangler pages deploy dist --project-name opencitizenscience --branch main --commit-dirty=true`.
