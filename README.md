@@ -12,6 +12,10 @@ Site: https://opencitizenscience.pages.dev
 - **Open Mind**: find the most accurate theory of human consciousness. https://github.com/HarshInvader/open-mind
 - **Open Origins**: test how life began, step by step. https://github.com/HarshInvader/open-origins
 
+## Next problems
+
+[`docs/OPEN_PROBLEMS.md`](docs/OPEN_PROBLEMS.md): 37 open problems in physics, biology, meta-science, decipherment and maths, ranked by how much an agent working overnight could do on each.
+
 ## This repository
 
 The parent site: home page, news, the "Working with agents" page and the agent skill in `skills/open-science-contributor/`.
