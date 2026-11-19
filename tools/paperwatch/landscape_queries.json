@@ -1,0 +1,1038 @@
+{
+  "_about": "Query definitions and hand-written text for the landscape snapshot on each project's news page. landscape.py fetches the numbers from OpenAlex and writes them, with this text, into <repo>/site/news.json under 'landscape'. Edit text here, then run 'landscape.py write <project>' (no network). Searches are OpenAlex title_and_abstract.search strings (no commas). Groups must come from the top authors in the OpenAlex results (see .local/paperwatch/landscape_<project>.raw.json) and be checked against docs/library/library.json; do not guess.",
+  "mind": {
+    "repo": "open-mind",
+    "base_filter": "type:article|review,primary_location.source.type:journal",
+    "headline": "Roughly {people} researchers published journal papers on consciousness science in the past year, across these {n} directions.",
+    "method": "Counts are estimates from keyword matches in OpenAlex titles and abstracts, journal articles and reviews only, for the 12 months to the update date. A paper can match more than one direction, and the headline removes people counted twice. Distinct authors and institutions are exact up to 400 papers per direction and extrapolated from the newest 400 above that. Each direction lists its exact query so anyone can check it.",
+    "directions": [
+      {
+        "id": "gnwt",
+        "name": "Global workspace",
+        "bet": "Consciousness is information broadcast across the whole brain, with a sudden 'ignition' when something becomes conscious.",
+        "search": "(\"global workspace\" OR \"global neuronal workspace\") AND consciousness",
+        "groups": [
+          {
+            "name": "Stanislas Dehaene",
+            "inst": "Inserm, NeuroSpin"
+          },
+          {
+            "name": "Jean-Pierre Changeux",
+            "inst": "Institut Pasteur"
+          },
+          {
+            "name": "Lionel Naccache",
+            "inst": "Sorbonne Université"
+          },
+          {
+            "name": "Emmanuel Stamatakis",
+            "inst": "University of Cambridge"
+          },
+          {
+            "name": "Theofanis Panagiotaropoulos",
+            "inst": "National and Kapodistrian University of Athens"
+          }
+        ],
+        "now": "The first adversarial test against IIT (Cogitate, 2025) failed some predictions of both theories; groups are reanalysing that data and asking whether language models build a workspace.",
+        "now_ids": [
+          "adversarial-testing-of-global-neuronal-workspace",
+          "bandara-dcm-reanalysis-cogitate-meg",
+          "gurnee-2026-jacobian-lens-workspace"
+        ],
+        "us": "Our sealed multiverse reanalysis of the Cogitate data tests the workspace and IIT predictions again."
+      },
+      {
+        "id": "iit",
+        "name": "Integrated information theory",
+        "bet": "Consciousness is how much a system's causal structure is integrated, measured as phi.",
+        "search": "(\"integrated information\" OR \"integrated information theory\") AND consciousness",
+        "groups": [
+          {
+            "name": "Giulio Tononi",
+            "inst": "University of Wisconsin–Madison"
+          },
+          {
+            "name": "Larissa Albantakis",
+            "inst": "University of Wisconsin–Madison"
+          },
+          {
+            "name": "Mélanie Boly",
+            "inst": "University of Wisconsin–Madison"
+          },
+          {
+            "name": "Naotsugu Tsuchiya",
+            "inst": "Monash University"
+          },
+          {
+            "name": "Christof Koch",
+            "inst": "Allen Institute"
+          }
+        ],
+        "now": "After a public dispute over whether IIT is testable, the work is on formal limits of phi, testable predictions such as 'silent neurons', and a new adversarial test against predictive processing.",
+        "now_ids": [
+          "iit-concerned-2025-nat-neurosci",
+          "ponce-de-leon-2026-iit-silent-neurons",
+          "mayeux-2026-iit-xor-cycles",
+          "intrepid-an-adversarial-collaboration-of-iit-neu"
+        ],
+        "us": "Our phi-proxy study checks whether the cheap stand-ins for phi used on real data track true phi."
+      },
+      {
+        "id": "hot",
+        "name": "Higher-order and metacognitive theories",
+        "bet": "A state is conscious when the brain represents itself as being in it, so confidence and metacognition are the signal.",
+        "search": "(\"higher-order theory\" OR \"higher-order theories\" OR \"higher-order thought\" OR \"higher-order representation\" OR \"perceptual reality monitoring\" OR ((metacognition OR metacognitive) AND (perception OR perceptual OR confidence OR visual))) AND consciousness",
+        "groups": [
+          {
+            "name": "Stephen M. Fleming",
+            "inst": "University College London"
+          },
+          {
+            "name": "Hakwan Lau",
+            "inst": "RIKEN Center for Brain Science"
+          },
+          {
+            "name": "David Soto",
+            "inst": "Basque Center on Cognition, Brain and Language"
+          },
+          {
+            "name": "Matthias Michel",
+            "inst": "MIT"
+          },
+          {
+            "name": "Myrto Mylopoulos",
+            "inst": "Carleton University"
+          }
+        ],
+        "now": "The work centres on metacognition: whether confidence and prefrontal cortex are needed for awareness, building on relative-blindsight tasks.",
+        "now_ids": [
+          "ledger-c27-lau-2006",
+          "ledger-c09-del-2009"
+        ],
+        "us": "Our theory scorecard maps where this view and its rivals predict different results."
+      },
+      {
+        "id": "ncc",
+        "name": "Perception and recurrent processing",
+        "bet": "Find what changes in the brain when the same stimulus is seen or missed; recurrent processing theory says local feedback in sensory cortex is enough.",
+        "search": "(\"recurrent processing\" OR \"neural correlates of consciousness\" OR \"conscious perception\" OR \"visual awareness\" OR \"conscious access\" OR \"perceptual awareness\" OR \"conscious report\") AND (consciousness OR conscious OR awareness) AND (brain OR neural OR cortex OR cortical OR EEG OR MEG OR fMRI)",
+        "groups": [
+          {
+            "name": "Biyu J. He",
+            "inst": "New York University"
+          },
+          {
+            "name": "Lucia Melloni",
+            "inst": "Max Planck Institute for Empirical Aesthetics"
+          },
+          {
+            "name": "Simon van Gaal",
+            "inst": "University of Amsterdam"
+          },
+          {
+            "name": "Paolo Bartolomeo",
+            "inst": "Paris Brain Institute"
+          },
+          {
+            "name": "Lionel Naccache",
+            "inst": "Sorbonne Université"
+          }
+        ],
+        "now": "No-report designs and long-timescale dynamics are separating the brain activity that tracks awareness from the activity that tracks reporting it. Some argue that there are several kinds of correlate.",
+        "now_ids": [
+          "zheng-melloni-2026-long-timescale-awareness",
+          "ledger-c29-sergent-2021",
+          "kob-marvan-2026-ncc-pluralism"
+        ],
+        "us": "Our census of open data with reports counts which awareness datasets can be reused, and with what kind of report."
+      },
+      {
+        "id": "pp",
+        "name": "Predictive processing and active inference",
+        "bet": "Experience is the brain's best guess about the causes of its inputs, including the body.",
+        "search": "(\"predictive processing\" OR \"predictive coding\" OR \"active inference\" OR \"free energy principle\") AND consciousness",
+        "groups": [
+          {
+            "name": "Karl Friston",
+            "inst": "University College London"
+          },
+          {
+            "name": "Jakob Hohwy",
+            "inst": "Monash University"
+          },
+          {
+            "name": "Cyriel Pennartz",
+            "inst": "University of Amsterdam"
+          },
+          {
+            "name": "Ruben Laukkonen",
+            "inst": "Southern Cross University"
+          },
+          {
+            "name": "Antoine Lutz",
+            "inst": "Université Lyon 1"
+          }
+        ],
+        "now": "Active-inference accounts are being turned into concrete predictions, including links to meditation and an adversarial test against IIT.",
+        "now_ids": [
+          "dacosta-2026-rosetta-stone",
+          "intrepid-an-adversarial-collaboration-of-iit-neu",
+          "tanabe-2026-iit-vs-efe"
+        ],
+        "us": ""
+      },
+      {
+        "id": "clinical",
+        "name": "Clinical markers and disorders of consciousness",
+        "bet": "Measure consciousness at the bedside: complexity indices (PCI), EEG and fMRI to find awareness in patients who cannot respond.",
+        "search": "(\"disorders of consciousness\" OR \"perturbational complexity\" OR \"vegetative state\" OR \"minimally conscious state\" OR \"unresponsive wakefulness\" OR \"covert consciousness\" OR \"cognitive motor dissociation\")",
+        "groups": [
+          {
+            "name": "Olivia Gosseries and Steven Laureys",
+            "inst": "University of Liège"
+          },
+          {
+            "name": "Brian Edlow and Yelena Bodien",
+            "inst": "Massachusetts General Hospital, Harvard"
+          },
+          {
+            "name": "Adrian Owen",
+            "inst": "Western University"
+          },
+          {
+            "name": "Jacobo Sitt",
+            "inst": "Paris Brain Institute, CNRS"
+          },
+          {
+            "name": "Mario Rosanova",
+            "inst": "University of Milan"
+          }
+        ],
+        "now": "Covert consciousness in patients who look unresponsive is the main push, with bedside EEG and fMRI, and early drug trials aimed at recovery.",
+        "now_ids": [
+          "edlow-2026-covert-consciousness-coma",
+          "monti-2026-cc-not-cmd",
+          "edlow-2026-methylphenidate-doc",
+          "congyu-2026-neural-field-doc"
+        ],
+        "us": "Our red-teamed benchmark re-scores published consciousness measures, PCI-style complexity included, with splits that cannot leak."
+      },
+      {
+        "id": "anaesthesia",
+        "name": "Anaesthesia",
+        "bet": "Switch consciousness off and on with drugs and track what the brain loses and regains.",
+        "search": "(anesthesia OR anaesthesia OR propofol OR sevoflurane OR ketamine) AND (consciousness OR unconsciousness) AND (EEG OR cortical OR brain)",
+        "groups": [
+          {
+            "name": "Emery Brown",
+            "inst": "Massachusetts General Hospital and MIT"
+          },
+          {
+            "name": "Earl Miller",
+            "inst": "MIT"
+          },
+          {
+            "name": "George Mashour and Zirui Huang",
+            "inst": "University of Michigan"
+          },
+          {
+            "name": "Andrea Luppi and Emmanuel Stamatakis",
+            "inst": "University of Cambridge"
+          },
+          {
+            "name": "Ken Solt",
+            "inst": "Harvard University"
+          }
+        ],
+        "now": "Groups map which circuits (thalamus, basal ganglia) switch off under each drug and whether the brain loses integration or only responsiveness.",
+        "now_ids": [
+          "szocs-2026-basal-ganglia-loss-of-responsiveness",
+          "milinkovic-2026-dynamical-independence-anaesthesia",
+          "li-hudetz-2026-traveling-waves-desflurane"
+        ],
+        "us": "Our time-irreversibility tests on anaesthesia and sleep data found the markers follow arousal, not experience."
+      },
+      {
+        "id": "sleep",
+        "name": "Sleep and dreaming",
+        "bet": "Sleep changes experience while the body stays still, so dreaming against dreamless sleep is a natural contrast.",
+        "search": "(dream OR dreaming OR dreams OR \"lucid dreaming\" OR \"sleep mentation\" OR \"serial awakening\") AND sleep AND (EEG OR consciousness OR REM OR NREM OR awakening OR awakenings)",
+        "groups": [
+          {
+            "name": "Ken A. Paller",
+            "inst": "Northwestern University"
+          },
+          {
+            "name": "Martin Dresler",
+            "inst": "Radboud University"
+          },
+          {
+            "name": "Francesca Siclari",
+            "inst": "Netherlands Institute for Neuroscience"
+          },
+          {
+            "name": "Isabelle Arnulf",
+            "inst": "Sorbonne Université"
+          },
+          {
+            "name": "Péter Simor",
+            "inst": "Eötvös Loránd University"
+          }
+        ],
+        "now": "Serial-awakening studies with high-density EEG, and real-time reports from dreamers, are mapping what changes in the brain when sleepers report an experience.",
+        "now_ids": [
+          "selte-2026-nrem-experience-hdeeg",
+          "konkoly-2026-realtime-dream-reports",
+          "rochas-2026-n2-dreaming-hdeeg"
+        ],
+        "us": "Our experience benchmark uses the open DREAM database to test whether published measures can tell dreaming from dreamless sleep."
+      },
+      {
+        "id": "psychedelics",
+        "name": "Psychedelics",
+        "bet": "Drugs that change experience a lot without sedation show which brain changes track experience itself.",
+        "search": "(psychedelic OR psychedelics OR psilocybin OR LSD OR DMT OR \"5-MeO-DMT\") AND (consciousness OR \"altered states\")",
+        "groups": [
+          {
+            "name": "Robin Carhart-Harris",
+            "inst": "University of California, San Francisco"
+          },
+          {
+            "name": "Christopher Timmermann and David Nutt",
+            "inst": "Imperial College London"
+          },
+          {
+            "name": "Morten Kringelbach",
+            "inst": "Aarhus University"
+          },
+          {
+            "name": "Matthias Liechti",
+            "inst": "University of Basel"
+          },
+          {
+            "name": "Katrin Preller",
+            "inst": "University of Zurich"
+          }
+        ],
+        "now": "Studies link brain changes under psilocybin to how intense the experience is, and test the 'entropic brain' idea against simpler spectral effects.",
+        "now_ids": [
+          "carhart-harris-2026-entropic-brain-today",
+          "nikolic-2026-psilocybin-eeg-timecourse",
+          "dai-2026-integration-segregation-mirror"
+        ],
+        "us": "Open psilocybin EEG is one of the contrasts we use to separate experience from arousal."
+      },
+      {
+        "id": "ai",
+        "name": "Consciousness in AI",
+        "bet": "Ask whether machines could be conscious by checking them against the indicators that theories name.",
+        "search": "\"artificial consciousness\" OR \"machine consciousness\" OR \"AI consciousness\" OR \"conscious AI\" OR \"conscious machines\" OR \"AI sentience\" OR \"consciousness in large language models\" OR \"consciousness in artificial\"",
+        "groups": [
+          {
+            "name": "Jaan Aru",
+            "inst": "University of Tartu"
+          },
+          {
+            "name": "Stephen M. Fleming",
+            "inst": "University College London"
+          },
+          {
+            "name": "Michele Farisco",
+            "inst": "Uppsala University"
+          },
+          {
+            "name": "Michael S. A. Graziano",
+            "inst": "Princeton University"
+          },
+          {
+            "name": "Jonathan Birch",
+            "inst": "London School of Economics"
+          }
+        ],
+        "now": "Groups are drawing indicator checklists from brain theories and testing whether language models build workspace-like representations. This is the fastest-growing direction here.",
+        "now_ids": [
+          "butlin-indicators-consciousness-ai",
+          "chandaria-2026-ai-consciousness-hierarchy",
+          "gurnee-2026-jacobian-lens-workspace"
+        ],
+        "us": ""
+      },
+      {
+        "id": "adversarial",
+        "name": "Adversarial collaborations",
+        "bet": "Rival theories agree on a decisive experiment before the data are in.",
+        "search": "\"adversarial collaboration\" AND consciousness",
+        "groups": [
+          {
+            "name": "Lucía Melloni",
+            "inst": "Max Planck Institute for Empirical Aesthetics"
+          },
+          {
+            "name": "Liad Mudrik",
+            "inst": "Tel Aviv University"
+          },
+          {
+            "name": "Giulio Tononi",
+            "inst": "University of Wisconsin–Madison"
+          },
+          {
+            "name": "Cyriel Pennartz",
+            "inst": "University of Amsterdam"
+          },
+          {
+            "name": "Karl Friston",
+            "inst": "University College London"
+          }
+        ],
+        "now": "Cogitate (workspace against IIT) has reported; INTREPID (IIT against predictive processing) is under way, and people are debating how to score theories fairly.",
+        "now_ids": [
+          "adversarial-testing-of-global-neuronal-workspace",
+          "intrepid-an-adversarial-collaboration-of-iit-neu",
+          "chis-ciure-2026-measure-centrality-index"
+        ],
+        "us": "We run sealed, pre-registered reanalyses of the open Cogitate data in the same spirit."
+      }
+    ]
+  },
+  "indus": {
+    "repo": "indus-decipher",
+    "base_filter": "type:article|review|book-chapter,primary_location.source.type:journal|book series|ebook platform|conference",
+    "headline": "Roughly {people} researchers published on the Indus civilisation, its script and its neighbours in the past year, across these {n} directions.",
+    "method": "Counts are estimates from keyword matches in OpenAlex titles and abstracts (journal articles, reviews and book chapters; self-archived preprints left out because they include many unreviewed decipherment claims), for the 12 months to the update date. A paper can match more than one direction, and the headline removes people counted twice. Distinct authors and institutions are exact up to 400 papers per direction and extrapolated from the newest 400 above that. Each direction lists its exact query so anyone can check it.",
+    "directions": [
+      {
+        "id": "sites",
+        "name": "Excavation and site archaeology",
+        "bet": "Dig and date the cities, towns and villages to learn how the civilisation lived, grew and ended.",
+        "search": "(Harappan OR \"Indus Civilization\" OR \"Indus civilisation\" OR \"Indus Valley Civilization\" OR \"Indus Valley Civilisation\") AND (excavation OR site OR settlement OR archaeological)",
+        "groups": [
+          {
+            "name": "Vikrant Jain",
+            "inst": "IIT Gandhinagar"
+          },
+          {
+            "name": "V. N. Prabhakar",
+            "inst": "IIT Gandhinagar"
+          },
+          {
+            "name": "Prabodh Shirvalkar",
+            "inst": "Deccan College"
+          },
+          {
+            "name": "Yadubirsingh Rawat",
+            "inst": "Archaeological Survey of India"
+          },
+          {
+            "name": "Heather M.-L. Miller",
+            "inst": "University of Toronto"
+          },
+          {
+            "name": "Cameron A. Petrie",
+            "inst": "University of Cambridge"
+          }
+        ],
+        "now": "New digs at Rakhigarhi, the waterways around Dholavira, and old spy-satellite images used to track threatened mounds.",
+        "now_ids": [
+          "gupta-kumar-2026-rakhigarhi-rgr3",
+          "chatterjee-2026-rann-dholavira",
+          "gerrits-2026-hexagon-haryana"
+        ],
+        "us": ""
+      },
+      {
+        "id": "climate",
+        "name": "Climate and rivers",
+        "bet": "Changing monsoons and shifting rivers shaped where Harappans lived and why the cities emptied.",
+        "search": "(Harappan OR \"Indus Civilization\" OR \"Indus civilisation\" OR \"Indus Valley Civilization\" OR \"Indus Valley Civilisation\") AND (climate OR monsoon OR river OR rivers OR drought OR palaeoclimate OR paleoclimate OR Holocene)",
+        "groups": [
+          {
+            "name": "Cameron A. Petrie",
+            "inst": "University of Cambridge"
+          },
+          {
+            "name": "David A. Hodell",
+            "inst": "University of Cambridge"
+          },
+          {
+            "name": "Yama Dixit",
+            "inst": "IIT Delhi"
+          },
+          {
+            "name": "Vikrant Jain",
+            "inst": "IIT Gandhinagar"
+          },
+          {
+            "name": "Siddharth P. Prizomwala",
+            "inst": "Institute of Seismological Research"
+          }
+        ],
+        "now": "Some now argue that drying rivers, and not only a weaker monsoon, drove the late Harappan change. Lost channels of the Sutlej and Ghaggar are being remapped.",
+        "now_ids": [
+          "solanki-2025-river-drought",
+          "shekhar-2026-ghaggar-paleochannel",
+          "chatterjee-2026-rann-dholavira"
+        ],
+        "us": ""
+      },
+      {
+        "id": "crafts",
+        "name": "Crafts, materials and isotopes",
+        "bet": "Beads, metal, pottery, bones and residues, measured in the lab, show how goods were made and how people ate and moved.",
+        "search": "(Harappan OR \"Indus Civilization\" OR \"Indus civilisation\" OR \"Indus Valley Civilization\" OR \"Indus Valley Civilisation\") AND (bead OR beads OR isotope OR isotopic OR residue OR ceramic OR pottery OR metallurgy OR copper OR faunal OR archaeobotanical)",
+        "groups": [
+          {
+            "name": "Cameron A. Petrie",
+            "inst": "University of Cambridge"
+          },
+          {
+            "name": "V. N. Prabhakar",
+            "inst": "IIT Gandhinagar"
+          },
+          {
+            "name": "Yadubirsingh Rawat",
+            "inst": "Archaeological Survey of India"
+          },
+          {
+            "name": "Anil Kumar Pokharia",
+            "inst": "Birbal Sahni Institute of Palaeosciences"
+          },
+          {
+            "name": "Heather M.-L. Miller",
+            "inst": "University of Toronto"
+          }
+        ],
+        "now": "Studies of pottery, beads and stone tools ask how stable Harappan craft methods were and where the raw materials came from.",
+        "now_ids": [
+          "sarkar-2026-bagasra-pottery",
+          "mahala-2025-ernestite",
+          "gadekar-2025-indus-lithics"
+        ],
+        "us": ""
+      },
+      {
+        "id": "trade",
+        "name": "Trade and Meluhha",
+        "bet": "Harappan goods and seals abroad, and Meluhha in Mesopotamian texts, map the long-distance links.",
+        "search": "Meluhha OR ((Harappan OR \"Indus Civilization\" OR \"Indus civilisation\" OR \"Indus Valley Civilization\" OR \"Indus Valley Civilisation\") AND (Mesopotamia OR Mesopotamian OR Gulf OR Oman OR Dilmun OR Magan OR trade OR exchange))",
+        "groups": [
+          {
+            "name": "V. N. Prabhakar",
+            "inst": "IIT Gandhinagar"
+          },
+          {
+            "name": "Vikrant Jain",
+            "inst": "IIT Gandhinagar"
+          },
+          {
+            "name": "Cameron A. Petrie",
+            "inst": "University of Cambridge"
+          },
+          {
+            "name": "Michel de Vreeze",
+            "inst": "Durham University"
+          }
+        ],
+        "now": "River wharves, Umm an-Nar sites in Oman, and a reported seal with Indus signs from the UAE are filling in the river and sea routes.",
+        "now_ids": [
+          "hakal-2026-naru-waro-dhoro",
+          "douglas-2026-dahwa7",
+          "uaq-seal-2026-report"
+        ],
+        "us": ""
+      },
+      {
+        "id": "adna",
+        "name": "Ancient DNA",
+        "bet": "Genomes from skeletons show who the Harappans were descended from and who descended from them.",
+        "search": "(\"ancient DNA\" OR \"ancient genomes\" OR \"ancient genome\" OR archaeogenetic OR archaeogenomic OR paleogenomic OR palaeogenomic) AND (\"South Asia\" OR India OR Pakistan OR Harappan OR Indus)",
+        "groups": [
+          {
+            "name": "Niraj Rai",
+            "inst": "Birbal Sahni Institute of Palaeosciences"
+          },
+          {
+            "name": "David Reich",
+            "inst": "Broad Institute"
+          },
+          {
+            "name": "Gyaneshwer Chaubey",
+            "inst": "Banaras Hindu University"
+          },
+          {
+            "name": "Mohammed Shafiul Mustak",
+            "inst": "Mangalore University"
+          }
+        ],
+        "now": "Only one Harappan genome has been published (Rakhigarhi, 2019). Newer work reads ancestry from living groups such as the Nilgiri and Koraga tribes.",
+        "now_ids": [
+          "shinde-2019-rakhigarhi",
+          "desai-2026-nilgiri-genomes",
+          "sequeira-2025-koraga-proto-dravidian"
+        ],
+        "us": ""
+      },
+      {
+        "id": "script",
+        "name": "Indus script studies",
+        "bet": "Work out what the signs are and how the inscriptions are built, from sign lists, structure and statistics.",
+        "search": "\"Indus script\" OR \"Harappan script\" OR \"Indus inscriptions\" OR \"Indus signs\" OR \"Indus seals\" OR \"Harappan seals\"",
+        "groups": [
+          {
+            "name": "Debasis Mitra",
+            "inst": "Florida Institute of Technology"
+          },
+          {
+            "name": "Ujjwal Bhattacharya",
+            "inst": "Indian Statistical Institute"
+          },
+          {
+            "name": "Gregg M. Jamison",
+            "inst": "University of Wisconsin–Milwaukee"
+          },
+          {
+            "name": "Yuji Yamaguchi",
+            "inst": "Okayama University"
+          }
+        ],
+        "now": "No lab-scale group works on the script. The output is mostly single-author proposals of readings, plus a few statistical and deep-learning papers on signs and seals.",
+        "now_ids": [
+          "kriger-hunt-2026-registration",
+          "dominik-2026-constructional",
+          "dixit-2025-deep-learning"
+        ],
+        "us": "Our restoration bench found that models do not beat simple sign-sequence counts once near-copies are excluded."
+      },
+      {
+        "id": "language",
+        "name": "The language question",
+        "bet": "Which language family the Harappans spoke (Dravidian, Munda, a lost language or another) decides how any reading could work.",
+        "search": "(Harappan OR \"Indus Civilization\" OR \"Indus civilisation\" OR \"Indus Valley Civilization\" OR \"Indus script\") AND (Dravidian OR \"Proto-Dravidian\" OR Munda OR \"Indo-Aryan\" OR \"Indo-European\" OR \"language family\" OR linguistic)",
+        "groups": [
+          {
+            "name": "Mohammed Shafiul Mustak",
+            "inst": "Mangalore University"
+          },
+          {
+            "name": "Jaison Jeevan Sequeira",
+            "inst": "Mangalore University"
+          },
+          {
+            "name": "George van Driem",
+            "inst": "University of Bern"
+          },
+          {
+            "name": "Gyaneshwer Chaubey",
+            "inst": "Banaras Hindu University"
+          }
+        ],
+        "now": "Genetics of Dravidian-speaking groups and a Bayesian tree of the Dravidian family are the main new evidence on what the Harappans spoke.",
+        "now_ids": [
+          "sequeira-2025-koraga-proto-dravidian",
+          "narayan-2025-genetics-dravidian",
+          "kolipakam-2018-dravidian-phylogeny"
+        ],
+        "us": "Our mismatch study uses planted ciphers to test how decipherment methods fail when the guessed language is wrong."
+      },
+      {
+        "id": "undeciphered",
+        "name": "Undeciphered scripts in general",
+        "bet": "Methods tried on Linear A, Proto-Elamite, rongorongo and others carry over to the Indus script, and the reverse.",
+        "search": "\"undeciphered script\" OR \"undeciphered scripts\" OR \"undeciphered writing\" OR rongorongo OR \"Proto-Elamite\" OR \"Linear Elamite\" OR \"Cretan hieroglyphic\" OR \"Cypro-Minoan\" OR \"Voynich manuscript\" OR \"Indus script\" OR \"Linear A script\"",
+        "groups": [
+          {
+            "name": "Brent Davis",
+            "inst": "University of Melbourne"
+          },
+          {
+            "name": "Silvia Ferrara",
+            "inst": "University of Bologna"
+          },
+          {
+            "name": "Jacob L. Dahl",
+            "inst": "University of Oxford"
+          },
+          {
+            "name": "Miguel Valério",
+            "inst": "University of Oxford"
+          }
+        ],
+        "now": "Linear Elamite has a claimed decipherment that is being tested on new texts. Aegean, rongorongo and Voynich work is turning to calibrated statistical tests.",
+        "now_ids": [
+          "desset-2022-linear-elamite",
+          "davis-2026-undeciphered-aegean-scripts",
+          "zhang-sheng-2026-voynich"
+        ],
+        "us": "Our 'is it language' tests, with fair synthetic controls, apply to these scripts as much as to the Indus signs."
+      }
+    ]
+  },
+  "origins": {
+    "repo": "open-origins",
+    "base_filter": "type:article|review,primary_location.source.type:journal",
+    "headline": "Roughly {people} researchers published journal papers on how life began in the past year, across these {n} directions.",
+    "method": "Counts are estimates from keyword matches in OpenAlex titles and abstracts, journal articles and reviews only, for the 12 months to the update date. A paper can match more than one direction, and the headline removes people counted twice. Distinct authors and institutions are exact up to 400 papers per direction and extrapolated from the newest 400 above that. Each direction lists its exact query so anyone can check it.",
+    "directions": [
+      {
+        "id": "prebiotic",
+        "name": "Prebiotic chemistry",
+        "bet": "Find plausible reactions on the early Earth that make life's building blocks: nucleotides, amino acids, lipids.",
+        "search": "(\"prebiotic chemistry\" OR \"prebiotic synthesis\" OR \"prebiotically plausible\" OR \"prebiotic conditions\" OR \"origin of life\" OR \"origins of life\") AND (synthesis OR reaction OR nucleotide OR \"amino acid\" OR peptide OR phosphorylation)",
+        "groups": [
+          {
+            "name": "Joseph Moran",
+            "inst": "University of Strasbourg"
+          },
+          {
+            "name": "Matthew W. Powner",
+            "inst": "University College London"
+          },
+          {
+            "name": "John D. Sutherland",
+            "inst": "MRC Laboratory of Molecular Biology"
+          },
+          {
+            "name": "Dieter Braun",
+            "inst": "LMU Munich"
+          },
+          {
+            "name": "David C. Catling",
+            "inst": "University of Washington"
+          }
+        ],
+        "now": "Cyanosulfidic chemistry keeps adding steps, such as phosphate activation and protecting groups. Wet-dry and heat-flow setups test where those steps could run.",
+        "now_ids": [
+          "marinic-2026-n-cyanoimidazole",
+          "liu-2026-thioformyl-protecting-group",
+          "capera-aragones-2026-wet-dry-ratchet"
+        ],
+        "us": "Our pathway map found no route that stays continuous under our sealed step-compatibility rule."
+      },
+      {
+        "id": "rnaworld",
+        "name": "RNA world and self-copying molecules",
+        "bet": "Life started with RNA that both carried information and copied itself, before proteins and DNA.",
+        "search": "\"RNA world\" OR \"polymerase ribozyme\" OR \"nonenzymatic replication\" OR \"non-enzymatic replication\" OR \"nonenzymatic primer extension\" OR \"non-enzymatic primer extension\" OR \"nonenzymatic RNA copying\" OR \"non-enzymatic RNA copying\" OR \"ribozyme evolution\"",
+        "groups": [
+          {
+            "name": "Jack W. Szostak",
+            "inst": "Howard Hughes Medical Institute"
+          },
+          {
+            "name": "Philipp Holliger",
+            "inst": "MRC Laboratory of Molecular Biology"
+          },
+          {
+            "name": "Gerald F. Joyce",
+            "inst": "Salk Institute"
+          },
+          {
+            "name": "Irene A. Chen",
+            "inst": "UCLA"
+          },
+          {
+            "name": "Dieter Braun",
+            "inst": "LMU Munich"
+          }
+        ],
+        "now": "A small polymerase ribozyme that can make itself and its complementary strand (2026), and more accurate polymerases, bring self-copying RNA closer.",
+        "now_ids": [
+          "gianni-2026-rna-world",
+          "horning-2026-polymerase-fidelity",
+          "essex-2026-l-nucleotides-copying"
+        ],
+        "us": "Our QT45 check found net replication far below one copy per cycle, and epistasis did not predict contacts."
+      },
+      {
+        "id": "vents",
+        "name": "Metabolism first and hydrothermal settings",
+        "bet": "Life began as self-sustaining chemistry driven by energy gradients in vents or hot springs; genes came later.",
+        "search": "(\"hydrothermal vent\" OR \"hydrothermal vents\" OR \"alkaline vent\" OR \"hot spring\" OR \"metabolism-first\" OR protometabolism OR \"prebiotic metabolism\" OR \"geochemical\") AND (\"origin of life\" OR \"origins of life\" OR prebiotic OR abiogenesis)",
+        "groups": [
+          {
+            "name": "Harun Tüysüz",
+            "inst": "Max Planck Institute for Coal Research"
+          },
+          {
+            "name": "William F. Martin",
+            "inst": "Heinrich Heine University Düsseldorf"
+          },
+          {
+            "name": "Martin J. Van Kranendonk",
+            "inst": "UNSW Sydney"
+          },
+          {
+            "name": "Laura M. Barge",
+            "inst": "Jet Propulsion Laboratory"
+          },
+          {
+            "name": "Matthew A. Pasek",
+            "inst": "University of South Florida"
+          }
+        ],
+        "now": "Metal catalysts are driving phosphorylation and CO2 reduction under vent-like conditions, while others say the classic alkaline-vent picture needs rethinking.",
+        "now_ids": [
+          "schlikker-2026-hydrothermal-phosphorylation",
+          "martin-2026-shiny-metal-catalysts",
+          "tutolo-2026-rethinking-alkaline-vents"
+        ],
+        "us": ""
+      },
+      {
+        "id": "protocells",
+        "name": "Protocells and compartments",
+        "bet": "Early life needed a container: fatty-acid vesicles or droplets that grow, divide and keep their contents together.",
+        "search": "(protocell OR protocells OR coacervate OR coacervates OR \"fatty acid vesicles\" OR \"prebiotic compartments\" OR \"minimal cell\") AND (\"origin of life\" OR \"origins of life\" OR prebiotic OR protocell)",
+        "groups": [
+          {
+            "name": "Yan Qiao",
+            "inst": "Chinese Academy of Sciences"
+          },
+          {
+            "name": "Stephen Mann",
+            "inst": "University of Bristol"
+          },
+          {
+            "name": "Evan Spruijt",
+            "inst": "Radboud University"
+          },
+          {
+            "name": "Job Boekhoven",
+            "inst": "Technical University of Munich"
+          },
+          {
+            "name": "Neal K. Devaraj",
+            "inst": "UC San Diego"
+          }
+        ],
+        "now": "Topics include protocells that form from scratch, vesicles that grow with peptides, and protocells that mimic the shapes of early microfossils.",
+        "now_ids": [
+          "khanal-2026-lipid-world",
+          "baba-2026-lipid-world",
+          "gillet-de-chalonge-2026-protocell-microfossils"
+        ],
+        "us": ""
+      },
+      {
+        "id": "luca",
+        "name": "LUCA and the deep tree of life",
+        "bet": "Rebuild the last universal common ancestor from the genes all living things share, and place the root of the tree.",
+        "search": "\"last universal common ancestor\" OR \"universal common ancestor\" OR \"root of the tree of life\" OR \"deep phylogeny\" OR \"deep phylogenomics\" OR \"early evolution of life\"",
+        "groups": [
+          {
+            "name": "Tom A. Williams",
+            "inst": "University of Bristol"
+          },
+          {
+            "name": "Philip C. J. Donoghue",
+            "inst": "University of Bristol"
+          },
+          {
+            "name": "Anja Spang",
+            "inst": "NIOZ"
+          },
+          {
+            "name": "William F. Martin",
+            "inst": "Heinrich Heine University Düsseldorf"
+          },
+          {
+            "name": "Eva E. Stüeken",
+            "inst": "University of St Andrews"
+          }
+        ],
+        "now": "The 2024 reconstruction of a fairly complex LUCA, about 4.2 billion years ago, is being debated over gene-content thresholds and dating.",
+        "now_ids": [
+          "moody-2024-luca",
+          "szollosi-williams-2026-gld-threshold-letter",
+          "gagnon-csuros-2026-reply"
+        ],
+        "us": "Our LUCA calibration study tests how far that date moves with the choice of calibrations."
+      },
+      {
+        "id": "eukaryogenesis",
+        "name": "Eukaryogenesis and Asgard archaea",
+        "bet": "Complex cells arose when an Asgard-like archaeon took in a bacterium; the Asgard genomes show how.",
+        "search": "\"Asgard archaea\" OR Asgardarchaeota OR eukaryogenesis OR \"origin of eukaryotes\" OR \"origin of the eukaryotic cell\" OR \"first eukaryotic common ancestor\" OR \"last eukaryotic common ancestor\"",
+        "groups": [
+          {
+            "name": "Thijs J. G. Ettema",
+            "inst": "Wageningen University"
+          },
+          {
+            "name": "Anja Spang",
+            "inst": "NIOZ"
+          },
+          {
+            "name": "Tom A. Williams",
+            "inst": "University of Bristol"
+          },
+          {
+            "name": "Brett J. Baker",
+            "inst": "University of Texas at Austin"
+          },
+          {
+            "name": "Laura Eme",
+            "inst": "Université Paris-Saclay"
+          },
+          {
+            "name": "Eugene V. Koonin",
+            "inst": "NCBI, National Library of Medicine"
+          }
+        ],
+        "now": "Genomics of Asgard archaea keeps finding prokaryotic roots for proteins once thought to be unique to eukaryotes.",
+        "now_ids": [
+          "liu-2026-commd-prokaryotic-origins",
+          "souza-2026-aha-archaeal-hibernation"
+        ],
+        "us": ""
+      },
+      {
+        "id": "dating",
+        "name": "Molecular dating and the earliest record",
+        "bet": "Put dates on the tree with molecular clocks calibrated by fossils and geochemical traces of the earliest life.",
+        "search": "(\"molecular clock\" OR \"molecular dating\" OR \"divergence time\" OR microfossil OR microfossils OR stromatolite OR stromatolites OR \"earliest life\" OR \"early life\") AND (Archean OR Archaean OR Hadean OR Precambrian OR Paleoproterozoic OR \"early Earth\")",
+        "groups": [
+          {
+            "name": "Philip C. J. Donoghue",
+            "inst": "University of Bristol"
+          },
+          {
+            "name": "Martin J. Van Kranendonk",
+            "inst": "UNSW Sydney"
+          },
+          {
+            "name": "Shuhai Xiao",
+            "inst": "Virginia Tech"
+          },
+          {
+            "name": "Emmanuelle J. Javaux",
+            "inst": "University of Liège"
+          },
+          {
+            "name": "Eva E. Stüeken",
+            "inst": "University of St Andrews"
+          },
+          {
+            "name": "Betül Kaçar",
+            "inst": "University of Wisconsin–Madison"
+          }
+        ],
+        "now": "Molecular clocks for early life are being recalibrated against the rock record, and how fossil calibrations are chosen is under scrutiny.",
+        "now_ids": [
+          "davin-2025-bacterial-timescale",
+          "alvarez-carretero-2026-literalist-fossil-critique",
+          "davies-2026-calibration-strategy-crocodylia"
+        ],
+        "us": "Our LUCA calibration study measures how far the dates move with calibration choices."
+      },
+      {
+        "id": "space",
+        "name": "Organics from space",
+        "bet": "Asteroid samples (Bennu, Ryugu) and meteorites show which building blocks space delivered to the young Earth.",
+        "search": "(Bennu OR Ryugu OR \"carbonaceous chondrite\" OR \"carbonaceous chondrites\" OR meteorite OR meteorites OR cometary) AND (\"amino acids\" OR nucleobases OR organics OR \"organic matter\" OR prebiotic)",
+        "groups": [
+          {
+            "name": "Hiroshi Naraoka",
+            "inst": "Kyushu University"
+          },
+          {
+            "name": "Yuichi Tsuda",
+            "inst": "ISAS, JAXA"
+          },
+          {
+            "name": "Tomohiro Usui",
+            "inst": "ISAS, JAXA"
+          },
+          {
+            "name": "Dante S. Lauretta",
+            "inst": "University of Arizona"
+          },
+          {
+            "name": "Yoshihiro Furukawa",
+            "inst": "Tohoku University"
+          }
+        ],
+        "now": "Samples returned from Ryugu and Bennu now show all five nucleobases, sugars, ammonia and brines, and comets look less likely as a source of cyanide. Large mission teams inflate the author count here.",
+        "now_ids": [
+          "koga-2026-l0-samples",
+          "furukawa-2025-l0-samples",
+          "anslow-2026-comets-unlikely-hcn"
+        ],
+        "us": ""
+      },
+      {
+        "id": "lifeelsewhere",
+        "name": "Origins and life detection beyond Earth",
+        "bet": "Origin-of-life theory guides where to look for life elsewhere and how to tell it from chemistry.",
+        "search": "(astrobiology OR biosignature OR biosignatures OR \"life detection\" OR \"agnostic biosignature\") AND (\"origin of life\" OR \"origins of life\" OR abiogenesis OR prebiotic OR habitability)",
+        "groups": [
+          {
+            "name": "Tyler D. Robinson",
+            "inst": "University of Arizona"
+          },
+          {
+            "name": "Renyu Hu",
+            "inst": "Caltech"
+          },
+          {
+            "name": "Kathryn M. Stack",
+            "inst": "Jet Propulsion Laboratory"
+          },
+          {
+            "name": "Tanja Bosak",
+            "inst": "MIT"
+          },
+          {
+            "name": "Felipe Gómez",
+            "inst": "Centro de Astrobiología"
+          },
+          {
+            "name": "Elisabeth M. Hausrath",
+            "inst": "University of Nevada, Las Vegas"
+          }
+        ],
+        "now": "The claim of sulfur gases on K2-18 b drew rebuttals, and Mars rover teams report organic-mineral pairings at Jezero. Others are defining the abiotic background that a sign of life has to beat.",
+        "now_ids": [
+          "luque-2025-biosignature",
+          "davila-2026-abiotic-background",
+          "barge-2026-emergence-of-biosignatures"
+        ],
+        "us": ""
+      },
+      {
+        "id": "theory",
+        "name": "Theory: autocatalysis, assembly and information",
+        "bet": "General laws for how chemistry becomes life: autocatalytic networks, assembly theory, selection before genes.",
+        "search": "(\"autocatalytic set\" OR \"autocatalytic sets\" OR \"autocatalytic network\" OR \"autocatalytic networks\" OR \"assembly theory\" OR \"assembly index\" OR \"chemical evolution\") AND (\"origin of life\" OR \"origins of life\" OR abiogenesis OR prebiotic)",
+        "groups": [
+          {
+            "name": "Moran Frenkel-Pinter",
+            "inst": "Hebrew University of Jerusalem"
+          },
+          {
+            "name": "Loren Dean Williams",
+            "inst": "Georgia Institute of Technology"
+          },
+          {
+            "name": "Cole Mathis",
+            "inst": "Arizona State University"
+          },
+          {
+            "name": "Ken Takai",
+            "inst": "JAMSTEC"
+          },
+          {
+            "name": "Yufen Zhao",
+            "inst": "Ningbo University"
+          }
+        ],
+        "now": "Assembly theory is under heavy fire: critics say it reduces to compression. Autocatalytic-set theory is being tied to real chemistry.",
+        "now_ids": [
+          "ozelim-2026-assembly-theory",
+          "cronin-2026-alife-assembly-theory",
+          "golnik-2026-raf-stoichiometric-autocatalysis"
+        ],
+        "us": ""
+      }
+    ]
+  }
+}
