@@ -1,0 +1,76 @@
+{
+  "_about": "What the paper watch checks every other day, per project. Queries run against Europe PMC (journals plus bioRxiv/medRxiv/Research Square preprints), Crossref (all publishers, including humanities), arXiv and, where listed, Zenodo. 'venues' are the journals and servers where important papers usually appear; triage ranks hits from them higher but never adds a paper on venue alone. 'people' are leading authors whose new papers are always looked at. Edit this file to add or drop sources.",
+  "projects": {
+    "origins": {
+      "repo": "open-origins",
+      "news": "site/news.json",
+      "keywords": [
+        "origin of life", "prebiotic chemistry", "abiogenesis", "RNA world", "ribozyme polymerase",
+        "protocell", "last universal common ancestor", "LUCA genome", "autocatalytic set",
+        "assembly theory", "nonenzymatic replication", "nonenzymatic RNA", "hydrothermal vent prebiotic",
+        "wet-dry cycles", "cyanosulfidic", "asteroid Bennu organics", "Ryugu organics", "biosignature",
+        "homochirality origin", "genetic code origin", "prebiotic phosphorylation", "geochemical metabolism"
+      ],
+      "arxiv": {"cats": ["q-bio.PE", "q-bio.BM", "astro-ph.EP", "nlin.AO", "physics.chem-ph"],
+                "terms": ["origin of life", "prebiotic", "abiogenesis", "autocatalytic", "assembly theory", "protocell", "biosignature"]},
+      "people": ["Sutherland JD", "Szostak JW", "Holliger P", "Joyce GF", "Moran J", "Martin WF", "Powner MW",
+                 "Krishnamurthy R", "Cronin L", "Walker SI", "Braun D", "Trapp O", "Hud NV", "Lane N",
+                 "Donoghue PCJ", "Lenton TM", "Hazen RM", "Glavin DP", "Dworkin JP", "Oba Y", "Furukawa Y",
+                 "Muchowska KB", "Ralser M", "Hordijk W", "Mansy SS", "Richert C", "Carell T", "Lancet D"],
+      "venues": ["Nature", "Science", "Cell", "Nature Chemistry", "Nature Ecology & Evolution", "Nature Astronomy",
+                 "Nature Geoscience", "Nature Communications", "Science Advances", "PNAS", "JACS",
+                 "Angewandte Chemie", "ACS Central Science", "Chem", "Chemical Science", "Life",
+                 "Origins of Life and Evolution of Biospheres", "Astrobiology", "Journal of Molecular Evolution",
+                 "Molecular Biology and Evolution", "Genome Biology and Evolution", "eLife", "PLOS Biology",
+                 "Journal of the Royal Society Interface", "Philosophical Transactions B", "npj Complexity",
+                 "Communications Chemistry", "Nucleic Acids Research", "bioRxiv", "ChemRxiv", "arXiv"]
+    },
+    "mind": {
+      "repo": "open-mind",
+      "news": "site/news.json",
+      "keywords": [
+        "theory of consciousness", "neural correlates of consciousness", "integrated information theory",
+        "global neuronal workspace", "perturbational complexity index", "adversarial collaboration consciousness",
+        "disorders of consciousness EEG", "covert consciousness", "anesthesia loss of consciousness",
+        "dreaming consciousness", "psychedelic consciousness EEG", "consciousness artificial intelligence",
+        "Lempel-Ziv complexity consciousness", "cortical criticality consciousness", "predictive processing consciousness",
+        "higher-order theory consciousness", "recurrent processing theory"
+      ],
+      "arxiv": {"cats": ["q-bio.NC", "cs.AI", "cs.NE"],
+                "terms": ["consciousness", "integrated information", "global workspace", "sentience"]},
+      "people": ["Tononi G", "Massimini M", "Dehaene S", "Koch C", "Seth AK", "Melloni L", "Mashour GA",
+                 "Edlow BL", "Owen AM", "Naccache L", "Storm JF", "Boly M", "Siclari F", "Hudetz AG",
+                 "Carhart-Harris RL", "Lau H", "Lamme VAF", "Butlin P", "Long R", "Bayne T", "Albantakis L",
+                 "Mediano PAM", "Casali AG", "Sarasso S", "Laureys S", "Gosseries O", "Northoff G"],
+      "venues": ["Nature", "Science", "Nature Neuroscience", "Nature Human Behaviour", "Neuron", "Brain",
+                 "Annals of Neurology", "Science Translational Medicine", "Current Biology", "eLife",
+                 "PLOS Biology", "PLOS Computational Biology", "PNAS", "Nature Communications",
+                 "Neuroscience of Consciousness", "Trends in Cognitive Sciences", "Behavioral and Brain Sciences",
+                 "Cerebral Cortex", "Journal of Neuroscience", "NeuroImage", "Anesthesiology",
+                 "British Journal of Anaesthesia", "Communications Biology", "Neuroscience & Biobehavioral Reviews",
+                 "bioRxiv", "medRxiv", "PsyArXiv", "arXiv"]
+    },
+    "indus": {
+      "repo": "indus-decipher",
+      "news": "site/news.json",
+      "keywords": [
+        "Indus script", "Harappan script", "Indus Valley civilization", "Harappan seal", "Harappa",
+        "Mohenjo-daro", "Rakhigarhi", "Dholavira", "undeciphered script", "script decipherment",
+        "Proto-Elamite", "Linear Elamite", "Linear A", "Rongorongo", "Cypro-Minoan", "computational decipherment",
+        "ancient script machine learning", "Proto-Dravidian", "Meluhha"
+      ],
+      "arxiv": {"cats": ["cs.CL", "cs.CV", "cs.DL"],
+                "terms": ["Indus script", "decipherment", "undeciphered", "ancient script", "Linear A", "Proto-Elamite"]},
+      "zenodo": ["Indus script", "Harappan", "decipherment"],
+      "people": ["Parpola A", "Mahadevan I", "Rao RPN", "Sproat R", "Fuls A", "Kenoyer JM", "Possehl GL",
+                 "Desset F", "Dahl JL", "Wells B", "Vidale ML", "Shinde V", "Petrie CA", "Mukhopadhyay BA",
+                 "Snyder B", "Luo J", "Barzilay R", "Corazza M", "Ferrara S", "Born LT", "Kelley DH",
+                 "Narasimhan VM", "Reich D"],
+      "venues": ["Antiquity", "Journal of Archaeological Science", "Asian Archaeology", "Arabian Archaeology and Epigraphy",
+                 "Zeitschrift fur Assyriologie", "Near Eastern Archaeology", "Iran", "South Asian Studies",
+                 "Journal of the American Oriental Society", "Written Language & Literacy", "Kadmos",
+                 "Humanities and Social Sciences Communications", "PLOS ONE", "Science", "Nature", "Cell",
+                 "Transactions of the ACL", "ACL Anthology", "Digital Scholarship in the Humanities", "arXiv", "Zenodo"]
+    }
+  }
+}
