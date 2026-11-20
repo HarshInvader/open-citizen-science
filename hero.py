@@ -14,9 +14,7 @@ HERE = Path(__file__).resolve().parent
 
 
 TITLE = "Big open questions in science, tested in the open."
-LEDE = ("An open research effort to crack three famous unsolved problems by 2027: how life began, which brain activity goes with "
-        "conscious experience, and what the Indus script says. One person and a team of AI agents do the work in public, "
-        "so anyone can check it, reuse it or join in.")
+LEDE = ("One person and a team of AI agents trying to solve three famous open problems by 2027, in public, so anyone can check the work or join in.")
 
 
 def head():

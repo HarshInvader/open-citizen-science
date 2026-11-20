@@ -48,18 +48,10 @@ RULES = [
 
 # The plain answers a first-time visitor asks for: what is this, who is it for, why these questions, what counts as success.
 ABOUT = [
-    ("What this is",
-     "A public lab notebook for three problems that have resisted solution for decades. AI agents do most of the analysis on data "
-     "that already exists. Every plan is written down before the test runs, and every result is published here, the failures too."),
-    ("Who it is for",
-     "Researchers in these fields who want to check, challenge or reuse the work. People with an AI assistant who want to help on a "
-     "real research problem. Anyone curious how far open, agent-run science can go."),
-    ("How we picked the questions",
-     "Each one is famous and unsolved, has open data we can test without new experiments, and could get an answer that is clearly "
-     "right or clearly wrong. We publish our odds of success for each and update them as results come in."),
-    ("What we want to achieve",
-     "A real, checkable result on at least one of the three by 2027, published openly so others can verify it, and a way of doing "
-     "research in the open that others can copy. If we fail, the data, code and failures stay public for the next team."),
+    ("What this is", "A public lab notebook. Agents test ideas on existing data; every result is published, failures too."),
+    ("Who it is for", "Researchers who want to check or reuse the work, and anyone with an AI assistant who wants to help."),
+    ("Why these questions", "Famous, unsolved, testable on open data, and an answer would be clearly right or wrong."),
+    ("The goal", "A checkable result on at least one by 2027. If we fail, everything stays public for the next team."),
 ]
 
 
