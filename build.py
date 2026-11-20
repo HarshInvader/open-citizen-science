@@ -45,6 +45,43 @@ RULES = [
     ("Publish it either way.", "Failures are written up with the size of effect the test could have caught."),
 ]
 
+HANDBOOK = "https://usecaddie.app/blog/agents-handbook"
+BOOK_KUHN = "https://usecaddie.app/s/the-structure-of-scientific-revolutions-50th"
+BOOK_BELL = "https://usecaddie.app/s/the-idea-factory-bell-labs-and-the-great-age"
+BOOK_LUNAR = "https://usecaddie.app/s/the-lunar-men-the-inventors-of-the-modern"
+
+# How we run research with agents (the method above is how we judge results). (title, body, source html)
+PRINCIPLES = [
+    ("Aim at problems nobody would staff.", "Agents give a small team more workers than ideas. If they run out of work, the goal is too small.",
+     f'<a href="{HANDBOOK}">Building with agents</a>, ch. 7'),
+    ("Read before you run.", "Open the closest papers first. If what is new cannot be said in one sentence, don&#8217;t run the study.", ""),
+    ("Try to kill the idea first.", "Run the cheapest test that could end it before building the full study. Most ideas should die in an afternoon.", ""),
+    ("Start the day the idea appears.", "No backlog. Give each test to an agent right away, keep several running at once, and let a coordinator agent steer them.",
+     f'<a href="{HANDBOOK}">Building with agents</a>, ch. 1 and 3'),
+    ("Start over from scratch now and then.", "Give a fresh agent the goal but not our history, and compare its plan with ours. It shows the routes we never tried and the work we kept only because we had started it.", ""),
+    ("Borrow from other fields.", "Have agents read the latest work in neighbouring fields and ask what would transfer. Bell Labs got the transistor by putting physicists, chemists and engineers in one corridor.",
+     f'<a href="{BOOK_BELL}"><i>The Idea Factory</i></a>'),
+    ("Count every failure.", "Fields move when unexplained results pile up, so every null goes on the public record with the effect it could have caught.",
+     f'<a href="{BOOK_KUHN}">Kuhn, <i>The Structure of Scientific Revolutions</i></a>'),
+    ("Don&#8217;t trust an agent&#8217;s confidence.", "Agents sound as sure when wrong as when right. Check every finding and every citation before acting on it.",
+     f'<a href="{HANDBOOK}">Building with agents</a>, ch. 5'),
+    ("Turn what works into a skill.", "When a method works, write it down as instructions any agent can load, so the next study starts from the best one.",
+     f'<a href="{HANDBOOK}">Building with agents</a>, ch. 4'),
+    ("Work in a small, open circle.", "The Lunar Society was a dozen friends sharing experiments each month. Ours shares work in progress with anyone who joins, and asks to be told where it is wrong.",
+     f'<a href="{BOOK_LUNAR}"><i>The Lunar Men</i></a>'),
+    ("People keep the last word.", "Agents do the work. A person chooses the goals, judges the results, and approves anything that goes out to the world.",
+     f'<a href="{HANDBOOK}">Building with agents</a>, conclusion'),
+]
+
+
+def principles_section():
+    items = "".join(f"<li><div><strong>{t}</strong> {b}" + (f'<p class="psrc">From {s}</p>' if s else "") + "</div></li>"
+                    for t, b, s in PRINCIPLES)
+    return (f'<section class="wrap split" id="principles"><div><h2>Principles of agentic research</h2>'
+            f'<p class="side">How we run research with agents. The <a href="#method">method</a> below is how we judge what they find. '
+            f'Drawn from our <a href="{HANDBOOK}">handbook on building with agents</a> and three books on how discovery happens.</p></div>'
+            f'<ol class="rules">{items}</ol></section>')
+
 
 # The plain answers a first-time visitor asks for: what is this, who is it for, why these questions, what counts as success.
 ABOUT = [
@@ -200,7 +237,7 @@ def nav(home=""):
     """Header nav. home='' on the home page, 'index.html' on other pages."""
     dd = "".join(f'<a href="{e(u)}"><b>{e(t)}</b><small>{e(d)}</small></a>' for u, t, d in RESOURCES)
     return (f'<button class="menu" type="button" aria-expanded="false" aria-controls="mainnav">Menu</button><nav aria-label="Main" id="mainnav">'
-            f'<a href="{home}#about">About</a><a href="{home}#why">Why agents</a><a href="{home}#news">News</a><a href="{home}#method">Method</a>'
+            f'<a href="{home}#about">About</a><a href="{home}#why">Why agents</a><a href="{home}#principles">Principles</a><a href="{home}#news">News</a><a href="{home}#method">Method</a>'
             f'<div class="dd"><button type="button" class="dd-b" aria-expanded="false" aria-controls="dd-res">Resources<svg viewBox="0 0 12 12" width="10" height="10" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="dd-m" id="dd-res">{dd}</div></div>'
             f'<span class="ctas"><a class="btn btn-2" href="{home}#help">Contribute</a><a class="btn btn-1" href="{home}#projects">View projects</a></span></nav>')
 
@@ -302,6 +339,7 @@ def page(hero="a"):
 </svg></figure><h3>Discoveries come from mixing experts</h3><p>In <a class="book" href="https://usecaddie.app/s/the-idea-factory-bell-labs-and-the-great-age"><i>The Idea Factory</i></a>, Bell Labs puts physicists, chemists and engineers in the same corridors, and the transistor comes out of it. Agents can draft a chemist&#8217;s or a statistician&#8217;s checks in minutes; then real experts review them.</p></li><li class="why-card"><figure><svg viewBox="0 0 240 150" role="img" aria-label="A ring of people and agents meeting round a full moon, with one empty seat marked You"><circle cx="120" cy="70" r="26" class="f-moon"/><text x="120" y="67" class="f-lab acc" text-anchor="middle">Full</text><text x="120" y="80" class="f-lab acc" text-anchor="middle">moon</text><circle cx="120.0" cy="22.0" r="6" class="f-line"/><rect x="141.0" y="23.4" width="10" height="10" rx="2" class="f-solid"/><circle cx="165.0" cy="46.0" r="6" class="f-line"/><rect x="167.0" y="65.0" width="10" height="10" rx="2" class="f-solid"/><circle cx="165.0" cy="94.0" r="6" class="f-line"/><rect x="141.0" y="106.6" width="10" height="10" rx="2" class="f-solid"/><circle cx="120.0" cy="118.0" r="6.5" class="f-you"/><rect x="89.0" y="106.6" width="10" height="10" rx="2" class="f-solid"/><circle cx="75.0" cy="94.0" r="6" class="f-line"/><rect x="63.0" y="65.0" width="10" height="10" rx="2" class="f-solid"/><circle cx="75.0" cy="46.0" r="6" class="f-line"/><rect x="89.0" y="23.4" width="10" height="10" rx="2" class="f-solid"/><text x="120" y="141" class="f-lab acc" text-anchor="middle">You</text><circle cx="18" cy="137" r="5" class="f-line"/><text x="28" y="141.5" class="f-lab">People</text><rect x="182" y="132" width="10" height="10" rx="2" class="f-solid"/><text x="197" y="141.5" class="f-lab">Agents</text></svg></figure><h3>Big change can start in a small circle</h3><p>In 1760s Birmingham about a dozen friends, among them Watt, Wedgwood and Erasmus Darwin, met each full moon to share experiments; the moon lit their ride home. Their circle, told in <a class="book" href="https://usecaddie.app/s/the-lunar-men-the-inventors-of-the-modern"><i>The Lunar Men</i></a>, helped start the Industrial Revolution. Ours is people and agents, and the seats are open.</p></li></ol>
   <p class="why-note">Agents can also fool themselves faster than people can, so every project follows <a href="#method">the same rules</a>. The three books are also a short course on running a discovery group: <a class="book" href="https://usecaddie.app/growth/course#part-discovery">Scientific discovery</a>.</p>
 </section>
+{principles_section()}
 {news_section()}
 <section class="wrap split" id="method">
   <div><h2>One method for every project</h2>
