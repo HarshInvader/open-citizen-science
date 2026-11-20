@@ -1,5 +1,81 @@
 {
  "_about": "Paper watch state. last_run: date of the last run. seen: DOI -> {project, decision: added|dropped|watch, why}.",
- "last_run": "2026-11-15",
- "seen": {}
+ "last_run": "2026-11-20",
+ "seen": {
+  "10.1016/j.cortex.2026.11.009": {
+   "project": "mind",
+   "decision": "added",
+   "why": "Peer-reviewed DoC EEG test (n=61 people, 95 recordings); alpha network measure AUC .78 vs wPLI .45-.53; bears on surrogate gate #8 and Chennu #21."
+  },
+  "10.64898/2026.11.11.765965": {
+   "project": "mind",
+   "decision": "watch",
+   "why": "Breathwork EEG mirrors psychedelic complexity signatures, n=25, preprint from one lab; look again once published or cited."
+  },
+  "10.64898/2026.11.18.767548": {
+   "project": "mind",
+   "decision": "dropped",
+   "why": "Information decomposition of naturalistic fMRI; about brain computation in general, not a consciousness test."
+  },
+  "arXiv:2611.26018": {
+   "project": "mind",
+   "decision": "dropped",
+   "why": "Two-author arXiv protocol for workspace computation in a language model; no strong test yet."
+  },
+  "arXiv:2611.26590": {
+   "project": "mind",
+   "decision": "dropped",
+   "why": "Two-author arXiv probe of workspace-like access in vision-language models; no strong test yet."
+  },
+  "10.1016/j.bja.2026.08.081": {
+   "project": "mind",
+   "decision": "dropped",
+   "why": "Clinical anaesthesia dosing target in toddlers; not a consciousness question we work on."
+  },
+  "10.20944/preprints202609.1574.v6": {
+   "project": "mind",
+   "decision": "dropped",
+   "why": "Preprints.org Orch OR proposal, no new data."
+  },
+  "10.1093/oso/9780197920961.003.0033": {
+   "project": "mind",
+   "decision": "dropped",
+   "why": "Book chapter (Rolls), theory overview, no new data."
+  },
+  "10.1039/d6cc04072a": {
+   "project": "origins",
+   "decision": "added",
+   "why": "Peer-reviewed, open full text: vent minerals conduct electrons far better than ions; adds a charge-balance step to the vent step table (#4)."
+  },
+  "10.64898/2026.11.18.767475": {
+   "project": "origins",
+   "decision": "watch",
+   "why": "Nucleotide condensates protect RNA from acid hydrolysis and shift hammerhead toward religation; striking but a one-day-old single-lab preprint; look again once reviewed or discussed."
+  },
+  "10.21203/rs.3.rs-11206946/v1": {
+   "project": "origins",
+   "decision": "watch",
+   "why": "Amyloid peptides bind NTPs and assist ATP formation (Riek lab); Research Square preprint; look again once published."
+  },
+  "10.26434/chemrxiv.15012530/v1": {
+   "project": "origins",
+   "decision": "watch",
+   "why": "Single-author chemRxiv comparing assembly index with dictionary compression on DrugBank; follows our Jul 2026 item; wait for review."
+  },
+  "10.21203/rs.3.rs-11367328/v1": {
+   "project": "origins",
+   "decision": "dropped",
+   "why": "Proteinoid electrical behaviour preprint; not tied to a claim we test."
+  },
+  "10.3390/life16111967": {
+   "project": "origins",
+   "decision": "dropped",
+   "why": "Genetic-code hypothesis paper in Life, no new data."
+  },
+  "10.1007/s11084-026-09771-3": {
+   "project": "origins",
+   "decision": "dropped",
+   "why": "Single-author essay on the inevitability of life, no new data."
+  }
+ }
 }
