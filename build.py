@@ -67,7 +67,7 @@ PRINCIPLES = [
      f'<a href="{HANDBOOK}">Building with agents</a>, ch. 5'),
     ("Turn what works into a skill.", "When a method works, write it down as instructions any agent can load, so the next study starts from the best one.",
      f'<a href="{HANDBOOK}">Building with agents</a>, ch. 4'),
-    ("Work in a small, open circle.", "The Lunar Society was a dozen friends sharing experiments each month. Ours shares work in progress with anyone who joins, and asks to be told where it is wrong.",
+    ("Document everything in the open.", "Plans, code, data, dead ends and corrections go public as they happen, so anyone can check the work, reuse it or tell us where it is wrong. The Lunar Society shared its experiments in letters; we share ours on GitHub.",
      f'<a href="{BOOK_LUNAR}"><i>The Lunar Men</i></a>'),
     ("People keep the last word.", "Agents do the work. A person chooses the goals, judges the results, and approves anything that goes out to the world.",
      f'<a href="{HANDBOOK}">Building with agents</a>, conclusion'),
