@@ -60,7 +60,7 @@ def about_section():
     return (f'<section class="wrap about" id="about" aria-labelledby="about-h"><h2 id="about-h" class="vh">About this site</h2>'
             f'<ul class="about-grid">{cards}</ul>'
             f'<p class="about-cta"><a class="btn btn-1" href="#projects">See the three projects</a>'
-            f'<a class="btn btn-2" href="#help">How to help</a></p></section>')
+            f'<a class="btn btn-2" href="#help">How to help</a><a class="btn btn-2" href="{SLACK}" rel="noopener">Join the Slack</a></p></section>')
 
 
 def board_stats(repo):
@@ -184,6 +184,8 @@ def card(p):
   <a class="go" href="{e(p['url'])}"{target}>Open {e(p['name'].split()[1])}<span aria-hidden="true"> →</span></a></div>
 </article>"""
 
+
+SLACK = "https://join.slack.com/t/opencitizenscience/shared_invite/zt-4hhlt7mhv-J6fbFBgEPUNMl_pBqJt8cw"
 
 RESOURCES = [
     ("agents.html", "Working with agents", "Our skill file, prompts and how to start"),
@@ -309,6 +311,7 @@ def page(hero="a"):
   <div><h2>Contribute</h2>
   <p class="side">Each project is run by one person and a team of AI agents, with a public list of open tasks. Anyone can pick one up.</p></div>
   <div class="help">
+    <p class="slackline"><strong>Talk to us first:</strong> <a href="{SLACK}" rel="noopener">join the Open Citizen Science Slack</a>. Ask questions, pick a task, or tell us we are wrong.</p>
     <p><strong>No coding needed:</strong></p>
     <ul>
       <li><strong>Tell us where we are wrong</strong> about your field. Historians, linguists, clinicians and chemists catch what agents miss.</li>
@@ -321,7 +324,7 @@ def page(hero="a"):
 </main>
 <script>{hero_js}{SIGNUP_JS}</script>
 <script>{NAV_JS}</script>
-<footer class="wrap foot"><span>Open Citizen Science</span><span>Open code, open data, open results: <a href="https://github.com/HarshInvader/open-citizen-science">GitHub</a>. Updated {time.strftime('%d %b %Y').lstrip('0')}.</span><span class="fcredit">Star drawing: al-Sufi, <i>Book of the Fixed Stars</i>, Bodleian Library MS Marsh 144, public domain, via <a href="https://commons.wikimedia.org/wiki/File:Al_Sufi_-_Book_of_Fixed_Stars_-_Ursa_Major_(The_Great_Bear)_-_Bodleian_Library_-_Marsh_144(illustrationonly).jpg">Wikimedia Commons</a>.</span></footer>
+<footer class="wrap foot"><span>Open Citizen Science</span><span>Open code, open data, open results: <a href="https://github.com/HarshInvader/open-citizen-science">GitHub</a> · <a href="{SLACK}" rel="noopener">Slack</a>. Updated {time.strftime('%d %b %Y').lstrip('0')}.</span><span class="fcredit">Star drawing: al-Sufi, <i>Book of the Fixed Stars</i>, Bodleian Library MS Marsh 144, public domain, via <a href="https://commons.wikimedia.org/wiki/File:Al_Sufi_-_Book_of_Fixed_Stars_-_Ursa_Major_(The_Great_Bear)_-_Bodleian_Library_-_Marsh_144(illustrationonly).jpg">Wikimedia Commons</a>.</span></footer>
 </body></html>"""
 
 

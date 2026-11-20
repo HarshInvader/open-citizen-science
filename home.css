@@ -257,3 +257,4 @@ a.book:hover { color: var(--acc); text-decoration-color: var(--acc); }
 .about-cta .btn-1:hover { opacity: .85; }
 .about-cta .btn-2 { color: var(--ink); border: 1px solid var(--line-strong); }
 .about-cta .btn-2:hover { border-color: var(--ink); }
+.help .slackline { margin-bottom: 16px; }
