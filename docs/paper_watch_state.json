@@ -1,6 +1,6 @@
 {
  "_about": "Paper watch state. last_run: date of the last run. seen: DOI -> {project, decision: added|dropped|watch, why}.",
- "last_run": "2026-11-20",
+ "last_run": "2026-11-22",
  "seen": {
   "10.1016/j.cortex.2026.11.009": {
    "project": "mind",
@@ -10,7 +10,7 @@
   "10.64898/2026.11.11.765965": {
    "project": "mind",
    "decision": "watch",
-   "why": "Breathwork EEG mirrors psychedelic complexity signatures, n=25, preprint from one lab; look again once published or cited."
+   "why": "Breathwork EEG mirrors psychedelic complexity signatures, n=25, preprint from one lab; look again once published or cited. Rechecked 2026-11-22: still unpublished, 0 citations."
   },
   "10.64898/2026.11.18.767548": {
    "project": "mind",
@@ -50,17 +50,17 @@
   "10.64898/2026.11.18.767475": {
    "project": "origins",
    "decision": "watch",
-   "why": "Nucleotide condensates protect RNA from acid hydrolysis and shift hammerhead toward religation; striking but a one-day-old single-lab preprint; look again once reviewed or discussed."
+   "why": "Nucleotide condensates protect RNA from acid hydrolysis and shift hammerhead toward religation; striking but a one-day-old single-lab preprint; look again once reviewed or discussed. Rechecked 2026-11-22: still unpublished, 0 citations."
   },
   "10.21203/rs.3.rs-11206946/v1": {
    "project": "origins",
    "decision": "watch",
-   "why": "Amyloid peptides bind NTPs and assist ATP formation (Riek lab); Research Square preprint; look again once published."
+   "why": "Amyloid peptides bind NTPs and assist ATP formation (Riek lab); Research Square preprint; look again once published. Rechecked 2026-11-22: still unpublished, 0 citations."
   },
   "10.26434/chemrxiv.15012530/v1": {
    "project": "origins",
    "decision": "watch",
-   "why": "Single-author chemRxiv comparing assembly index with dictionary compression on DrugBank; follows our Jul 2026 item; wait for review."
+   "why": "Single-author chemRxiv comparing assembly index with dictionary compression on DrugBank; follows our Jul 2026 item; wait for review. Rechecked 2026-11-22: still unpublished, 0 citations."
   },
   "10.21203/rs.3.rs-11367328/v1": {
    "project": "origins",
@@ -76,6 +76,61 @@
    "project": "origins",
    "decision": "dropped",
    "why": "Single-author essay on the inevitability of life, no new data."
+  },
+  "10.1093/nc/niag077": {
+   "project": "mind",
+   "decision": "added",
+   "why": "Peer-reviewed formal IIT 4.0 Phi on rodent spike data (19 mice V1, 11 rats FC); NREM drop, but V1 drop vanishes after firing-rate matching; feeds task #9 rate control."
+  },
+  "10.31234/osf.io/xheqg": {
+   "project": "mind",
+   "decision": "dropped",
+   "why": "PsyArXiv thalamocortical model of conscious content; theory only, no new data."
+  },
+  "10.1080/02699052.2026.2762482": {
+   "project": "mind",
+   "decision": "dropped",
+   "why": "Zolpidem awakening in locked-in syndrome; single-patient case report."
+  },
+  "10.20944/preprints202611.1871.v1": {
+   "project": "mind",
+   "decision": "dropped",
+   "why": "Preprints.org Orch OR NIRS proposal in mice; not a strong venue, no consortium."
+  },
+  "10.20944/preprints202611.1710.v1": {
+   "project": "mind",
+   "decision": "dropped",
+   "why": "Preprints.org language-based consciousness framework; theory, no data."
+  },
+  "10.7554/eLife.72856": {
+   "project": "origins",
+   "decision": "added",
+   "why": "eLife model of kinetic error filtering in enzyme-free copying (Gerland lab), measured parameters; exact copies to ~50-mers in cycles; feeds tasks #2 and #12."
+  },
+  "10.1039/d6cc04901j": {
+   "project": "origins",
+   "decision": "dropped",
+   "why": "Sutherland thioformyl protecting group (Chem Commun); already in our library and cited in the News landscape, so not new to us."
+  },
+  "10.1021/jacs.6c15198": {
+   "project": "origins",
+   "decision": "dropped",
+   "why": "Moran JACS Perspective on electric-field catalysis; opinion, no new data. Library candidate."
+  },
+  "10.1128/aem.01598-26": {
+   "project": "origins",
+   "decision": "dropped",
+   "why": "AEM survey of H2-dependent marine thermophiles as early-Earth analogs; review-style, not tied to a claim we test."
+  },
+  "arXiv:2611.22311": {
+   "project": "origins",
+   "decision": "dropped",
+   "why": "Single-author arXiv on homochiral peptide stability in capillaries; no strong test yet."
+  },
+  "10.64898/2026.11.14.766673": {
+   "project": "origins",
+   "decision": "dropped",
+   "why": "Clumped isotopes of syntrophic methanogens; modern ecology, not an origins claim."
   }
  }
 }
