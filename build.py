@@ -220,6 +220,31 @@ def meter(p):
             f'<p class="mline">{e(line[0].upper() + line[1:])}</p></div>')
 
 
+KIND_LABEL = {"result": "Result", "killed": "Ruled out", "sealed": "Sealed", "started": "Started", "blocked": "Blocked", "correction": "Correction", "void": "Void"}
+
+
+def latest_update(p):
+    """Newest entry of the project's own site/updates.json, or None."""
+    f = p["repo"] / "site" / "updates.json"
+    try:
+        rows = json.loads(f.read_text())
+        return max(rows, key=lambda r: r["date"]) if rows else None
+    except (OSError, ValueError, KeyError):
+        return None
+
+
+def update_line(p):
+    u = latest_update(p)
+    if not u:
+        return ""
+    base = p["url"].rsplit("/", 1)[0] + "/" if not p["external"] else p["url"].rstrip("/") + "/"
+    href = base + ("updates" if p["external"] else "updates.html")
+    d = human_date(u["date"]).rsplit(" ", 1)[0]  # 22 Nov
+    kind = u.get("kind", "")
+    return (f'<a class="plast plast-{e(kind)}" href="{e(href)}"><span class="plast-meta">Latest · {e(d)}'
+            f'{" · " + e(KIND_LABEL.get(kind, "")) if kind in KIND_LABEL else ""}</span>{e(u["title"])}</a>')
+
+
 def card(p):
     s = board_stats(p["repo"])
     if s and s[1]:
@@ -237,6 +262,7 @@ def card(p):
   <h3>{e(p['question'])}</h3>
   <p class="pgoal">{e(p['goal'])}.</p>
   <p class="pblurb">{e(p['blurb'])}</p>
+  {update_line(p)}
   {meter(p)}
   <div class="proj-foot"><p class="odds"><span>Our estimate of success by 2027</span>{e(p['odds'])}</p>
   <a class="go" href="{e(p['url'])}"{target}>Open {e(p['name'].split()[1])}<span aria-hidden="true"> →</span></a></div>

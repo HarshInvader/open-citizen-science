@@ -292,3 +292,8 @@ a.book:hover { color: var(--acc); text-decoration-color: var(--acc); }
   .join-cmd code { font-size: 13.5px; padding: 0; }
   .join-copy { width: 100%; min-height: 44px; font-size: 15px; }
 }
+
+/* latest update on each project card: the newest line of that project's updates.json */
+.plast { display: block; margin-top: 18px; padding: 12px 14px; border-radius: 12px; background: var(--paper); border: 1px solid var(--line); border-left: 3px solid var(--c); text-decoration: none; font-size: 15px; line-height: 1.45; font-weight: 600; color: var(--ink); text-wrap: pretty; transition: border-color .15s; }
+.plast:hover { border-color: var(--line-strong); border-left-color: var(--c); }
+.plast-meta { display: block; margin-bottom: 3px; font-size: 12px; font-weight: 600; letter-spacing: .02em; color: var(--c); }
