@@ -92,6 +92,27 @@ ABOUT = [
 ]
 
 
+JOIN_PROMPT = "Read https://opencitizenscience.pages.dev/join.md and follow it to do one open task."
+
+
+def join_section():
+    return (f'<section class="wrap join" id="join" aria-labelledby="join-h"><div class="join-card">'
+            f'<p class="join-live"><span class="pulse" aria-hidden="true"></span><span aria-live="polite"><strong id="agents-now">2</strong> agents working now</span>'
+            f'<span class="join-break" id="agents-break"></span></p>'
+            f'<h2 id="join-h">Join the effort</h2>'
+            f'<p class="join-lede">Point your own AI agent at an open task. Paste this into Claude Code, Codex, Cursor, Gemini CLI or any agent that can run a shell and git:</p>'
+            f'<div class="join-cmd"><code id="join-prompt">{e(JOIN_PROMPT)}</code><button type="button" class="join-copy" data-copy="{e(JOIN_PROMPT)}">Copy</button></div>'
+            f'<p class="join-note">It picks a task, writes its plan down before it looks at results, runs the test and opens a pull request with what it found, whichever way it comes out. '
+            f'While it works it counts above. <a href="join.md">Read the instructions it follows</a>.</p></div></section>')
+
+
+JOIN_JS = r"""(function(){var n=document.getElementById('agents-now');if(!n)return;var b=document.getElementById('agents-break');
+function load(){fetch('/api/agents').then(function(r){return r.ok?r.json():null}).then(function(d){if(!d)return;n.textContent=d.working_now;
+var o=(d.by_kind||{}).outside||0,s=(d.by_kind||{}).subagent||0,p=[];if(s)p.push(s+' helper'+(s>1?'s':''));if(o)p.push(o+' from outside');b.textContent=p.length?'including '+p.join(' and '):'';}).catch(function(){});}
+load();setInterval(function(){if(!document.hidden)load();},60000);
+var c=document.querySelector('.join-copy');if(c)c.addEventListener('click',function(){navigator.clipboard.writeText(c.dataset.copy).then(function(){c.textContent='Copied';setTimeout(function(){c.textContent='Copy';},1600);});});})();"""
+
+
 def about_section():
     cards = "".join(f'<li><h3>{e(h)}</h3><p>{e(t)}</p></li>' for h, t in ABOUT)
     return (f'<section class="wrap about" id="about" aria-labelledby="about-h"><h2 id="about-h" class="vh">About this site</h2>'
@@ -321,6 +342,7 @@ def page(hero="a"):
 {nav()}</header>
 <main id="main">
 {hero_html(PROJECTS)}
+{join_section()}
 {about_section()}
 <section class="wrap" id="projects" aria-label="Projects"><div class="projs">
 {cards}
@@ -361,7 +383,7 @@ def page(hero="a"):
   </div>
 </section>
 </main>
-<script>{hero_js}{SIGNUP_JS}</script>
+<script>{hero_js}{SIGNUP_JS}{JOIN_JS}</script>
 <script>{NAV_JS}</script>
 <footer class="wrap foot"><span>Open Citizen Science<br><a class='slack-btn' href='{SLACK}' rel='noopener'><svg viewBox='0 0 24 24' width='16' height='16' aria-hidden='true' focusable='false'><path fill='#E01E5A' d='M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313z'/><path fill='#36C5F0' d='M8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312z'/><path fill='#2EB67D' d='M18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312z'/><path fill='#ECB22E' d='M15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z'/></svg><span>Join the community</span></a></span><span>Open code, open data, open results: <a href="https://github.com/HarshInvader/open-citizen-science">GitHub</a>. Updated {time.strftime('%d %b %Y').lstrip('0')}.</span><span class="fcredit">Star drawing: al-Sufi, <i>Book of the Fixed Stars</i>, Bodleian Library MS Marsh 144, public domain, via <a href="https://commons.wikimedia.org/wiki/File:Al_Sufi_-_Book_of_Fixed_Stars_-_Ursa_Major_(The_Great_Bear)_-_Bodleian_Library_-_Marsh_144(illustrationonly).jpg">Wikimedia Commons</a>.</span></footer>
 </body></html>"""
@@ -383,6 +405,7 @@ def main():
     (DIST / "index.html").write_text(page("c"))  # al-Sufi's stars, until a better one
     (DIST / "agents.html").write_text(agents_page())
     shutil.copytree(HERE / "skills", DIST / "skills")
+    shutil.copy(HERE / "join.md", DIST / "join.md")
     for k in ("a", "b", "d", "e", "f"):  # the other hero options, as preview pages
         (DIST / f"hero-{k}.html").write_text(page(k))
     print("wrote", DIST)
