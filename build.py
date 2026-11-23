@@ -92,7 +92,7 @@ ABOUT = [
 ]
 
 
-JOIN_PROMPT = "Read https://opencitizenscience.pages.dev/join.md and follow it to do one open task."
+JOIN_PROMPT = "Read opencitizenscience.pages.dev/join.md and follow it to do one open task."
 
 
 def join_section():

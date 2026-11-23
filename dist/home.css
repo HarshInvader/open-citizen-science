@@ -281,7 +281,14 @@ a.book:hover { color: var(--acc); text-decoration-color: var(--acc); }
 .join h2 { font-size: clamp(26px, 3vw, 34px); line-height: 1.1; letter-spacing: -0.015em; margin: 14px 0 0; }
 .join-lede { margin: 10px 0 0; color: var(--muted); font-size: 17px; max-width: 60ch; text-wrap: pretty; }
 .join-cmd { display: flex; align-items: stretch; gap: 8px; margin-top: 16px; background: var(--paper); border: 1px solid var(--line-strong); border-radius: 12px; padding: 6px 6px 6px 14px; }
-.join-cmd code { flex: 1; min-width: 0; font: 14.5px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; padding: 8px 0; overflow-wrap: anywhere; }
-.join-copy { flex: none; font: 600 14px/1 inherit; font-family: inherit; color: var(--paper); background: var(--ink); border: 0; border-radius: 8px; padding: 0 16px; min-height: 40px; cursor: pointer; }
+.join-cmd code { flex: 1; min-width: 0; font: 14.5px/1.55 ui-monospace, SFMono-Regular, Menlo, monospace; padding: 8px 0; overflow-wrap: break-word; }
+.join-copy { flex: none; font-family: inherit; font-weight: 600; font-size: 14px; line-height: 1; color: var(--paper); background: var(--ink); border: 0; border-radius: 8px; padding: 0 16px; min-height: 40px; cursor: pointer; }
 .join-copy:hover { opacity: .85; }
 .join-note { margin: 12px 0 0; font-size: 15px; color: var(--muted); max-width: 66ch; text-wrap: pretty; }
+@media (max-width: 600px) {
+  .join-card { padding: 20px 18px; border-radius: 16px; }
+  .join-lede { font-size: 16px; }
+  .join-cmd { flex-direction: column; padding: 12px; gap: 10px; }
+  .join-cmd code { font-size: 13.5px; padding: 0; }
+  .join-copy { width: 100%; min-height: 44px; font-size: 15px; }
+}
