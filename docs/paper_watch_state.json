@@ -1,6 +1,6 @@
 {
  "_about": "Paper watch state. last_run: date of the last run. seen: DOI -> {project, decision: added|dropped|watch, why}.",
- "last_run": "2026-11-22",
+ "last_run": "2026-11-24",
  "seen": {
   "10.1016/j.cortex.2026.11.009": {
    "project": "mind",
@@ -10,7 +10,7 @@
   "10.64898/2026.11.11.765965": {
    "project": "mind",
    "decision": "watch",
-   "why": "Breathwork EEG mirrors psychedelic complexity signatures, n=25, preprint from one lab; look again once published or cited. Rechecked 2026-11-22: still unpublished, 0 citations."
+   "why": "Breathwork EEG mirrors psychedelic complexity signatures, n=25, preprint from one lab; look again once published or cited. Rechecked 2026-11-22: still unpublished, 0 citations. Rechecked 2026-11-24: still unpublished, 0 citations."
   },
   "10.64898/2026.11.18.767548": {
    "project": "mind",
@@ -50,17 +50,17 @@
   "10.64898/2026.11.18.767475": {
    "project": "origins",
    "decision": "watch",
-   "why": "Nucleotide condensates protect RNA from acid hydrolysis and shift hammerhead toward religation; striking but a one-day-old single-lab preprint; look again once reviewed or discussed. Rechecked 2026-11-22: still unpublished, 0 citations."
+   "why": "Nucleotide condensates protect RNA from acid hydrolysis and shift hammerhead toward religation; striking but a one-day-old single-lab preprint; look again once reviewed or discussed. Rechecked 2026-11-22: still unpublished, 0 citations. Rechecked 2026-11-24: still unpublished, 0 citations."
   },
   "10.21203/rs.3.rs-11206946/v1": {
    "project": "origins",
    "decision": "watch",
-   "why": "Amyloid peptides bind NTPs and assist ATP formation (Riek lab); Research Square preprint; look again once published. Rechecked 2026-11-22: still unpublished, 0 citations."
+   "why": "Amyloid peptides bind NTPs and assist ATP formation (Riek lab); Research Square preprint; look again once published. Rechecked 2026-11-22: still unpublished, 0 citations. Rechecked 2026-11-24: still unpublished, 0 citations."
   },
   "10.26434/chemrxiv.15012530/v1": {
    "project": "origins",
    "decision": "watch",
-   "why": "Single-author chemRxiv comparing assembly index with dictionary compression on DrugBank; follows our Jul 2026 item; wait for review. Rechecked 2026-11-22: still unpublished, 0 citations."
+   "why": "Single-author chemRxiv comparing assembly index with dictionary compression on DrugBank; follows our Jul 2026 item; wait for review. Rechecked 2026-11-22: still unpublished, 0 citations. Rechecked 2026-11-24: still unpublished, 0 citations."
   },
   "10.21203/rs.3.rs-11367328/v1": {
    "project": "origins",
@@ -131,6 +131,76 @@
    "project": "origins",
    "decision": "dropped",
    "why": "Clumped isotopes of syntrophic methanogens; modern ecology, not an origins claim."
+  },
+  "10.1088/1741-2552/aebdcf": {
+   "project": "mind",
+   "decision": "dropped",
+   "why": "Local-global auditory EEG decoding in DoC (J Neural Eng); 20 patients, diagnostic balanced accuracy 68.8%, prognostic 60.5%; too small and weak to move a ledger fact."
+  },
+  "10.1016/j.brainresbull.2026.112224": {
+   "project": "mind",
+   "decision": "dropped",
+   "why": "Pilot fNIRS of 20 Hz sensory stimulation in DoC (n=37); exploratory correlations, no measure we score."
+  },
+  "10.1016/j.bja.2026.08.082": {
+   "project": "mind",
+   "decision": "dropped",
+   "why": "Orexin to medial amygdala circuit speeds emergence from isoflurane in mice; arousal circuitry, not a consciousness test."
+  },
+  "10.1016/j.bja.2026.11.003": {
+   "project": "mind",
+   "decision": "dropped",
+   "why": "BJA comment on dreaming under anaesthesia; opinion, no new data."
+  },
+  "10.1097/aln.0000000000006398": {
+   "project": "mind",
+   "decision": "dropped",
+   "why": "Rat vigilance recovery task after anaesthesia; behavioural method, not a consciousness question we work on."
+  },
+  "10.21203/rs.3.rs-11633926/v1": {
+   "project": "mind",
+   "decision": "dropped",
+   "why": "Research Square theory model of idea generation; no data."
+  },
+  "10.31234/osf.io/xheqg_v1": {
+   "project": "mind",
+   "decision": "dropped",
+   "why": "Same PsyArXiv thalamocortical theory model as 10.31234/osf.io/xheqg, dropped 2026-11-22."
+  },
+  "10.20944/preprints202611.2087.v1": {
+   "project": "mind",
+   "decision": "dropped",
+   "why": "Preprints.org cognitive architecture framework; theory, no data."
+  },
+  "10.20944/preprints202611.2228.v1": {
+   "project": "mind",
+   "decision": "dropped",
+   "why": "Preprints.org cognitive architecture follow-up; theory, no data."
+  },
+  "10.64898/2026.11.20.768022": {
+   "project": "origins",
+   "decision": "watch",
+   "why": "Mojzsis, Medvegy, Kremer bioRxiv 'Kinetic windows for abiogenesis': parameterises the Hadean timeline, RNA/RNP world under 130 Myr; same team as our Sep 2026 Nat Commun item, synthesis rather than new data; look again once reviewed."
+  },
+  "10.1126/sciadv.aei7801": {
+   "project": "origins",
+   "decision": "dropped",
+   "why": "Sci Adv synchrotron study: organics drive mineral reactions in Enceladus-like hydrothermal simulant; icy-moon geology, not tied to one of our five topics' claims."
+  },
+  "10.1038/s41587-026-03362-3": {
+   "project": "origins",
+   "decision": "dropped",
+   "why": "Nat Biotech agentic RNA design (RhoAgent) of ribozymes and aptamers; synthetic biology, not an origins claim."
+  },
+  "10.20944/preprints202611.2020.v1": {
+   "project": "origins",
+   "decision": "dropped",
+   "why": "Preprints.org origin of life hypothesis; no new data."
+  },
+  "arXiv:2611.28186": {
+   "project": "origins",
+   "decision": "dropped",
+   "why": "Titan habitability review; review, not tied to a claim we test."
   }
  }
 }
