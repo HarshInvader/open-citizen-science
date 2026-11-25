@@ -8,6 +8,7 @@ Open Indus already has its own address, so the parent page links to it instead o
 import html, json, shutil, sqlite3, subprocess, sys, time
 sys.path.insert(0, str(__import__('pathlib').Path(__file__).resolve().parent))
 from hero import HEROES
+from tools.site_family import add_og, add_parent_link
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -430,6 +431,10 @@ def main():
             t2 = t.replace('href="../index.html"', f'href="{SITE}/"').replace("https://opencitizenscience.pages.dev/", f"{SITE}/")
             if t2 != t:
                 f.write_text(t2)
+        shutil.copy(HERE / "og" / f'{p["slug"]}.jpg', DIST / p["slug"] / "og.jpg")
+        sub = p["url"].rsplit("/", 1)[0]
+        add_og(DIST / p["slug"], sub, f"{sub}/og.jpg", p["name"])
+        add_parent_link(DIST / p["slug"])
     shutil.copy(HERE / "home.css", DIST / "home.css")
     shutil.copy(HERE / "hero.css", DIST / "hero.css")
     shutil.copytree(HERE / "fonts", DIST / "fonts")
@@ -440,6 +445,8 @@ def main():
     shutil.copy(HERE / "join.md", DIST / "join.md")
     for k in ("a", "b", "d", "e", "f"):  # the other hero options, as preview pages
         (DIST / f"hero-{k}.html").write_text(page(k))
+    shutil.copy(HERE / "og" / "home.jpg", DIST / "og.jpg")
+    add_og(DIST, SITE, f"{SITE}/og.jpg", "Open Citizen Science")  # project folders already have theirs
     print("wrote", DIST)
 
 
