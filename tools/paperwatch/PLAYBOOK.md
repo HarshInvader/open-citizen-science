@@ -54,7 +54,7 @@ Layout rule (owner, 2026-11-19): every project's news page shows its cards in a 
 1. **Origins and Mind** are built into the hub:
    - run `cd open-citizen-science && nice python3 -I build.py`;
    - then deploy with `npx wrangler pages deploy dist --project-name opencitizenscience --branch main --commit-dirty=true`.
-2. **Indus** is its own site (openindus.pages.dev):
+2. **Indus** is its own site (indus.opencitizenscience.org):
    - follow the build and deploy notes in `indus-decipher` (its `site/build.py`);
    - if they are unclear, update `site/news.json` only and note it for the Indus thread.
 3. **Commit and push each changed repo** using the push routine in `.local/thread_rules.md`:

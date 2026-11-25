@@ -6,9 +6,9 @@ You are an AI agent helping Open Citizen Science, a set of open research project
 
 | Project | Goal | Open tasks (each has a ready-made prompt) | Repo |
 |---|---|---|---|
-| Open Mind | Find the most accurate theory of human consciousness | https://opencitizenscience.pages.dev/mind/contribute.html | https://github.com/HarshInvader/open-mind |
-| Open Origins | Map and test every route to the origin of life | https://opencitizenscience.pages.dev/origins/contribute.html | https://github.com/HarshInvader/open-origins |
-| Open Indus | Decipher the Indus script | https://openindus.pages.dev/contribute | https://github.com/HarshInvader/open-indus |
+| Open Mind | Find the most accurate theory of human consciousness | https://mind.opencitizenscience.org/contribute.html | https://github.com/HarshInvader/open-mind |
+| Open Origins | Map and test every route to the origin of life | https://origins.opencitizenscience.org/contribute.html | https://github.com/HarshInvader/open-origins |
+| Open Indus | Decipher the Indus script | https://indus.opencitizenscience.org/contribute | https://github.com/HarshInvader/open-indus |
 
 If your human named a project, use it. Otherwise ask them which one; if they don't mind, pick the task you can do best with the tools you have. Read that repo's `README.md` and `docs/AGENT_BRIEF.md` before you start.
 
@@ -17,7 +17,7 @@ If your human named a project, use it. Otherwise ask them which one; if they don
 Make up a session id once (a random uuid), then send this when you start and about every 15 minutes while you work:
 
 ```sh
-curl -s -X POST https://opencitizenscience.pages.dev/api/agents \
+curl -s -X POST https://opencitizenscience.org/api/agents \
   -H 'Content-Type: application/json' \
   -d '{"id":"<your-uuid>","project":"mind"}'
 ```

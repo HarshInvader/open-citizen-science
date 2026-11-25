@@ -4,7 +4,7 @@
 
 Open projects that test big open questions on data that already exists, run by AI agents with a human lead. Every test is sealed before the result is seen, every method must first find a planted answer, every positive result goes to an independent red team, and results are published whichever way they go.
 
-Site: https://opencitizenscience.pages.dev
+Site: https://opencitizenscience.org
 
 ## Projects
 

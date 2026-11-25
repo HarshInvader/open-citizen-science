@@ -8,28 +8,30 @@ Open Indus already has its own address, so the parent page links to it instead o
 import html, json, shutil, sqlite3, subprocess, sys, time
 sys.path.insert(0, str(__import__('pathlib').Path(__file__).resolve().parent))
 from hero import HEROES
+from tools.site_family import add_og, add_parent_link
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 PERSONAL = HERE.parent
 DIST = HERE / "dist"
+SITE = "https://opencitizenscience.org"  # mind. and origins. are served from dist/<slug>/ by functions/_middleware.js
 e = html.escape
 
 # Each project. ladder: one value per level L0-L4 (1 = done, 0.5 = partly, 0 = open).
 PROJECTS = [
-    dict(slug="indus", name="Open Indus", repo=PERSONAL / "indus-decipher", url="https://openindus.pages.dev", external=True,
+    dict(slug="indus", name="Open Indus", repo=PERSONAL / "indus-decipher", url="https://indus.opencitizenscience.org", external=True,
          question="What did the Indus cities write?",
          goal="Decipher the Indus script by 2027",
          blurb="Four thousand short texts survive from a civilisation as large as Egypt's, and nobody can read them. We test every claimed reading, and our own ideas, against chance.",
          odds="under 10%", ladder=[1, 0.5, 0, 0, 0], ladder_names=["Structure", "Sign roles", "Topic", "Meaning", "Sound"],
          mark='<path d="M16 3.56C9.18 9.28 8.74 16.32 16 23.14L21.05 27.88"/><path d="M16 3.56C22.82 9.28 23.26 16.32 16 23.14L10.95 27.88"/><path d="M11.71 17.44L8.67 19.82M20.29 17.44L23.33 19.82"/>'),
-    dict(slug="mind", name="Open Mind", repo=PERSONAL / "open-mind", url="mind/index.html", external=False,
+    dict(slug="mind", name="Open Mind", repo=PERSONAL / "open-mind", url="https://mind.opencitizenscience.org/index.html", external=False,
          question="Which brain activity goes with conscious experience?",
          goal="Find the most accurate theory of human consciousness by 2027",
          blurb="Every current theory may be wrong. We test their riskiest predictions on open brain recordings, list the hard facts any true theory must explain, and build our own theory where theirs fail.",
          odds="3 to 5%", ladder=[1, 1, 0.5, 0.5, 0], ladder_names=["Signal", "State", "Dissociation", "Content", "Theory"],
          mark='<path d="M5 12h14v14H5z"/><path d="M13 6h14v14H13z"/><path d="M5 12l8-6M19 12l8-6M19 26l8-6M5 26l8-6"/>'),
-    dict(slug="origins", name="Open Origins", repo=PERSONAL / "open-origins", url="origins/index.html", external=False,
+    dict(slug="origins", name="Open Origins", repo=PERSONAL / "open-origins", url="https://origins.opencitizenscience.org/index.html", external=False,
          question="How did chemistry become life?",
          goal="Map and test every route to the origin of life by 2027",
          blurb="Chemists have shown many single steps from simple molecules toward life, but nobody has joined them into one continuous route. We score each route step by step and seal predictions that future data can confirm.",
@@ -92,7 +94,7 @@ ABOUT = [
 ]
 
 
-JOIN_PROMPT = "Read opencitizenscience.pages.dev/join.md and follow it to do one open task."
+JOIN_PROMPT = "Read opencitizenscience.org/join.md and follow it to do one open task."
 
 
 def join_section():
@@ -312,7 +314,7 @@ SKILL_RAW = "https://raw.githubusercontent.com/HarshInvader/open-citizen-science
 
 def agents_page():
     steps = [
-        ("Pick an open task", 'Each project keeps a public list, with a ready-made prompt for every task: <a href="mind/contribute.html">Open Mind</a>, <a href="origins/contribute.html">Open Origins</a>, <a href="https://openindus.pages.dev/contribute">Open Indus</a>.'),
+        ("Pick an open task", 'Each project keeps a public list, with a ready-made prompt for every task: <a href="https://mind.opencitizenscience.org/contribute.html">Open Mind</a>, <a href="https://origins.opencitizenscience.org/contribute.html">Open Origins</a>, <a href="https://indus.opencitizenscience.org/contribute">Open Indus</a>.'),
         ("Give your agent our rules", 'Load the skill below into Claude Code, Codex or any agent that reads instruction files. It makes the agent seal its plan, find a planted answer first, and report failures as plainly as successes.'),
         ("Send the result back", "Whichever way it goes. A careful &#8220;it did not hold up&#8221; is as useful to us as a hit."),
     ]
@@ -405,7 +407,7 @@ def page(hero="a"):
       <li><strong>Point us to data</strong> we are missing. Each project lists what would change its odds most.</li>
       <li><strong>Check a result.</strong> Each finding says what was tested; tell us if it does not hold up.</li>
     </ul>
-    <p><strong>If you use an AI assistant</strong> (Claude, ChatGPT or similar), give it an open task. Each project has a ready-made prompt per task: <a href="mind/contribute.html">Open Mind</a>, <a href="origins/contribute.html">Open Origins</a>, <a href="https://openindus.pages.dev/contribute">Open Indus</a>. It writes down its plan, checks it can find a planted answer, runs the test and sends the result back to us, whichever way it goes.</p>
+    <p><strong>If you use an AI assistant</strong> (Claude, ChatGPT or similar), give it an open task. Each project has a ready-made prompt per task: <a href="https://mind.opencitizenscience.org/contribute.html">Open Mind</a>, <a href="https://origins.opencitizenscience.org/contribute.html">Open Origins</a>, <a href="https://indus.opencitizenscience.org/contribute">Open Indus</a>. It writes down its plan, checks it can find a planted answer, runs the test and sends the result back to us, whichever way it goes.</p>
   </div>
 </section>
 </main>
@@ -424,6 +426,15 @@ def main():
             continue
         subprocess.run([sys.executable, "-I", "site/build.py"], cwd=p["repo"], check=True)
         shutil.copytree(p["repo"] / "site" / "dist", DIST / p["slug"])
+        for f in (DIST / p["slug"]).rglob("*.html"):  # the project lives on its own subdomain: point home links and the API at the main domain
+            t = f.read_text()
+            t2 = t.replace('href="../index.html"', f'href="{SITE}/"').replace("https://opencitizenscience.pages.dev/", f"{SITE}/")
+            if t2 != t:
+                f.write_text(t2)
+        shutil.copy(HERE / "og" / f'{p["slug"]}.jpg', DIST / p["slug"] / "og.jpg")
+        sub = p["url"].rsplit("/", 1)[0]
+        add_og(DIST / p["slug"], sub, f"{sub}/og.jpg", p["name"])
+        add_parent_link(DIST / p["slug"])
     shutil.copy(HERE / "home.css", DIST / "home.css")
     shutil.copy(HERE / "hero.css", DIST / "hero.css")
     shutil.copytree(HERE / "fonts", DIST / "fonts")
@@ -434,6 +445,8 @@ def main():
     shutil.copy(HERE / "join.md", DIST / "join.md")
     for k in ("a", "b", "d", "e", "f"):  # the other hero options, as preview pages
         (DIST / f"hero-{k}.html").write_text(page(k))
+    shutil.copy(HERE / "og" / "home.jpg", DIST / "og.jpg")
+    add_og(DIST, SITE, f"{SITE}/og.jpg", "Open Citizen Science")  # project folders already have theirs
     print("wrote", DIST)
 
 
