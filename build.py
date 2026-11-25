@@ -118,9 +118,17 @@ var c=document.querySelector('.join-copy');if(c)c.addEventListener('click',funct
 def about_section():
     cards = "".join(f'<li><h3>{e(h)}</h3><p>{e(t)}</p></li>' for h, t in ABOUT)
     return (f'<section class="wrap about" id="about" aria-labelledby="about-h"><h2 id="about-h" class="vh">About this site</h2>'
-            f'<ul class="about-grid">{cards}</ul>'
-            f'<p class="about-cta"><a class="btn btn-1" href="#projects">See the three projects</a>'
-            f'<a class="btn btn-2" href="#help">How to help</a><a class="btn btn-2" href="{SLACK}" rel="noopener">{SLACK_ICON}Join the community</a></p></section>')
+            f'<ul class="about-grid">{cards}</ul></section>')
+
+
+def hero_with_cta(hero_html):
+    """The hero, with the three buttons right under the lede."""
+    cta = (f'<p class="about-cta hero-cta"><a class="btn btn-1" href="#projects">See the three projects</a>'
+           f'<a class="btn btn-2" href="#help">How to help</a><a class="btn btn-2" href="{SLACK}" rel="noopener">{SLACK_ICON}Join the community</a></p>')
+    h = hero_html(PROJECTS)
+    i = h.index('<p class="lede">')
+    j = h.index("</p>", i) + 4
+    return h[:j] + cta + h[j:]
 
 
 def board_stats(repo):
@@ -369,7 +377,7 @@ def page(hero="a"):
 <header class="wrap top"><a class="logo" href="index.html"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="12"/><circle cx="16" cy="16" r="3.5" class="dot"/></svg>Open Citizen Science</a>
 {nav()}</header>
 <main id="main">
-{hero_html(PROJECTS)}
+{hero_with_cta(hero_html)}
 {join_section()}
 {about_section()}
 <section class="wrap" id="projects" aria-label="Projects"><div class="projs">
