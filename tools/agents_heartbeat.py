@@ -9,7 +9,7 @@ Reads the token from .local/agent_token (gitignored). Sends only ids and project
 import hashlib, json, sys, urllib.request
 from pathlib import Path
 
-URL = "https://opencitizenscience.pages.dev/api/agents"
+URL = "https://opencitizenscience.org/api/agents"
 TOKEN = (Path(__file__).resolve().parent.parent / ".local" / "agent_token").read_text().strip()
 done = "--done" in sys.argv
 for arg in [a for a in sys.argv[1:] if a != "--done"]:
