@@ -257,6 +257,8 @@ a.book:hover { color: var(--acc); text-decoration-color: var(--acc); }
 .about-cta .btn-1:hover { opacity: .85; }
 .about-cta .btn-2 { color: var(--ink); border: 1px solid var(--line-strong); }
 .about-cta .btn-2:hover { border-color: var(--ink); }
+.hero-cta { margin-top: 32px; gap: 10px; }
+@media (min-width: 900px) { .hero-cta { flex-wrap: nowrap; } .hero-cta .btn { padding: 10px 16px; white-space: nowrap; } }
 .help .slackline { margin-bottom: 16px; }
 
 /* footer: tertiary Join Slack button */
