@@ -44,6 +44,7 @@ RULES = [
     ("Say why the number measures the thing.", "Every measure states why it tracks what we care about, and is checked against another."),
     ("Test on data it never saw.", "Part of the data is held back from whoever builds the idea."),
     ("Plant an answer first.", "If a method can't find an answer we hid in practice data, we don't trust it on real data."),
+    ("Search wide, then test once.", "Agents may try many variants against a quick practice score. The winner is sealed and tested once on data no agent saw, and we report how many were tried."),
     ("Let someone else try to break it.", "A separate team of people and agents attacks every positive result."),
     ("Publish it either way.", "Failures go up with the smallest effect the test could have caught."),
 ]
