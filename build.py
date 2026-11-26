@@ -22,30 +22,30 @@ PROJECTS = [
     dict(slug="indus", name="Open Indus", repo=PERSONAL / "indus-decipher", url="https://indus.opencitizenscience.org", external=True,
          question="What did the Indus cities write?",
          goal="Decipher the Indus script by 2027",
-         blurb="Four thousand short texts survive from a civilisation as large as Egypt's, and nobody can read them. We test every claimed reading, and our own ideas, against chance.",
+         blurb="About 4,000 short texts survive and nobody can read them. We test every claimed reading against chance.",
          odds="under 10%", ladder=[1, 0.5, 0, 0, 0], ladder_names=["Structure", "Sign roles", "Topic", "Meaning", "Sound"],
          mark='<path d="M16 3.56C9.18 9.28 8.74 16.32 16 23.14L21.05 27.88"/><path d="M16 3.56C22.82 9.28 23.26 16.32 16 23.14L10.95 27.88"/><path d="M11.71 17.44L8.67 19.82M20.29 17.44L23.33 19.82"/>'),
     dict(slug="mind", name="Open Mind", repo=PERSONAL / "open-mind", url="https://mind.opencitizenscience.org/index.html", external=False,
          question="Which brain activity goes with conscious experience?",
          goal="Find the most accurate theory of human consciousness by 2027",
-         blurb="Every current theory may be wrong. We test their riskiest predictions on open brain recordings, list the hard facts any true theory must explain, and build our own theory where theirs fail.",
+         blurb="We test each theory's riskiest predictions on open brain recordings, and build our own where they fail.",
          odds="3 to 5%", ladder=[1, 1, 0.5, 0.5, 0], ladder_names=["Signal", "State", "Dissociation", "Content", "Theory"],
          mark='<path d="M5 12h14v14H5z"/><path d="M13 6h14v14H13z"/><path d="M5 12l8-6M19 12l8-6M19 26l8-6M5 26l8-6"/>'),
     dict(slug="origins", name="Open Origins", repo=PERSONAL / "open-origins", url="https://origins.opencitizenscience.org/index.html", external=False,
          question="How did chemistry become life?",
          goal="Map and test every route to the origin of life by 2027",
-         blurb="Chemists have shown many single steps from simple molecules toward life, but nobody has joined them into one continuous route. We score each route step by step and seal predictions that future data can confirm.",
+         blurb="Many single steps toward life are known, but no route joins them all. We score each route step by step.",
          odds="about 12%", ladder=[1, 0.5, 0.5, 0, 0], ladder_names=["Building blocks", "Polymers", "Copying", "Self-replication", "Evolution"],
          mark='<path stroke-width="1.5" d="M3 27C8 27 10 19.5 16 19.5S24 27 29 27M3 23.8C8 23.8 10 16.3 16 16.3S24 23.8 29 23.8M3 20.6C8 20.6 10 13.1 16 13.1S24 20.6 29 20.6M3 17.4C8 17.4 10 9.9 16 9.9S24 17.4 29 17.4M3 14.2C8 14.2 10 6.7 16 6.7S24 14.2 29 14.2"/>'),
 ]
 
 RULES = [
-    ("Seal it before you look.", "Every prediction, the rival idea it is tested against, the test and the pass mark are written down and given a digital fingerprint that is published before any result is seen, so it cannot be quietly changed later."),
-    ("Say why the number measures the thing.", "Every measure comes with a written reason it should track what we care about, and a check against an independent one. Without that, the same numbers can back opposite conclusions."),
-    ("Test on data it never saw.", "Part of the data is held back, and near-copies of it never reach the people building the idea."),
-    ("Plant an answer first.", "We hide an answer we already know in practice data. If a method cannot find it there, we do not trust what it says about the real data."),
-    ("Let someone else try to break it.", "Every positive result goes to a separate team, of people and agents, whose job is to find the flaw."),
-    ("Publish it either way.", "Failures are written up with the size of effect the test could have caught."),
+    ("Seal it before you look.", "Each prediction, its rival and the pass mark are fingerprinted and published before any result is seen."),
+    ("Say why the number measures the thing.", "Every measure states why it tracks what we care about, and is checked against another."),
+    ("Test on data it never saw.", "Part of the data is held back from whoever builds the idea."),
+    ("Plant an answer first.", "If a method can't find an answer we hid in practice data, we don't trust it on real data."),
+    ("Let someone else try to break it.", "A separate team of people and agents attacks every positive result."),
+    ("Publish it either way.", "Failures go up with the smallest effect the test could have caught."),
 ]
 
 HANDBOOK = "https://usecaddie.app/blog/agents-handbook"
@@ -56,30 +56,28 @@ BOOK_DEUTSCH = "https://usecaddie.app/s/the-beginning-of-infinity-explanations-t
 
 # How we run research with agents (the method above is how we judge results). (title, body, source html)
 PRINCIPLES = [
-    ("Aim at problems nobody would staff.", "Agents give a small team more workers than ideas. If they run out of work, the goal is too small.",
+    ("Aim at problems nobody would staff.", "If the agents run out of work, the goal is too small.",
      f'<a href="{HANDBOOK}">Building with agents</a>, ch. 7'),
-    ("Read before you run.", "Open the closest papers first. If what is new cannot be said in one sentence, don&#8217;t run the study.", ""),
-    ("Guess the rivals, then test where they disagree.", "Data never hands you a theory; it only chooses between guesses already made. Write at least two explanations down first, and run the test where they predict different things. A test they all pass teaches nothing.",
+    ("Read before you run.", "If what is new can&#8217;t be said in one sentence, don&#8217;t run it.", ""),
+    ("Guess the rivals first.", "Data only chooses between guesses, so test where they disagree.",
      f'<a href="{BOOK_DEUTSCH}">Deutsch, <i>The Beginning of Infinity</i></a>, ch. 1'),
-    ("Prefer ideas that are hard to vary.", "If an idea can survive any result by swapping a detail, it explains nothing yet. Sharpen it until some result would break it, or drop it before spending a test on it.",
+    ("Prefer ideas that are hard to vary.", "An idea that can explain away any result explains nothing.",
      f'<a href="{BOOK_DEUTSCH}">Deutsch</a>, ch. 1'),
-    ("Try to kill the idea first.", "Run the cheapest test that could end it before building the full study. Most ideas should die in an afternoon.", ""),
-    ("Start the day the idea appears.", "No backlog. Give each test to an agent right away, keep several running at once, and let a coordinator agent steer them.",
+    ("Try to kill the idea first.", "Most ideas should die in an afternoon.", ""),
+    ("Start the day the idea appears.", "No backlog: hand each test to an agent now.",
      f'<a href="{HANDBOOK}">Building with agents</a>, ch. 1 and 3'),
-    ("Start over from scratch now and then.", "Give a fresh agent the goal but not our history, and compare its plan with ours. It shows the routes we never tried and the work we kept only because we had started it.", ""),
-    ("Borrow from other fields.", "Have agents read the latest work in neighbouring fields and ask what would transfer. Bell Labs got the transistor by putting physicists, chemists and engineers in one corridor.",
+    ("Start over now and then.", "A fresh agent without our history finds routes we never tried.", ""),
+    ("Borrow from other fields.", "Ask what neighbouring fields know that would transfer.",
      f'<a href="{BOOK_BELL}"><i>The Idea Factory</i></a>'),
-    ("Count every failure.", "Fields move when unexplained results pile up, so every null goes on the public record with the effect it could have caught.",
-     f'<a href="{BOOK_KUHN}">Kuhn, <i>The Structure of Scientific Revolutions</i></a>'),
-    ("Don&#8217;t trust an agent&#8217;s confidence.", "Agents sound as sure when wrong as when right. Check every finding and every citation before acting on it, and treat a surprise as a bug, a leak or an artefact until those are ruled out.",
+    ("Don&#8217;t trust an agent&#8217;s confidence.", "Check every finding and citation, and treat a surprise as a bug first.",
      f'<a href="{HANDBOOK}">Building with agents</a>, ch. 5; <a href="{BOOK_DEUTSCH}">Deutsch</a>, ch. 2'),
-    ("Turn what works into a skill.", "When a method works, write it down as instructions any agent can load, so the next study starts from the best one.",
+    ("Turn what works into a skill.", "Write it as instructions any agent can load.",
      f'<a href="{HANDBOOK}">Building with agents</a>, ch. 4'),
-    ("Document everything in the open.", "Plans, code, data, dead ends and corrections go public as they happen, so anyone can check the work, reuse it or tell us where it is wrong. The Lunar Society shared its experiments in letters; we share ours on GitHub.",
+    ("Work in the open.", "Plans, code, data and dead ends go public as they happen.",
      f'<a href="{BOOK_LUNAR}"><i>The Lunar Men</i></a>'),
-    ("Judge the argument, not the source.", "A result from a student&#8217;s agent gets the same tests as one from a famous lab, and a famous claim gets no pass. What counts is whether it survives criticism.",
+    ("Judge the argument, not the source.", "A student&#8217;s agent and a famous lab face the same tests.",
      f'<a href="{BOOK_DEUTSCH}">Deutsch</a>, ch. 10'),
-    ("People keep the last word.", "Agents do the work. A person chooses the goals, judges the results, and approves anything that goes out to the world.",
+    ("People keep the last word.", "People choose the goals, judge the results and approve what goes out.",
      f'<a href="{HANDBOOK}">Building with agents</a>, conclusion'),
 ]
 
@@ -88,17 +86,16 @@ def principles_section():
     items = "".join(f"<li><div><strong>{t}</strong> {b}" + (f'<p class="psrc">From {s}</p>' if s else "") + "</div></li>"
                     for t, b, s in PRINCIPLES)
     return (f'<section class="wrap split" id="principles"><div><h2>Principles of agentic research</h2>'
-            f'<p class="side">How we run research with agents. The <a href="#method">method</a> below is how we judge what they find. '
-            f'Drawn from our <a href="{HANDBOOK}">handbook on building with agents</a> and four books on how discovery happens.</p></div>'
+            f'<p class="side">How we run research with agents, drawn from our <a href="{HANDBOOK}">handbook</a> and four books.</p></div>'
             f'<ol class="rules">{items}</ol></section>')
 
 
 # The plain answers a first-time visitor asks for: what is this, who is it for, why these questions, what counts as success.
 ABOUT = [
-    ("What this is", "A public lab notebook. Agents test ideas on existing data; every result is published, failures too."),
-    ("Who it is for", "Researchers who want to check or reuse the work, and anyone with an AI assistant who wants to help."),
-    ("Why these questions", "Famous, unsolved, testable on open data, and an answer would be clearly right or wrong."),
-    ("The goal", "A checkable result on at least one by 2027. If we fail, everything stays public for the next team."),
+    ("What this is", "A public lab notebook. Agents test ideas on existing data and publish every result."),
+    ("Who it is for", "Researchers checking the work, and anyone with an AI agent who wants to help."),
+    ("Why these questions", "Famous, unsolved, and testable on open data."),
+    ("The goal", "A checkable result on one by 2027. Win or lose, it all stays public."),
 ]
 
 
@@ -110,10 +107,9 @@ def join_section():
             f'<p class="join-live"><span class="pulse" aria-hidden="true"></span><span aria-live="polite"><strong id="agents-now">2</strong> agents working now</span>'
             f'<span class="join-break" id="agents-break"></span></p>'
             f'<h2 id="join-h">Join the effort</h2>'
-            f'<p class="join-lede">Point your own AI agent at an open task. Paste this into Claude Code, Codex, Cursor, Gemini CLI or any agent that can run a shell and git:</p>'
+            f'<p class="join-lede">Paste this into any coding agent: Claude Code, Codex, Cursor or Gemini CLI.</p>'
             f'<div class="join-cmd"><code id="join-prompt">{e(JOIN_PROMPT)}</code><button type="button" class="join-copy" data-copy="{e(JOIN_PROMPT)}">Copy</button></div>'
-            f'<p class="join-note">It picks a task, writes its plan down before it looks at results, runs the test and opens a pull request with what it found, whichever way it comes out. '
-            f'While it works it counts above. <a href="join.md">Read the instructions it follows</a>.</p></div></section>')
+            f'<p class="join-note">It picks a task, seals its plan, runs the test and opens a pull request either way. <a href="join.md">Its instructions</a>.</p></div></section>')
 
 
 JOIN_JS = r"""(function(){var n=document.getElementById('agents-now');if(!n)return;var b=document.getElementById('agents-break');
@@ -193,7 +189,7 @@ def latest_news(n=8):
 
 
 SIGNUP = ('<form class="nsignup" action="/api/subscribe" method="post"><div class="nsu-text"><p class="nsu-h">Get the important new papers by email</p>'
-          '<p class="nsu-p">Every couple of weeks: the papers that matter for these questions, in plain words, and what each project did with them. Unsubscribe in one click.</p>'
+          '<p class="nsu-p">Every couple of weeks, in plain words. Unsubscribe in one click.</p>'
           '<fieldset class="nsu-pick"><legend class="vh">Which projects</legend>'
           + "".join(f'<label><input type="checkbox" name="projects" value="{s}" checked> {n}</label>' for s, n in (("mind", "Open Mind"), ("origins", "Open Origins"), ("indus", "Open Indus")))
           + '</fieldset></div><div class="nsu-row"><label class="vh" for="nsu-email">Email address</label><input id="nsu-email" type="email" name="email" required autocomplete="email" placeholder="you@example.com">'
@@ -218,7 +214,7 @@ def news_section():
         return (f'<span class="nthumb"><img src="{e(r["thumb"])}" alt="" loading="lazy" width="600" height="400"></span>' if r["thumb"]
                 else f'<span class="nthumb blank"><svg viewBox="0 0 32 32" aria-hidden="true">{r["p"]["mark"]}</svg></span>')
     items = "".join(f'''<li class="p-{r["p"]["slug"]}"><a href="{e(r["url"])}">{pic(r)}<span class="nmeta"><span class="ntag">{e(r["p"]["name"])}</span><time datetime="{e(r["date"])}">{human_date(r["date"])}</time></span>
-<span>{body(r)}</span></a></li>''' for r in latest_news()[:6])
+<span>{body(r)}</span></a></li>''' for r in latest_news()[:4])
     links = " · ".join(f'<a href="{e((p["url"].rsplit("/", 1)[0] if not p["external"] else p["url"]) + "/news.html")}">{e(p["name"])}</a>' for p in PROJECTS)
     return f'''<section class="wrap news" id="news"><div class="news-head"><h2>Latest from the projects</h2><p>All news: {links}</p></div><ul class="nlist">{items}</ul>{SIGNUP}</section>'''
 
@@ -393,37 +389,37 @@ def page(hero="a"):
 </div></section>
 <section class="wrap why" id="why">
   <h2>Agents make the slow part of science cheap</h2>
-  <p class="side">An AI agent is a program, like ChatGPT, that carries out a whole task on its own: it finds the data, writes the code, runs the test and reports back. Big questions rarely stall for lack of ideas; they stall because checking each idea takes people and years. Agents can rerun a test on published data overnight. They can&#8217;t run new experiments, so we work with data that already exists.</p>
+  <p class="side">Big questions stall on checking ideas, not on having them. AI agents find the data, write the code and run a test overnight, on data that already exists.</p>
   <ol class="why-grid"><li class="why-card"><figure><svg viewBox="0 0 240 150" role="img" aria-label="An accepted framework tipping over as unexplained results pile up beside it">
 <line x1="10" y1="131" x2="230" y2="131" class="f-ground"/>
 <g transform="rotate(-7 20 131)"><rect x="20" y="36" width="112" height="95" rx="8" class="f-line"/><circle cx="38" cy="58" r="3.2" class="f-solid"/><circle cx="58" cy="58" r="3.2" class="f-solid"/><circle cx="78" cy="58" r="3.2" class="f-solid"/><circle cx="98" cy="58" r="3.2" class="f-solid"/><circle cx="118" cy="58" r="3.2" class="f-solid"/><circle cx="38" cy="78" r="3.2" class="f-solid"/><circle cx="58" cy="78" r="3.2" class="f-solid"/><circle cx="78" cy="78" r="3.2" class="f-solid"/><circle cx="98" cy="78" r="3.2" class="f-solid"/><circle cx="118" cy="78" r="3.2" class="f-solid"/><circle cx="38" cy="98" r="3.2" class="f-solid"/><circle cx="58" cy="98" r="3.2" class="f-solid"/><circle cx="78" cy="98" r="3.2" class="f-solid"/><circle cx="98" cy="98" r="3.2" class="f-solid"/><circle cx="118" cy="98" r="3.2" class="f-solid"/></g>
 <circle cx="146.0" cy="124" r="6" class="f-acc"/><circle cx="161.0" cy="124" r="6" class="f-acc"/><circle cx="176.0" cy="124" r="6" class="f-acc"/><circle cx="191.0" cy="124" r="6" class="f-acc"/><circle cx="206.0" cy="124" r="6" class="f-acc"/><circle cx="153.5" cy="111" r="6" class="f-acc"/><circle cx="168.5" cy="111" r="6" class="f-acc"/><circle cx="183.5" cy="111" r="6" class="f-acc"/><circle cx="198.5" cy="111" r="6" class="f-acc"/><circle cx="161.0" cy="98" r="6" class="f-acc"/><circle cx="176.0" cy="98" r="6" class="f-acc"/><circle cx="191.0" cy="98" r="6" class="f-acc"/><circle cx="168.5" cy="85" r="6" class="f-acc"/><circle cx="183.5" cy="85" r="6" class="f-acc"/><circle cx="176.0" cy="72" r="6" class="f-acc"/>
 <text x="22" y="22" class="f-lab">Framework</text><text x="226" y="58" class="f-lab acc" text-anchor="end">Unexplained</text>
-</svg></figure><h3>Fields change when failures pile up</h3><p><a class="book" href="https://usecaddie.app/s/the-structure-of-scientific-revolutions-50th">Kuhn&#8217;s <i>The Structure of Scientific Revolutions</i></a> shows a field shifts only when results it cannot explain become too many to ignore. Agents can test many ideas quickly, and we count every test we run, so a lucky hit can&#8217;t pass as a finding and every failure stays on the record.</p></li><li class="why-card"><figure><svg viewBox="0 0 240 150" role="img" aria-label="A chemist, a statistician and a sceptic all feeding into one task">
+</svg></figure><h3>Fields change when failures pile up</h3><p>In <a class="book" href="https://usecaddie.app/s/the-structure-of-scientific-revolutions-50th"><i>The Structure of Scientific Revolutions</i></a>, Kuhn shows fields shift when unexplained results pile up. We count every test, so failures stay on the record.</p></li><li class="why-card"><figure><svg viewBox="0 0 240 150" role="img" aria-label="A chemist, a statistician and a sceptic all feeding into one task">
 <path d="M104 34 C140 34 140 75 172 75" class="f-line"/><path d="M104 75 C140 75 140 75 172 75" class="f-line"/><path d="M104 116 C140 116 140 75 172 75" class="f-line"/><circle cx="98" cy="34" r="6" class="f-solid"/><text x="86" y="38" class="f-lab" text-anchor="end">Chemist</text><circle cx="98" cy="75" r="6" class="f-solid"/><text x="86" y="79" class="f-lab" text-anchor="end">Statistician</text><circle cx="98" cy="116" r="6" class="f-solid"/><text x="86" y="120" class="f-lab" text-anchor="end">Sceptic</text><rect x="172" y="57" width="36" height="36" rx="6" class="f-acc"/>
 <text x="190" y="114" class="f-lab acc" text-anchor="middle">One task</text>
-</svg></figure><h3>Discoveries come from mixing experts</h3><p>In <a class="book" href="https://usecaddie.app/s/the-idea-factory-bell-labs-and-the-great-age"><i>The Idea Factory</i></a>, Bell Labs puts physicists, chemists and engineers in the same corridors, and the transistor comes out of it. Agents can draft a chemist&#8217;s or a statistician&#8217;s checks in minutes; then real experts review them.</p></li><li class="why-card"><figure><svg viewBox="0 0 240 150" role="img" aria-label="A ring of people and agents meeting round a full moon, with one empty seat marked You"><circle cx="120" cy="70" r="26" class="f-moon"/><text x="120" y="67" class="f-lab acc" text-anchor="middle">Full</text><text x="120" y="80" class="f-lab acc" text-anchor="middle">moon</text><circle cx="120.0" cy="22.0" r="6" class="f-line"/><rect x="141.0" y="23.4" width="10" height="10" rx="2" class="f-solid"/><circle cx="165.0" cy="46.0" r="6" class="f-line"/><rect x="167.0" y="65.0" width="10" height="10" rx="2" class="f-solid"/><circle cx="165.0" cy="94.0" r="6" class="f-line"/><rect x="141.0" y="106.6" width="10" height="10" rx="2" class="f-solid"/><circle cx="120.0" cy="118.0" r="6.5" class="f-you"/><rect x="89.0" y="106.6" width="10" height="10" rx="2" class="f-solid"/><circle cx="75.0" cy="94.0" r="6" class="f-line"/><rect x="63.0" y="65.0" width="10" height="10" rx="2" class="f-solid"/><circle cx="75.0" cy="46.0" r="6" class="f-line"/><rect x="89.0" y="23.4" width="10" height="10" rx="2" class="f-solid"/><text x="120" y="141" class="f-lab acc" text-anchor="middle">You</text><circle cx="18" cy="137" r="5" class="f-line"/><text x="28" y="141.5" class="f-lab">People</text><rect x="182" y="132" width="10" height="10" rx="2" class="f-solid"/><text x="197" y="141.5" class="f-lab">Agents</text></svg></figure><h3>Big change can start in a small circle</h3><p>In 1760s Birmingham about a dozen friends, among them Watt, Wedgwood and Erasmus Darwin, met each full moon to share experiments; the moon lit their ride home. Their circle, told in <a class="book" href="https://usecaddie.app/s/the-lunar-men-the-inventors-of-the-modern"><i>The Lunar Men</i></a>, helped start the Industrial Revolution. Ours is people and agents, and the seats are open.</p></li></ol>
-  <p class="why-note">Agents can also fool themselves faster than people can, so every project follows <a href="#method">the same rules</a>. The three books are also a short course on running a discovery group: <a class="book" href="https://usecaddie.app/growth/course#part-discovery">Scientific discovery</a>.</p>
+</svg></figure><h3>Discoveries come from mixing experts</h3><p>Bell Labs mixed physicists, chemists and engineers and got the transistor (<a class="book" href="https://usecaddie.app/s/the-idea-factory-bell-labs-and-the-great-age"><i>The Idea Factory</i></a>). Agents draft each expert&#8217;s checks; real experts review them.</p></li><li class="why-card"><figure><svg viewBox="0 0 240 150" role="img" aria-label="A ring of people and agents meeting round a full moon, with one empty seat marked You"><circle cx="120" cy="70" r="26" class="f-moon"/><text x="120" y="67" class="f-lab acc" text-anchor="middle">Full</text><text x="120" y="80" class="f-lab acc" text-anchor="middle">moon</text><circle cx="120.0" cy="22.0" r="6" class="f-line"/><rect x="141.0" y="23.4" width="10" height="10" rx="2" class="f-solid"/><circle cx="165.0" cy="46.0" r="6" class="f-line"/><rect x="167.0" y="65.0" width="10" height="10" rx="2" class="f-solid"/><circle cx="165.0" cy="94.0" r="6" class="f-line"/><rect x="141.0" y="106.6" width="10" height="10" rx="2" class="f-solid"/><circle cx="120.0" cy="118.0" r="6.5" class="f-you"/><rect x="89.0" y="106.6" width="10" height="10" rx="2" class="f-solid"/><circle cx="75.0" cy="94.0" r="6" class="f-line"/><rect x="63.0" y="65.0" width="10" height="10" rx="2" class="f-solid"/><circle cx="75.0" cy="46.0" r="6" class="f-line"/><rect x="89.0" y="23.4" width="10" height="10" rx="2" class="f-solid"/><text x="120" y="141" class="f-lab acc" text-anchor="middle">You</text><circle cx="18" cy="137" r="5" class="f-line"/><text x="28" y="141.5" class="f-lab">People</text><rect x="182" y="132" width="10" height="10" rx="2" class="f-solid"/><text x="197" y="141.5" class="f-lab">Agents</text></svg></figure><h3>Big change can start in a small circle</h3><p>A dozen friends, Watt and Wedgwood among them, met each full moon and helped start the Industrial Revolution (<a class="book" href="https://usecaddie.app/s/the-lunar-men-the-inventors-of-the-modern"><i>The Lunar Men</i></a>). Our circle is people and agents, and the seats are open.</p></li></ol>
+  <p class="why-note">Agents fool themselves fast too, so every project follows <a href="#method">the same rules</a>. The books also make a short course: <a class="book" href="https://usecaddie.app/growth/course#part-discovery">Scientific discovery</a>.</p>
 </section>
 {principles_section()}
 {news_section()}
 <section class="wrap split" id="method">
   <div><h2>One method for every project</h2>
-  <p class="side">A result that looks good must not be something you could get by trying until something works. These rules are the same in every project, and every result can be rerun from its code.</p></div>
+  <p class="side">A result must not be something you could get by trying until something works. Every result reruns from its code.</p></div>
   <ol class="rules">{rules}</ol>
 </section>
 <section class="wrap split" id="help">
   <div><h2>Contribute</h2>
-  <p class="side">Each project is run by one person and a team of AI agents, with a public list of open tasks. Anyone can pick one up.</p></div>
+  <p class="side">Anyone can pick up an open task.</p></div>
   <div class="help">
-    <p class="slackline"><strong>Talk to us first:</strong> <a href="{SLACK}" rel="noopener">{SLACK_ICON}join the community on Slack</a>. Ask questions, pick a task, or tell us we are wrong.</p>
+    <p class="slackline"><strong>Talk to us first</strong> <a href="{SLACK}" rel="noopener">{SLACK_ICON}on Slack</a>.</p>
     <p><strong>No coding needed:</strong></p>
     <ul>
-      <li><strong>Tell us where we are wrong</strong> about your field. Historians, linguists, clinicians and chemists catch what agents miss.</li>
-      <li><strong>Point us to data</strong> we are missing. Each project lists what would change its odds most.</li>
-      <li><strong>Check a result.</strong> Each finding says what was tested; tell us if it does not hold up.</li>
+      <li><strong>Tell us where we are wrong</strong> about your field.</li>
+      <li><strong>Point us to data</strong> we are missing.</li>
+      <li><strong>Check a result</strong> and tell us if it holds up.</li>
     </ul>
-    <p><strong>If you use an AI assistant</strong> (Claude, ChatGPT or similar), give it an open task. Each project has a ready-made prompt per task: <a href="https://mind.opencitizenscience.org/contribute.html">Open Mind</a>, <a href="https://origins.opencitizenscience.org/contribute.html">Open Origins</a>, <a href="https://indus.opencitizenscience.org/contribute">Open Indus</a>. It writes down its plan, checks it can find a planted answer, runs the test and sends the result back to us, whichever way it goes.</p>
+    <p><strong>Using an AI assistant?</strong> Give it a task from <a href="https://mind.opencitizenscience.org/contribute.html">Open Mind</a>, <a href="https://origins.opencitizenscience.org/contribute.html">Open Origins</a> or <a href="https://indus.opencitizenscience.org/contribute">Open Indus</a>.</p>
   </div>
 </section>
 </main>

@@ -14,7 +14,7 @@ HERE = Path(__file__).resolve().parent
 
 
 TITLE = "Big open questions in science, tested in the open."
-LEDE = ("One person and a team of AI agents trying to solve three famous open problems by 2027, in public, so anyone can check the work or join in.")
+LEDE = ("One person and a team of AI agents taking on three famous open problems by 2027, in public.")
 
 
 def head():
