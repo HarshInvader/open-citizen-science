@@ -14,6 +14,9 @@ You are helping test a big open question on data that already exists. A result i
 
 ## 2. Seal the plan before you look
 
+- Write down at least two rival explanations, and pick the test where they predict different outcomes. A test every explanation passes teaches nothing.
+- Drop or sharpen any explanation that could survive every possible result by swapping a detail.
+- For each measure, write why it should track what you care about, and check it against an independent measure where one exists.
 - Write the prediction, the exact test, the data split and the pass mark in a file (for example `docs/prereg/<name>.md`).
 - Record its sha256 (for example in `docs/prereg/HASHES.txt`) before you open the results. Never change the plan after looking; if you must, write a new plan and say why.
 
@@ -32,6 +35,7 @@ You are helping test a big open question on data that already exists. A result i
 - Lead with the verdict in one sentence.
 - Then the numbers: effect size, confidence interval, sample size, the null.
 - For a negative result, give the smallest effect your test could have caught.
+- Before calling a surprise a finding, rule out a wrong cause: a bug, a data leak, an artefact of the instrument or pipeline.
 - Say plainly what you did not check.
 
 ## 6. Citations are verified or marked
