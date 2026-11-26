@@ -214,9 +214,9 @@ def news_section():
         return (f'<span class="nthumb"><img src="{e(r["thumb"])}" alt="" loading="lazy" width="600" height="400"></span>' if r["thumb"]
                 else f'<span class="nthumb blank"><svg viewBox="0 0 32 32" aria-hidden="true">{r["p"]["mark"]}</svg></span>')
     items = "".join(f'''<li class="p-{r["p"]["slug"]}"><a href="{e(r["url"])}">{pic(r)}<span class="nmeta"><span class="ntag">{e(r["p"]["name"])}</span><time datetime="{e(r["date"])}">{human_date(r["date"])}</time></span>
-<span>{body(r)}</span></a></li>''' for r in latest_news()[:3])
+<span>{body(r)}</span></a></li>''' for r in latest_news()[:6])
     links = " · ".join(f'<a href="{e((p["url"].rsplit("/", 1)[0] if not p["external"] else p["url"]) + "/news.html")}">{e(p["name"])}</a>' for p in PROJECTS)
-    return f'''<section class="wrap news" id="news"><div class="news-head"><h2>Latest from the projects</h2><p>All news: {links}</p></div><ul class="nlist">{items}</ul>{SIGNUP}</section>'''
+    return f'''<section class="wrap news" id="news"><div class="news-head"><h2>Latest from the projects</h2><p>All news: {links}</p></div><ul class="nlist">{items}</ul><p class="news-more">More news from each project: {links}</p>{SIGNUP}</section>'''
 
 
 def meter(p):
